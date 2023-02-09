@@ -16,9 +16,14 @@ public class Course {
     @Column(name = "course_name")
     String name;
 
-    @OneToMany
-    @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
-    List<Mark> marks;
+    @ManyToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "id")// defining the foreign key which is ID
+    Student student;
+
+
+//    @OneToMany
+//    @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
+//    List<Mark> marks;
 
     public Integer getId() {
         return id;
@@ -36,11 +41,12 @@ public class Course {
         this.name = name;
     }
 
-    public List<Mark> getMarks() {
-        return marks;
-    }
+//    public List<Mark> getMarks() {
+//        return marks;
+//    }
+//
+//    public void setMarks(List<Mark> marks) {
+//        this.marks = marks;
+//    }
 
-    public void setMarks(List<Mark> marks) {
-        this.marks = marks;
-    }
 }

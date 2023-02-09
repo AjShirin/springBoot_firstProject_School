@@ -10,9 +10,10 @@ public class School {
     Integer id;
     @Column(name = "school_name")
     String name;
-   @OneToMany // Doing the relation
-   @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
-    List<Student> students;
+
+//   @OneToMany // Doing the relation
+//   @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
+    //List<Student> students; //comment out because it will create a cyclic mapping
 
     public Integer getId() {
         return id;
@@ -30,11 +31,11 @@ public class School {
         this.name = name;
     }
 
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
+//    public List<Student> getStudents() {
+//        return students;
+//    }
+//
+//    public void setStudents(List<Student> students) {
+//        this.students = students;
+//    }
 }

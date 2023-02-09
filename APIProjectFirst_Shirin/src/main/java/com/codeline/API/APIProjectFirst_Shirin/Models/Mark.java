@@ -1,9 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Mark {
@@ -12,6 +9,10 @@ public class Mark {
     Integer id;
     Integer obtainMark;
     String grade;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    Course course;
 
     public Integer getId() {
         return id;

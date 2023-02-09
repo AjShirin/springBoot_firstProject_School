@@ -18,9 +18,15 @@ public class Student {
     @Column(name = "student_name")
     String name;
     String rollNumber;
-    @OneToMany
-    @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
-    List<Course> courses;
+//    @OneToMany
+//    @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
+//    List<Course> courses;
+
+    @ManyToOne // doing the relation to the school where many student go to 1 school
+    @JoinColumn(name = "school_id", referencedColumnName = "id")// defining the foreign key which is ID
+
+    // (we are doing it here because we want the id to be in student)
+    School school; // creating a school object
 
     public Integer getId() {
         return id;
@@ -42,13 +48,13 @@ public class Student {
         return rollNumber;
     }
 
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
+//    public List<Course> getCourses() {
+//        return courses;
+//    }
+//
+//    public void setCourses(List<Course> courses) {
+//        this.courses = courses;
+//    }
 
     public void setRollNumber(String rollNumber) {
         this.rollNumber = rollNumber;
