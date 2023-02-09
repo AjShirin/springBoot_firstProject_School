@@ -18,6 +18,8 @@ public class Student {
     @Column(name = "student_name")
     String name;
     String rollNumber;
+    @OneToMany
+    @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
     List<Course> courses;
 
     public Integer getId() {

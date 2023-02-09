@@ -10,6 +10,8 @@ public class School {
     Integer id;
     @Column(name = "school_name")
     String name;
+   @OneToMany // Doing the relation
+   @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
     List<Student> students;
 
     public Integer getId() {

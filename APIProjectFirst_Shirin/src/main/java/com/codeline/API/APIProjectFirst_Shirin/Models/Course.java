@@ -2,6 +2,7 @@ package com.codeline.API.APIProjectFirst_Shirin.Models;
 
 import javax.persistence.*;
 import java.util.List;
+
 @Entity
 public class Course {
 
@@ -15,6 +16,8 @@ public class Course {
     @Column(name = "course_name")
     String name;
 
+    @OneToMany
+    @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
     List<Mark> marks;
 
     public Integer getId() {
