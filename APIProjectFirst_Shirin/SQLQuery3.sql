@@ -7,3 +7,7 @@ Select * From school;
 Select * From school_students;
 Select * From student;
 Select * From student_courses;
+
+
+INSERT INTO school (school_name) VALUES ('abh');
+INSERT INTO school (school_name) VALUES ('abh');
