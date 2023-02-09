@@ -1,7 +1,9 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
+import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
+import com.codeline.API.APIProjectFirst_Shirin.Services.CourseService;
 import com.codeline.API.APIProjectFirst_Shirin.Services.SchoolService;
 import com.codeline.API.APIProjectFirst_Shirin.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +25,15 @@ public class HelloController {
     @Autowired // create instance, and then it can be used in all the program
     SchoolService schoolService;
 
+    @Autowired // create instance, and then it can be used in all the program
+    CourseService courseService;
+
 
     @GetMapping
     public void addStudent() {
         studentService.addStudent();
     }
+    
 
     // general form of request handling and define the method should that can be get
     @RequestMapping(value = "school/getAll", method = RequestMethod.GET)
@@ -44,6 +50,14 @@ public class HelloController {
         List<Student> students = studentService.getAllStudent() ; // changing the list to the function because instead of we
         //initialize empty list and then insert data we directly inserted a data.
         return students;
+    }
+
+    @RequestMapping(value = "course/getAll", method = RequestMethod.GET)
+    //function that returns all student
+    public List<Course> getAllCourse()  { // This will take from the browser and then return in the browser
+        List<Course> course = courseService.getAllCourse() ; // changing the list to the function because instead of we
+        //initialize empty list and then insert data we directly inserted a data.
+        return course;
     }
 
     // Ask the server to get something/ like Select
