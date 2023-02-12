@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service // this is where everything is going to be done related to the object such as function and many more
+// here is where the business logic is done
+// To give controller whatever it needs
 public class SchoolService {
 
     @Autowired // create instance, and then it can be used in all the program
@@ -17,7 +19,11 @@ public class SchoolService {
     //function that gets all the school
     public List<School> getAllSchools() {
         return schoolRepository.getAllSchools();
+    }
 
+    public School getSchoolById(Integer id) {
+        School school = schoolRepository.getSchoolById(id); // getting the id from the user
+        return school; //creating an empty school and returning it.
 
     }
 }
