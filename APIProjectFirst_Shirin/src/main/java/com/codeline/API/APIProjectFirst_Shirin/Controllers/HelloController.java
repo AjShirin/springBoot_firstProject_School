@@ -94,6 +94,14 @@ public class HelloController {
         return mark;
     }
 
+    @RequestMapping(value = "student/getById", method = RequestMethod.GET) // "student/getById" is a prefix
+    public Student getStudentById (@RequestParam Integer studentId) { //Request Parameter gets the parameter you want
+        // Student student = new Student(); // creating an empty school
+        //Student student = studentService.getStudentById(studentId); // so the school will return school = schoolService.getSchoolById(id)
+        Student student = studentService.getStudentById(studentId);
+        return student;
+    }
+
 
     // Ask the server to get something/ like Select
     // @GetMapping(name = "hello")

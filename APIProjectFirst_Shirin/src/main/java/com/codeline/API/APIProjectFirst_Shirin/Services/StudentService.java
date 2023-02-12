@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 
+import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,11 +36,16 @@ public class StudentService {
         return studentRepository.getAllStudent();
     }
 
-        public void deleteStudentById (Integer Id){
-            // getting student by id and then putting it in an object
-            Student StudentToDelete = studentRepository.findById(Id).get();
-            studentRepository.delete(StudentToDelete);
-        }
+    public void deleteStudentById(Integer Id) {
+        // getting student by id and then putting it in an object
+        Student StudentToDelete = studentRepository.findById(Id).get();
+        studentRepository.delete(StudentToDelete);
+    }
+
+    public Student getStudentById(Integer id) {
+        Student student = studentRepository.getStudentById(id); // getting the id from the user
+        return student; //creating an empty course and returning it.
 
     }
+}
 
