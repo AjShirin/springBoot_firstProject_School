@@ -24,6 +24,10 @@ public class SchoolService {
     public School getSchoolById(Integer id) {
         School school = schoolRepository.getSchoolById(id); // getting the id from the user
         return school; //creating an empty school and returning it.
+    }
 
+    public School getSchoolByName(String school_name) {
+        School schoolName = schoolRepository.getSchoolByName(school_name); // getting the school_name from the user
+        return schoolName; //creating an empty school and returning it.
     }
 }

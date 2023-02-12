@@ -102,6 +102,12 @@ public class HelloController {
         return student;
     }
 
+    @RequestMapping(value = "school/getBySchoolName", method = RequestMethod.GET)
+    public School getSchoolByName (@RequestParam String school_name) {
+        School schoolName = schoolService.getSchoolByName(school_name);
+        return schoolName;
+    }
+
 
     // Ask the server to get something/ like Select
     // @GetMapping(name = "hello")

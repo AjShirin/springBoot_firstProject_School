@@ -25,4 +25,9 @@ public interface SchoolRepository extends CrudRepository<School, Integer> {
     School getSchoolById(@Param("schoolId") Integer id); // mapping the query and returning the school
     // whoever called the function and write the ID, it will be mapped with the ID of the school
     // calling the function from the service
+
+
+    @Query("SELECT s from School s where s.name= :schoolName") // the verifiable should
+    School getSchoolByName(@Param("schoolName") String school_name); // mapping the query and returning the school
+
 }
