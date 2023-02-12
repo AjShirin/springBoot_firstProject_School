@@ -10,7 +10,7 @@ public class Mark {
     Integer obtainMark;
     String grade;
 
-    @ManyToOne
+    @ManyToOne // many mark to one course
     @JoinColumn(name = "course_id", referencedColumnName = "id")
     Course course;
 

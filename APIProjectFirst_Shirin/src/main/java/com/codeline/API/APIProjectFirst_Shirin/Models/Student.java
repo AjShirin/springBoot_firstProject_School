@@ -1,7 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Models;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity // This annotation "entity" tells spring boot that this class is going to be a table in sql
 //@Table(name = "dbo.Student")
@@ -24,7 +24,6 @@ public class Student {
 
     @ManyToOne // doing the relation to the school where many student go to 1 school
     @JoinColumn(name = "school_id", referencedColumnName = "id")// defining the foreign key which is ID
-
     // (we are doing it here because we want the id to be in student)
     School school; // creating a school object
 

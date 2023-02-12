@@ -11,10 +11,9 @@ import com.codeline.API.APIProjectFirst_Shirin.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
-// doing this tag to create a Restfull API
+// doing this tag to create a Restfull API (Used to create RESTful web services using Spring MVC.)
 // controller speaking to the outside world
 @RestController
 public class HelloController {
@@ -77,6 +76,14 @@ public class HelloController {
         //schoolService.getSchoolById(schoolId); // so the school will return school = schoolService.getSchoolById(id)
         School school = schoolService.getSchoolById(schoolId);
         return school;
+    }
+
+    @RequestMapping(value = "course/getById", method = RequestMethod.GET) // "course/getById" is a prefix
+    public Course getCourseById(@RequestParam Integer courseId) { //Request Parameter gets the parameter you want
+        // Course course = new Course(); // creating an empty school
+        //courseService.getCourseById(courseId); // so the school will return school = schoolService.getSchoolById(id)
+        Course course = courseService.getCourseById(courseId);
+        return course;
     }
 
 

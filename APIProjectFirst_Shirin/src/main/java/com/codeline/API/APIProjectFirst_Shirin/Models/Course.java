@@ -16,7 +16,7 @@ public class Course {
     @Column(name = "course_name")
     String name;
 
-    @ManyToOne
+    @ManyToOne // many courses to one student
     @JoinColumn(name = "student_id", referencedColumnName = "id")// defining the foreign key which is ID
     Student student;
 

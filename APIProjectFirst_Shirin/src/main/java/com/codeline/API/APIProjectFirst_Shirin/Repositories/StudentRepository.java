@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository // Collection of code that is going to be used for the Objects
+// to speak to database and give data to service
 // The class is dealing with student and the primary key in Integer
 // using inheritance
 public interface StudentRepository extends CrudRepository<Student, Integer> {

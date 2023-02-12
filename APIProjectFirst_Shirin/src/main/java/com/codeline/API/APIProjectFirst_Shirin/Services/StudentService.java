@@ -1,8 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
+
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
-import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service // this is where everything is going to be done related to the object such as function and many more
+// here is where the business logic is done
+// To give controller whatever it needs
 public class StudentService {
     // dependency injection...create a singleton (there is going to be one reference of student repository and whenever using it the program
     // it will not create a new object it will use the previous reference and give it/sprint going to provide the reference)
