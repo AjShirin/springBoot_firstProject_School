@@ -86,6 +86,14 @@ public class HelloController {
         return course;
     }
 
+    @RequestMapping(value = "mark/getById", method = RequestMethod.GET) // "mark/getById" is a prefix
+    public Mark getMarkById (@RequestParam Integer markId) { //Request Parameter gets the parameter you want
+        // Mark mark = new Mark(); // creating an empty school
+        //Mark mark = markService.getMarkById(markId); // so the school will return school = schoolService.getSchoolById(id)
+        Mark mark = markService.getMarkById(markId);
+        return mark;
+    }
+
 
     // Ask the server to get something/ like Select
     // @GetMapping(name = "hello")
