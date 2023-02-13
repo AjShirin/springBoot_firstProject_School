@@ -108,6 +108,12 @@ public class HelloController {
         return schoolName;
     }
 
+    @RequestMapping(value = "student/getByStudentName", method = RequestMethod.GET)
+    public Student getStudentByName (@RequestParam String student_name) {  //The student_name is the same variable as the sql
+        Student studentName = studentService.getStudentByName(student_name);
+        return studentName;
+    }
+
 
     // Ask the server to get something/ like Select
     // @GetMapping(name = "hello")

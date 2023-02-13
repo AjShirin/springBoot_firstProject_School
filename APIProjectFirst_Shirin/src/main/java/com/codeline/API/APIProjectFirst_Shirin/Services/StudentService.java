@@ -2,6 +2,7 @@ package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,11 @@ public class StudentService {
         Student student = studentRepository.getStudentById(id); // getting the id from the user
         return student; //creating an empty course and returning it.
 
+    }
+
+    public Student getStudentByName(String student_name) {
+        Student studentName = studentRepository.getStudentByName(student_name); // getting the student_name from the user
+        return studentName;  //creating an empty school and returning it.
     }
 }
 

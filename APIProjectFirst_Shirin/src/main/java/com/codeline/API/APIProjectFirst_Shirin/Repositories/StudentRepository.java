@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -25,4 +26,8 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     Student getStudentById(@Param("studentId") Integer id);  // whoever called the function and write the ID, it will be mapped with the ID of the school
     // calling the function from the service
 
-}
+    @Query("SELECT s from Student s where s.name= :name")
+        // the 'name' should be the same as the java
+    Student getStudentByName(@Param("name") String student_name); // mapping the query and returning the student
+
+// To do in the postman localhost:8080/student/getByStudentName?student_name(sql column)=shirin
