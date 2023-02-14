@@ -53,4 +53,10 @@ public class SchoolController {
         List<School>  activeSchoolsList = schoolService.getAllActiveSchools();
         return activeSchoolsList;
     }
+
+    @RequestMapping(value = "/getAllSchoolByIsUnActive")
+    public List<School> getAllUnActiveSchools(){
+        List<School>  notActiveSchoolsList = schoolService.getAllUnActiveSchools();
+        return notActiveSchoolsList;
+    }
 }

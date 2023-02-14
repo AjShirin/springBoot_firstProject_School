@@ -34,4 +34,8 @@ public class SchoolService {
     public List<School> getAllActiveSchools(){
         return schoolRepository.getAllActiveSchools();
     }
+
+    public List<School> getAllUnActiveSchools(){
+        return schoolRepository.getAllUnActiveSchools();
+    }
 }

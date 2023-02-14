@@ -13,13 +13,13 @@ import java.util.List;
 // The class is dealing with student and the primary key in Integer
 // using inheritance
 public interface SchoolRepository extends CrudRepository<School, Integer> {
-    @Query("SELECT s from School s")
+    @Query("SELECT sch from School sch")
 // Write SQL query,  "s" can be any alphabet which is like static
     List<School> getAllSchools();
 
     // Write SQL query,  "s" can be any alphabet which is like static
     // s is like alias
-    @Query("SELECT s from School s where s.id= :schoolId")
+    @Query("SELECT sch from School sch where sch.id= :schoolId")
     // :id is coming from the user
     // using parameter for user input which is "SchoolID"
     School getSchoolById(@Param("schoolId") Integer id); // mapping the query and returning the school
@@ -27,9 +27,12 @@ public interface SchoolRepository extends CrudRepository<School, Integer> {
     // calling the function from the service
 
 
-    @Query("SELECT s from School s where s.name= :schoolName") // the verifiable should
+    @Query("SELECT sch from School sch where sch.name= :schoolName") // the verifiable should
     School getSchoolByName(@Param("schoolName") String school_name); // mapping the query and returning the school
 
     @Query(value = "SELECT sch from School sch where sch.isActive = true")
     List<School> getAllActiveSchools();
+
+    @Query(value = "SELECT sch from School sch where sch.isActive = false")
+    List<School> getAllUnActiveSchools();
 }
