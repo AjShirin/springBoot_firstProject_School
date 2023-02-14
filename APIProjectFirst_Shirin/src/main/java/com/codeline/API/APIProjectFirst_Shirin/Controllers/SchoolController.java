@@ -47,4 +47,10 @@ public class SchoolController {
         School schoolName = schoolService.getSchoolByName(school_name);
         return schoolName;
     }
+
+    @RequestMapping(value = "/getAllSchoolByIsActive")
+    public List<School> getAllActiveSchools(){
+        List<School>  activeSchoolsList = schoolService.getAllActiveSchools();
+        return activeSchoolsList;
+    }
 }

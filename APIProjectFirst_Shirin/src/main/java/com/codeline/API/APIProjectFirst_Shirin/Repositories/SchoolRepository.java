@@ -29,4 +29,7 @@ public interface SchoolRepository extends CrudRepository<School, Integer> {
 
     @Query("SELECT s from School s where s.name= :schoolName") // the verifiable should
     School getSchoolByName(@Param("schoolName") String school_name); // mapping the query and returning the school
+
+    @Query(value = "SELECT sch from School sch where sch.isActive = true")
+    List<School> getAllActiveSchools();
 }

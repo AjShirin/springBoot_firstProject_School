@@ -30,4 +30,8 @@ public class SchoolService {
         School schoolName = schoolRepository.getSchoolByName(school_name); // getting the school_name from the user
         return schoolName; //creating an empty school and returning it.
     }
+
+    public List<School> getAllActiveSchools(){
+        return schoolRepository.getAllActiveSchools();
+    }
 }
