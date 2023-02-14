@@ -1,5 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
+import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Services.CourseService;
 import com.codeline.API.APIProjectFirst_Shirin.Services.MarkService;
@@ -38,6 +39,11 @@ public class HelloController {
     public List<Student> getStudentsBySchoolName(@RequestParam String schoolName) {
         return studentService.getStudentsBySchoolName(schoolName);
     }
+//    error
+//    @RequestMapping(value = "course/getCourseByStudentName", method = RequestMethod.GET)
+//    public Course getCourseByStudentName(@RequestParam String studentName) {
+//        return  courseService.getCourseByStudentName(studentName);
+//    }
 
     // Ask the server to get something/ like Select
     // @GetMapping(name = "hello")

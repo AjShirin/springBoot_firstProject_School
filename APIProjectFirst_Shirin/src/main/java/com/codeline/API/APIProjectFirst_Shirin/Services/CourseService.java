@@ -1,6 +1,8 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
+import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,14 @@ public class CourseService {
          course = courseRepository.getCourseById(courseId);
         return course; // will return to whomever is calling the list which is the controller
     }
+
+//  error
+//    public Course getCourseByStudentName(String studentName) {
+//        Course course = courseRepository.getCourseByName(studentName); // get course by course name
+//        Integer courseId = course.getId(); // getting the ID from course model and saving it into courseId
+//        Course courseList =courseRepository.getCourseById(courseId);
+//        return courseList; // will return to whomever is calling the list which is the controller
+//    }
 
 
 }
