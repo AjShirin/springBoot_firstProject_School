@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 // to create tables and bring data from table into objects of models
 @Entity
-public class School {
+public class School extends BaseEntity{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;

@@ -13,7 +13,7 @@ import java.util.List;
 // To give controller whatever it needs
 public class MarkService {
 
-    @Autowired // create instance, and then it can be used in all the program
+    @Autowired // create instance, and then it can be used in all the program //like object chaining
     MarkRepository markRepository;
 
 

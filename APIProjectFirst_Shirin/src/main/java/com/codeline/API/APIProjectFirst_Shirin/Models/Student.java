@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity // This annotation "entity" tells spring boot that this class is going to be a table in sql
 //@Table(name = "dbo.Student")
-public class Student {
+public class Student extends BaseEntity{
 
 
     @Id // Defining the Primary key

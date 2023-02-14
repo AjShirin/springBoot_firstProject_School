@@ -4,6 +4,7 @@ package com.codeline.API.APIProjectFirst_Shirin.Services;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
+import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,8 @@ public class StudentService {
     // creating reference of interface
             // create instance, and then it can be used in all the program
             StudentRepository studentRepository;
+    @Autowired
+    private SchoolRepository schoolRepository;
 
     // Creating aa function called addStudent
     public void addStudent() {
@@ -52,6 +55,13 @@ public class StudentService {
     public Student getStudentByName(String student_name) {
         Student studentName = studentRepository.getStudentByName(student_name); // getting the student_name from the user
         return studentName;  //creating an empty school and returning it.
+    }
+
+    public List<Student> getStudentsBySchoolName(String schoolName) {
+        School school = schoolRepository.getSchoolByName(schoolName); // get school by school name
+        Integer schoolId = school.getId(); // getting the ID from school model and saving it into schoolId
+        List<Student> studentList = studentRepository.getStudentsBySchoolId(schoolId);
+        return studentList; // will return to whomever is calling the list which is the controller
     }
 }
 

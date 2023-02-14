@@ -29,3 +29,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     // mapping the query and returning the student
     Student getStudentByName(@Param("name") String student_name);
 // To do in the postman localhost:8080/student/getByStudentName?student_name(sql column)=shirin
+
+    @Query(value = "SELECT std from Student std WHERE std.school.id = :id ")
+    List<Student> getStudentsBySchoolId(@Param("id") Integer id);
+}

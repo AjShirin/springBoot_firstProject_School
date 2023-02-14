@@ -3,7 +3,7 @@ package com.codeline.API.APIProjectFirst_Shirin.Models;
 import javax.persistence.*;
 
 @Entity
-public class Mark {
+public class Mark extends BaseEntity{
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;

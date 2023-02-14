@@ -2,6 +2,7 @@ package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
+import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -25,4 +26,15 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
     // using parameter for user input which is "SchoolID"
     Course getCourseById(@Param("courseId") Integer id);    // whoever called the function and write the ID, it will be mapped with the ID of the school
     // calling the function from the service
+
+    @Query("SELECT c from Course c where c.name= :courseName")
+    Course getCourseByName(@Param("courseName") String course_name); // mapping the query and returning the Course
+
+//    @Query("SELECT c from Course c where c.student.id= :studentId")
+//        // :id is coming from the user
+//        // using parameter for user input which is "SchoolID"
+//    Course getStudentByCourseId(@Param("studentId") Integer id);    // whoever called the function and write the ID, it will be mapped with the ID of the school
+//    // calling the function from the service
+
+
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Course {
+public class Course extends BaseEntity {
 
     @Id // Defining the Primary key
     // To make the primary key … just like "Identity/Auto Increment"
