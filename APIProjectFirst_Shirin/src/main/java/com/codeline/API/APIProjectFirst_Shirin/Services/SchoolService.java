@@ -5,6 +5,10 @@ import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service // this is where everything is going to be done related to the object such as function and many more
@@ -37,5 +41,13 @@ public class SchoolService {
 
     public List<School> getAllUnActiveSchools(){
         return schoolRepository.getAllUnActiveSchools();
+    }
+
+    public void setCreatedDateByUserInput(String date, Integer id) throws ParseException {
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date convertedDateFromStringToDateFormat = formatter.parse(date);
+        School school = schoolRepository.getSchoolById(id); // the repository return the whole school object from the database.
+        school.setCreatedDate(convertedDateFromStringToDateFormat);
+        schoolRepository.save(school);
     }
 }

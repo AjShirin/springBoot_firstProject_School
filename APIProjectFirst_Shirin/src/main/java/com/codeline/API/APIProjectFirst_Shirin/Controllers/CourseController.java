@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "course")
-// Any request coming form browser that is related to school it will be mapped with this class
+// Any request coming form browser that is course to school it will be mapped with this class
 public class CourseController {
 
     @Autowired // create instance, and then it can be used in all the program //like object chaining
@@ -49,5 +49,17 @@ public class CourseController {
     public Course getByCourseName(@RequestParam String course_name) {
         Course courseName = courseRepository.getCourseByName(course_name);
         return courseName;
+    }
+
+    @RequestMapping(value = "/getAllCourseByIsActive")
+    public List<Course> getAllActiveCourse() {
+        List<Course> activeCourseList = courseService.getAllActiveCourse();
+        return activeCourseList;
+    }
+
+    @RequestMapping(value = "/getAllCourseByIsUnActive")
+    public List<Course> getAllUnActiveCourse() {
+        List<Course> notActiveCourseList = courseService.getAllUnActiveCourse();
+        return notActiveCourseList;
     }
 }

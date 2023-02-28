@@ -1,7 +1,5 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
-
-import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;

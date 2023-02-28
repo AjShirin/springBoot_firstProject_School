@@ -1,6 +1,5 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
-import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.MarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;

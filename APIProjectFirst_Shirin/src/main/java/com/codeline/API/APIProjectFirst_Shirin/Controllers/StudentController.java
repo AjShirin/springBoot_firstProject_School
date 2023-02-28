@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "student")
-// Any request coming form browser that is related to school it will be mapped with this class
+// Any request coming form browser that is related to student it will be mapped with this class
 public class StudentController {
 
     @Autowired // create instance, and then it can be used in all the program //like object chaining

@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Models;
 
 import javax.persistence.*;
+import java.util.Date;
 
 // to create tables and bring data from table into objects of models
 @Entity
@@ -30,6 +31,8 @@ public class School extends BaseEntity{
     public void setName(String name) {
         this.name = name;
     }
+
+
 
 //    public List<Student> getStudents() {
 //        return students;

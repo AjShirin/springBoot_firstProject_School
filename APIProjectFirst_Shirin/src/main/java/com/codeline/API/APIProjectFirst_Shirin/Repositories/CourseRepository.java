@@ -2,7 +2,6 @@ package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
-import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -29,6 +28,12 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
 
     @Query("SELECT c from Course c where c.name= :courseName")
     Course getCourseByName(@Param("courseName") String course_name); // mapping the query and returning the Course
+
+    @Query(value = "SELECT c from Course c where c.isActive = true")
+    List<Course> getAllActiveCourse();
+
+    @Query(value = "SELECT c from Course c where c.isActive = false")
+    List<Course> getAllUnActiveCourse();
 
 //    @Query("SELECT c from Course c where c.student.id= :studentId")
 //        // :id is coming from the user

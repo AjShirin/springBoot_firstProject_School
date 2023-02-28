@@ -1,13 +1,12 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
+import com.codeline.API.APIProjectFirst_Shirin.RequestObject.SchoolRequestForCreateDateUpdate;
 import com.codeline.API.APIProjectFirst_Shirin.Services.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 // since we put @RequestMapping for the class in the top , so there is no need to add it in @RequestMapping  for function
@@ -49,14 +48,19 @@ public class SchoolController {
     }
 
     @RequestMapping(value = "/getAllSchoolByIsActive")
-    public List<School> getAllActiveSchools(){
-        List<School>  activeSchoolsList = schoolService.getAllActiveSchools();
+    public List<School> getAllActiveSchools() {
+        List<School> activeSchoolsList = schoolService.getAllActiveSchools();
         return activeSchoolsList;
     }
 
     @RequestMapping(value = "/getAllSchoolByIsUnActive")
-    public List<School> getAllUnActiveSchools(){
-        List<School>  notActiveSchoolsList = schoolService.getAllUnActiveSchools();
+    public List<School> getAllUnActiveSchools() {
+        List<School> notActiveSchoolsList = schoolService.getAllUnActiveSchools();
         return notActiveSchoolsList;
+    }
+
+    @RequestMapping(value = "/updateCreatedDateByUserInput")
+    public void setCreatedDateByUserInput(@RequestBody SchoolRequestForCreateDateUpdate data) throws ParseException {
+        schoolService.setCreatedDateByUserInput(data.getDate(), data.getId());
     }
 }
