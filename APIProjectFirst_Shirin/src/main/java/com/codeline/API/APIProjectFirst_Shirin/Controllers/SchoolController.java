@@ -64,9 +64,20 @@ public class SchoolController {
         List<School> schoolLatestRowList = schoolService.getSchoolLatestRow();
         return schoolLatestRowList;
     }
+    @RequestMapping(value = "/getSchoolLatestUpdated")
+    public List<School> getSchoolLatestUpdated() {
+        List<School> schoolLatestUpdatedList = schoolService.getSchoolLatestUpdated();
+        return schoolLatestUpdatedList;
+    }
 
     @RequestMapping(value = "/updateCreatedDateByUserInput")
     public void setCreatedDateByUserInput(@RequestBody SchoolRequestForCreateDateUpdate data) throws ParseException {
         schoolService.setCreatedDateByUserInput(data.getDate(), data.getId());
     }
+
+//    @RequestMapping(value = "/getSchoolByCreatedDate")
+//    public List<School> getSchoolByCreatedDate() {
+//        List<School> schoolByCreatedDateList = schoolService.getSchoolByCreatedDate();
+//        return schoolByCreatedDateList;
+//    }
 }

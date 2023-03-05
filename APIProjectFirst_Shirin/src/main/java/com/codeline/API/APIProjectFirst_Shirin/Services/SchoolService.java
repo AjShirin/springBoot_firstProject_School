@@ -47,6 +47,10 @@ public class SchoolService {
         return schoolRepository.getSchoolLatestRow();
     }
 
+    public List<School> getSchoolLatestUpdated(){
+        return schoolRepository.getSchoolLatestUpdated();
+    }
+
     public void setCreatedDateByUserInput(String date, Integer id) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date convertedDateFromStringToDateFormat = formatter.parse(date);
@@ -54,4 +58,9 @@ public class SchoolService {
         school.setCreatedDate(convertedDateFromStringToDateFormat);
         schoolRepository.save(school);
     }
+
+//    public School getSchoolByCreatedDate() {
+//        School schoolByCreatedDate = schoolRepository.getSchoolByCreatedDate(id); // getting the id from the user
+//        return schoolByCreatedDate; //creating an empty school and returning it.
+//    }
 }

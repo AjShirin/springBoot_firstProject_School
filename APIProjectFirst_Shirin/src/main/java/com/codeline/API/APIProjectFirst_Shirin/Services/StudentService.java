@@ -70,5 +70,8 @@ public class StudentService {
     public List<Student> getAllUnActiveStudent(){
         return studentRepository.getAllUnActiveStudent();
     }
+    public List<Student> getStudentLatestRow(){
+        return studentRepository.getStudentLatestRow();
+    }
 }
 

@@ -60,4 +60,10 @@ public class StudentController {
         return notActiveStudentList;
     }
 
+    @RequestMapping(value = "/getStudentLatestRow")
+    public List<Student> getStudentLatestRow() {
+        List<Student> studentLatestRowList = studentService.getStudentLatestRow();
+        return studentLatestRowList;
+    }
+
 }
