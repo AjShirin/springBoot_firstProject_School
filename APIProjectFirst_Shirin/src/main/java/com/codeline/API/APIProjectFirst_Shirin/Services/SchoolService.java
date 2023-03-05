@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service // this is where everything is going to be done related to the object such as function and many more
 // here is where the business logic is done
@@ -52,10 +53,18 @@ public class SchoolService {
         return schoolRepository.getSchoolLatestUpdated();
     }
 
-    public void deleteSchoolById(Integer Id) {
-        School SchoolToDelete = schoolRepository.findById(Id).get();
-        schoolRepository.delete(SchoolToDelete);
+    public void deleteSchoolById(Integer id) {
+        School school=schoolRepository.getSchoolById(id);
+//        School SchoolToDelete = schoolRepository.findById(Id);
+        school.setIsActive(Boolean.FALSE);
+        schoolRepository.save(school);
     }
+
+
+//    public void deleteSchoolById(Integer Id) {
+//        School SchoolToDelete = schoolRepository.findById(Id).get();
+//        schoolRepository.delete(SchoolToDelete);
+//    }
 
 //    public List<School> getSchoolCreatedAfterDate(){
 //        return schoolRepository.getSchoolCreatedAfterDate();
