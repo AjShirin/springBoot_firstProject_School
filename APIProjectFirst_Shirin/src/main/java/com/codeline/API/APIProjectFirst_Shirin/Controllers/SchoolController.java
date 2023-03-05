@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 // since we put @RequestMapping for the class in the top , so there is no need to add it in @RequestMapping  for function
@@ -69,6 +70,17 @@ public class SchoolController {
         List<School> schoolLatestUpdatedList = schoolService.getSchoolLatestUpdated();
         return schoolLatestUpdatedList;
     }
+
+    @RequestMapping(value = "/deleteSchoolById")
+    public void deleteSchoolById(Integer id) {
+          schoolService.deleteSchoolById(id);
+    }
+
+//    @RequestMapping(value = "/getSchoolCreatedAfterDate", method = RequestMethod.GET)
+//    public School getSchoolCreatedAfterDate(@RequestParam String createdDate) {
+//        School createdAfterDate = schoolService.getSchoolCreatedAfterDate(createdDate);
+//        return createdAfterDate;
+//    }
 
     @RequestMapping(value = "/updateCreatedDateByUserInput")
     public void setCreatedDateByUserInput(@RequestBody SchoolRequestForCreateDateUpdate data) throws ParseException {

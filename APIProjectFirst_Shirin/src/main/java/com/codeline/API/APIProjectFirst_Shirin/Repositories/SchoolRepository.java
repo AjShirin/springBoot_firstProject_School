@@ -42,10 +42,7 @@ public interface SchoolRepository extends CrudRepository<School, Integer> {
     @Query(value = "SELECT sch from School sch where sch.UpdatedDate = (SELECT MAX(sch.UpdatedDate) FROM School sch)")
     List<School> getSchoolLatestUpdated();
 
-//    @Query("SELECT sch from School sch where sch.created_date= :createdDate")
-//        // :id is coming from the user
-//        // using parameter for user input which is "SchoolID"
-//    School getSchoolByCreatedDate(@Param("createdDate") Integer id); // mapping the query and returning the school
-//    // whoever called the function and write the ID, it will be mapped with the ID of the school
-//    // calling the function from the service
+    @Query("SELECT sch from School sch where sch.createdDate >= :createdDate")
+    List<School> getSchoolCreatedAfterDate();
+
 }

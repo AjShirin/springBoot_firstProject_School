@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
+import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,6 +51,15 @@ public class SchoolService {
     public List<School> getSchoolLatestUpdated(){
         return schoolRepository.getSchoolLatestUpdated();
     }
+
+    public void deleteSchoolById(Integer Id) {
+        School SchoolToDelete = schoolRepository.findById(Id).get();
+        schoolRepository.delete(SchoolToDelete);
+    }
+
+//    public List<School> getSchoolCreatedAfterDate(){
+//        return schoolRepository.getSchoolCreatedAfterDate();
+//    }
 
     public void setCreatedDateByUserInput(String date, Integer id) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

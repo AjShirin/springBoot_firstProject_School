@@ -1,7 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
