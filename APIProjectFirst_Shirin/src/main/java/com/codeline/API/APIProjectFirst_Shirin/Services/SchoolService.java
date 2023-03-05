@@ -43,6 +43,10 @@ public class SchoolService {
         return schoolRepository.getAllUnActiveSchools();
     }
 
+    public List<School> getSchoolLatestRow(){
+        return schoolRepository.getSchoolLatestRow();
+    }
+
     public void setCreatedDateByUserInput(String date, Integer id) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date convertedDateFromStringToDateFormat = formatter.parse(date);
