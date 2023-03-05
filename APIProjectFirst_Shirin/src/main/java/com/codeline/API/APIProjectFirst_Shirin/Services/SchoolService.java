@@ -1,17 +1,16 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
-import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service // this is where everything is going to be done related to the object such as function and many more
 // here is where the business logic is done
@@ -59,6 +58,18 @@ public class SchoolService {
         school.setIsActive(Boolean.FALSE);
         schoolRepository.save(school);
     }
+
+
+    public void deleteAllSchool() {
+    schoolRepository.deleteAllSchool();
+    }
+
+//    public List<School> deleteAll() {
+//        schooldelete.setIsActive(Boolean.FALSE);
+////        School schooldelete=schoolRepository.getAllSchools();
+////        schooldelete.setIsActive(Boolean.FALSE);
+////        schoolRepository.save(schooldelete);
+//    }
 
 
 //    public void deleteSchoolById(Integer Id) {
