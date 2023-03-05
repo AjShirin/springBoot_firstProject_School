@@ -34,10 +34,22 @@ public class MarkController {
     }
 
     @RequestMapping(value = "/getById", method = RequestMethod.GET) // "mark/getById" is a prefix
-    public Mark getMarkById (@RequestParam Integer markId) { //Request Parameter gets the parameter you want
+    public Mark getMarkById(@RequestParam Integer markId) { //Request Parameter gets the parameter you want
         // Mark mark = new Mark(); // creating an empty school
         //Mark mark = markService.getMarkById(markId); // so the school will return school = schoolService.getSchoolById(id)
         Mark mark = markService.getMarkById(markId);
         return mark;
+    }
+
+    @RequestMapping(value = "/getAllMarkByIsActive")
+    public List<Mark> getAllActiveMark() {
+        List<Mark> activeMarkList = markService.getAllActiveMark();
+        return activeMarkList;
+    }
+
+    @RequestMapping(value = "/getAllMarkByIsUnActive")
+    public List<Mark> getAllUnActiveMark() {
+        List<Mark> notActiveMarkList = markService.getAllUnActiveMark();
+        return notActiveMarkList; // last thing done
     }
 }

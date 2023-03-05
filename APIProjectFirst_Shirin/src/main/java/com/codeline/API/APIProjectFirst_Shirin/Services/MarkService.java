@@ -24,6 +24,13 @@ public class MarkService {
     public Mark getMarkById(Integer id) {
         Mark mark = markRepository.getMarkById(id); // getting the id from the user
         return mark; //creating an empty course and returning it.
+    }
 
+    public List<Mark> getAllActiveMark(){
+        return markRepository.getAllActiveMark();
+    }
+
+    public List<Mark> getAllUnActiveMark(){
+        return markRepository.getAllUnActiveMark();
     }
 }

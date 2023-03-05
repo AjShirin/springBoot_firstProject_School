@@ -26,4 +26,10 @@ public interface MarkRepository extends CrudRepository<Mark, Integer> {
     // using parameter for user input which is "SchoolID"
     Mark getMarkById(@Param("markId") Integer id);  // whoever called the function and write the ID, it will be mapped with the ID of the school
     // calling the function from the service
+
+    @Query(value = "SELECT m from Mark m where m.isActive = true")
+    List<Mark> getAllActiveMark();
+
+    @Query(value = "SELECT m from Mark m where m.isActive = false")
+    List<Mark> getAllUnActiveMark();
 }

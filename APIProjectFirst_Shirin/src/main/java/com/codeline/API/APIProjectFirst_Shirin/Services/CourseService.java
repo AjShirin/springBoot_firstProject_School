@@ -1,7 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
