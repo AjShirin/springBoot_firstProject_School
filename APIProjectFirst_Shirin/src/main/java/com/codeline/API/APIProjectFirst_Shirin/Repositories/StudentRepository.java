@@ -1,5 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
+
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -32,4 +33,10 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 
     @Query(value = "SELECT std from Student std WHERE std.school.id = :id ")
     List<Student> getStudentsBySchoolId(@Param("id") Integer id);
+
+    @Query(value = "SELECT std from Student std where std.isActive = true")
+    List<Student> getAllActiveStudent();
+
+    @Query(value = "SELECT std from Student std where std.isActive = false")
+    List<Student> getAllUnActiveStudent();
 }

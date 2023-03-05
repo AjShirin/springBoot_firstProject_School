@@ -1,5 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
+
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
@@ -60,6 +61,14 @@ public class StudentService {
         Integer schoolId = school.getId(); // getting the ID from school model and saving it into schoolId
         List<Student> studentList = studentRepository.getStudentsBySchoolId(schoolId);
         return studentList; // will return to whomever is calling the list which is the controller
+    }
+
+    public List<Student> getAllActiveStudent(){
+        return studentRepository.getAllActiveStudent();
+    }
+
+    public List<Student> getAllUnActiveStudent(){
+        return studentRepository.getAllUnActiveStudent();
     }
 }
 
