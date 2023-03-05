@@ -64,6 +64,15 @@ public class SchoolService {
     schoolRepository.deleteAllSchool();
     }
 
+    public void createSchool(String name) {
+        School school = new School();
+        school.setName(name);
+        school.setCreatedDate(new Date());
+        school.setIsActive(Boolean.TRUE);
+        schoolRepository.save(school);
+    }
+
+
 //    public List<School> deleteAll() {
 //        schooldelete.setIsActive(Boolean.FALSE);
 ////        School schooldelete=schoolRepository.getAllSchools();
