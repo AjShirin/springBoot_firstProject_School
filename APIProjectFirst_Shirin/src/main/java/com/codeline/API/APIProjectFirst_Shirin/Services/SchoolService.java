@@ -59,6 +59,8 @@ public class SchoolService {
     //getSchoolByUpdatedDate
 
     // getSchoolByNumberOfStudents
+
+    // This function updates the 'isActive' column to false by the school ID
     public void deleteSchoolById(Integer id) {
         School school = schoolRepository.getSchoolById(id);
 //        School SchoolToDelete = schoolRepository.findById(Id);
@@ -66,12 +68,14 @@ public class SchoolService {
         schoolRepository.save(school);
     }
 
+    // This function updates all the school 'isActive' column to false
     public void deleteAllSchool() {
         schoolRepository.deleteAllSchool();
     }
 
     //deleteAllSchoolsCreatedAfterDate
 
+    // This function updates the 'isActive' column to false
         public void deleteBySchoolName(String name) {
         School school=schoolRepository.getSchoolByName(name);
 //      School SchoolToDelete = schoolRepository.findById(Id);
@@ -82,6 +86,8 @@ public class SchoolService {
     //deleteSchoolsByCreatedDate
     //deleteSchoolsByUpdatedDate
 
+
+    // Create a new school record
     public void createSchool(String name) {
         School school = new School();
         school.setName(name);
@@ -91,7 +97,15 @@ public class SchoolService {
         schoolRepository.save(school);
     }
 
-    //updateSchool
+    //update School (whole row)
+    public void updateSchool(Integer id,String name, Boolean isActive) {
+        School school = schoolRepository.getSchoolById(id);
+        school.setName(name);
+        school.setCreatedDate(new Date());
+        school.setUpdatedDate(new Date());
+        school.setIsActive(isActive);
+        schoolRepository.save(school);
+    }
 
 /////
 

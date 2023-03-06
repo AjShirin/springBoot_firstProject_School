@@ -103,11 +103,16 @@ public class SchoolController {
     //deleteSchoolsByCreatedDate
     //deleteSchoolsByUpdatedDate
 
+    // Create a new school record
     @RequestMapping(value = "/createSchool")
     public void createSchool(String name) {
         schoolService.createSchool(name);
     }
-    //updateSchool
+    //update School (whole row)
+    @RequestMapping(value = "/updateSchool")
+    public void updateSchool(@RequestParam Integer id, String name, Boolean isActive) {
+        schoolService.updateSchool(id, name, isActive);
+    }
     ////////
 
 //    @RequestMapping(value = "/getSchoolCreatedAfterDate", method = RequestMethod.GET)
