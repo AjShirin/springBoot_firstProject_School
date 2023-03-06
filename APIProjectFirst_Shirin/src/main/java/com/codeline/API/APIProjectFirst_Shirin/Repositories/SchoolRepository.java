@@ -29,7 +29,8 @@ public interface SchoolRepository extends CrudRepository<School, Integer> {
     // calling the function from the service
 
 
-    @Query("SELECT sch from School sch where sch.name= :schoolName") // the verifiable should
+    @Query("SELECT sch from School sch where sch.name= :schoolName")
+        // the verifiable should
     School getSchoolByName(@Param("schoolName") String school_name); // mapping the query and returning the school
 
     @Query(value = "SELECT sch from School sch where sch.isActive = true")
@@ -47,9 +48,10 @@ public interface SchoolRepository extends CrudRepository<School, Integer> {
     @Query("SELECT sch from School sch where sch.createdDate >= :createdDate")
     List<School> getSchoolCreatedAfterDate();
 
-    @Modifying
-    @Transactional
-    @Query(value = "Update School sch Set sch.isActive =false")
+    @Modifying // enhance the query annotation.
+    @Transactional // Use Method for database transaction, allows us to set propagation, isolation, timeout, read-only,
+    // and rollback conditions and specify the transaction manager.
+    @Query(value = "Update School sch Set sch.isActive = false")
     void deleteAllSchool();
 
 }

@@ -42,12 +42,6 @@ public class SchoolController {
         return school;
     }
 
-    @RequestMapping(value = "/getBySchoolName", method = RequestMethod.GET)
-    public School getBySchoolName(@RequestParam String school_name) {
-        School schoolName = schoolService.getSchoolByName(school_name);
-        return schoolName;
-    }
-
     @RequestMapping(value = "/getAllSchoolByIsActive")
     public List<School> getAllActiveSchools() {
         List<School> activeSchoolsList = schoolService.getAllActiveSchools();
@@ -71,19 +65,50 @@ public class SchoolController {
         return schoolLatestUpdatedList;
     }
 
+    //getSchoolCreatedAfterDate
+
+    @RequestMapping(value = "/getBySchoolName", method = RequestMethod.GET)
+    public School getBySchoolName(@RequestParam String school_name) {
+        School schoolName = schoolService.getSchoolByName(school_name);
+        return schoolName;
+    }
+
+    // getSchoolByCreatedDate
+
+    //getSchoolByUpdatedDate
+
+    // getSchoolByNumberOfStudents
+
+    // This function updates the 'isActive' column to false by the school ID
     @RequestMapping(value = "/deleteSchoolById")
     public void deleteSchoolById(Integer id) {
           schoolService.deleteSchoolById(id);
     }
 
+    // This function updates all the school 'isActive' column to false
     @RequestMapping(value = "/deleteAllSchool")
     public void deleteAllSchool(){
         schoolService.deleteAllSchool();
     }
+
+    //deleteAllSchoolsCreatedAfterDate
+
+    // This function updates the 'isActive' column to false
+    @RequestMapping(value = "/deleteBySchoolName")
+    public void deleteBySchoolName(@RequestParam String name){
+        schoolService.deleteBySchoolName(name);
+    }
+
+
+    //deleteSchoolsByCreatedDate
+    //deleteSchoolsByUpdatedDate
+
     @RequestMapping(value = "/createSchool")
     public void createSchool(String name) {
         schoolService.createSchool(name);
     }
+    //updateSchool
+    ////////
 
 //    @RequestMapping(value = "/getSchoolCreatedAfterDate", method = RequestMethod.GET)
 //    public School getSchoolCreatedAfterDate(@RequestParam String createdDate) {

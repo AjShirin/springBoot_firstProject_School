@@ -5,7 +5,7 @@ import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +20,6 @@ public class SchoolService {
     @Autowired // create instance, and then it can be used in all the program
     SchoolRepository schoolRepository;
 
-
     //function that gets all the school
     public List<School> getAllSchools() {
         return schoolRepository.getAllSchools();
@@ -31,60 +30,70 @@ public class SchoolService {
         return school; //creating an empty school and returning it.
     }
 
+
+    public List<School> getAllActiveSchools() {
+        return schoolRepository.getAllActiveSchools();
+    }
+
+    public List<School> getAllUnActiveSchools() {
+        return schoolRepository.getAllUnActiveSchools();
+    }
+
+    public List<School> getSchoolLatestRow() {
+        return schoolRepository.getSchoolLatestRow();
+    }
+
+    public List<School> getSchoolLatestUpdated() {
+        return schoolRepository.getSchoolLatestUpdated();
+    }
+
+    // getSchoolCreatedAfterDate
+
     public School getSchoolByName(String school_name) {
         School schoolName = schoolRepository.getSchoolByName(school_name); // getting the school_name from the user
         return schoolName; //creating an empty school and returning it.
     }
 
-    public List<School> getAllActiveSchools(){
-        return schoolRepository.getAllActiveSchools();
-    }
+    // getSchoolByCreatedDate
 
-    public List<School> getAllUnActiveSchools(){
-        return schoolRepository.getAllUnActiveSchools();
-    }
+    //getSchoolByUpdatedDate
 
-    public List<School> getSchoolLatestRow(){
-        return schoolRepository.getSchoolLatestRow();
-    }
-
-    public List<School> getSchoolLatestUpdated(){
-        return schoolRepository.getSchoolLatestUpdated();
-    }
-
+    // getSchoolByNumberOfStudents
     public void deleteSchoolById(Integer id) {
-        School school=schoolRepository.getSchoolById(id);
+        School school = schoolRepository.getSchoolById(id);
 //        School SchoolToDelete = schoolRepository.findById(Id);
         school.setIsActive(Boolean.FALSE);
         schoolRepository.save(school);
     }
 
-
     public void deleteAllSchool() {
-    schoolRepository.deleteAllSchool();
+        schoolRepository.deleteAllSchool();
     }
+
+    //deleteAllSchoolsCreatedAfterDate
+
+        public void deleteBySchoolName(String name) {
+        School school=schoolRepository.getSchoolByName(name);
+//      School SchoolToDelete = schoolRepository.findById(Id);
+        school.setIsActive(Boolean.FALSE);
+        schoolRepository.save(school);
+    }
+
+    //deleteSchoolsByCreatedDate
+    //deleteSchoolsByUpdatedDate
 
     public void createSchool(String name) {
         School school = new School();
         school.setName(name);
         school.setCreatedDate(new Date());
+        school.setUpdatedDate(new Date());
         school.setIsActive(Boolean.TRUE);
         schoolRepository.save(school);
     }
 
+    //updateSchool
 
-//    public List<School> deleteAll() {
-//        schooldelete.setIsActive(Boolean.FALSE);
-////        School schooldelete=schoolRepository.getAllSchools();
-////        schooldelete.setIsActive(Boolean.FALSE);
-////        schoolRepository.save(schooldelete);
-//    }
-
-
-//    public void deleteSchoolById(Integer Id) {
-//        School SchoolToDelete = schoolRepository.findById(Id).get();
-//        schoolRepository.delete(SchoolToDelete);
-//    }
+/////
 
 //    public List<School> getSchoolCreatedAfterDate(){
 //        return schoolRepository.getSchoolCreatedAfterDate();
@@ -97,9 +106,4 @@ public class SchoolService {
         school.setCreatedDate(convertedDateFromStringToDateFormat);
         schoolRepository.save(school);
     }
-
-//    public School getSchoolByCreatedDate() {
-//        School schoolByCreatedDate = schoolRepository.getSchoolByCreatedDate(id); // getting the id from the user
-//        return schoolByCreatedDate; //creating an empty school and returning it.
-//    }
 }
