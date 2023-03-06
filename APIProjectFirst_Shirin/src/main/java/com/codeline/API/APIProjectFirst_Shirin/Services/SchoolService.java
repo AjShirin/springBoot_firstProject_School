@@ -98,7 +98,13 @@ public class SchoolService {
     }
 
     //deleteSchoolsByCreatedDate
+
     //deleteSchoolsByUpdatedDate
+    public void deleteSchoolsByUpdatedDate(String updatedDate) {
+        List<School> school = schoolRepository.getSchoolByUpdatedDate(updatedDate);
+        school.stream().forEach(x -> x.setIsActive(false));
+        schoolRepository.saveAll(school);
+    }
 
 
     // Create a new school record

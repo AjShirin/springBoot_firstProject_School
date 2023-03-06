@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
+import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import com.codeline.API.APIProjectFirst_Shirin.RequestObject.SchoolRequestForCreateDateUpdate;
 import com.codeline.API.APIProjectFirst_Shirin.Services.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class SchoolController {
     // (if you don't want to use @Autowire you can do SchoolService schoolService = new SchoolService --> this is called injection dependency )
     // for school controller to work , school service should work since they are dependent on each other
     SchoolService schoolService;
+    @Autowired
+    private SchoolRepository schoolRepository;
 
     // general form of request handling and define the method should that can be get
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
@@ -82,7 +85,7 @@ public class SchoolController {
     // Function where it gets all the School Updated by the given Date
     @RequestMapping(value = "/getSchoolByUpdatedDate", method = RequestMethod.GET)
     public List<School> getSchoolByUpdatedDateVariable(String UpdatedDate) throws ParseException {
-        List<School> getSchoolByUpdatedDateVariable = schoolService.getSchoolCreatedAfterDate(UpdatedDate);
+        List<School> getSchoolByUpdatedDateVariable = schoolService.getSchoolByUpdatedDate(UpdatedDate);
         return getSchoolByUpdatedDateVariable;
     }
 
@@ -115,7 +118,12 @@ public class SchoolController {
 
 
     //deleteSchoolsByCreatedDate
+
     //deleteSchoolsByUpdatedDate
+    @RequestMapping(value = "deleteSchoolsByUpdatedDate")
+    public void deleteSchoolsByUpdatedDate(@RequestParam String updatedDate) {
+        schoolService.deleteSchoolsByUpdatedDate(updatedDate);
+    }
 
     // Create a new school record
     @RequestMapping(value = "/createSchool")
