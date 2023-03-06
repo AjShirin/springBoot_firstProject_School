@@ -2,9 +2,11 @@ package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
+import com.codeline.API.APIProjectFirst_Shirin.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,6 +20,8 @@ public class SchoolService {
 
     @Autowired // create instance, and then it can be used in all the program
     SchoolRepository schoolRepository;
+    @Autowired
+    private StudentRepository studentRepository;
 
     //function that gets all the school
     public List<School> getAllSchools() {
@@ -66,6 +70,19 @@ public class SchoolService {
     }
 
     // getSchoolByNumberOfStudents
+    public School getSchoolByNumberOfStudent(Integer numberOfStudent){
+        List<Integer> typesOfSchoolIdsInStudent = studentRepository.getDistinctSchoolIdsFromStudent();
+        Integer schoolIdThatUserWants = 0; // store the number of student the user wants
+        for (Integer idOfSchool: typesOfSchoolIdsInStudent) { // for each loop to go through each school
+            Integer count = studentRepository.getCountOfStudentsBySchoolId(idOfSchool);
+            if(numberOfStudent == count) {
+                schoolIdThatUserWants = idOfSchool; // store the id of the school that the user is looking for
+                break;
+            }
+        }
+        School schoolThatUserWasLookingFor = schoolRepository.getSchoolById(schoolIdThatUserWants);
+        return schoolThatUserWasLookingFor;
+    }
 
     // This function updates the 'isActive' column to false by the school ID
     public void deleteSchoolById(Integer id) {
@@ -133,7 +150,6 @@ public class SchoolService {
     }
 
 /////
-
 
     public void setCreatedDateByUserInput(String date, Integer id) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

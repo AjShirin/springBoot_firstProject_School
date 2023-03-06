@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 // since we put @RequestMapping for the class in the top , so there is no need to add it in @RequestMapping  for function
@@ -103,6 +104,13 @@ public class SchoolController {
     public void deleteAllSchool() {
         schoolService.deleteAllSchool();
     }
+
+    @RequestMapping(value = "/getSchoolByNumberOfStudent", method = RequestMethod.POST)
+    public School getSchoolByNumberOfStudent(@RequestParam Integer numberOfStudent) {
+        return schoolService.getSchoolByNumberOfStudent(numberOfStudent);
+
+    }
+
 
     //deleteAllSchoolsCreatedAfterDate where update the whole row by the created date
     @RequestMapping(value = "/getSchoolCreatedAfterDate", method = RequestMethod.GET)
