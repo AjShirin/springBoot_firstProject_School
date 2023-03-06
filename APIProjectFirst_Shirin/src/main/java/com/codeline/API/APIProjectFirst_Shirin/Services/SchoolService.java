@@ -54,14 +54,14 @@ public class SchoolService {
     }
 
     // // Function where it gets all the School Created by the given Date
-    public  List<School> getSchoolsByCreatedDate(String createdDate){
-            List<School> schools=schoolRepository.getSchoolsByCreatedDate(createdDate);
-            return schools;
+    public List<School> getSchoolsByCreatedDate(String createdDate) {
+        List<School> schools = schoolRepository.getSchoolsByCreatedDate(createdDate);
+        return schools;
     }
 
     //getSchoolByUpdatedDate
-    public  List<School> getSchoolByUpdatedDate(String UpdatedDate){
-        List<School> schools=schoolRepository.getSchoolsByCreatedDate(UpdatedDate);
+    public List<School> getSchoolByUpdatedDate(String UpdatedDate) {
+        List<School> schools = schoolRepository.getSchoolsByCreatedDate(UpdatedDate);
         return schools;
     }
 
@@ -86,21 +86,20 @@ public class SchoolService {
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
         List<School> schools = schoolRepository.getSchoolCreatedAfterDate(convertedDateFromStringToDateFormat);
         return schools;
-
     }
 
     // This function updates the 'isActive' column to false
-        public void deleteBySchoolName(String name) {
-        School school=schoolRepository.getSchoolByName(name);
+    public void deleteBySchoolName(String name) {
+        School school = schoolRepository.getSchoolByName(name);
 //      School SchoolToDelete = schoolRepository.findById(Id);
         school.setIsActive(Boolean.FALSE);
         schoolRepository.save(school);
     }
 
     //deleteSchoolsByCreatedDate
-        public void deleteSchoolsByCreatedDate(String createdDate) {
+    public void deleteSchoolsByCreatedDate(String createdDate) {
         List<School> schools = schoolRepository.getSchoolsByCreatedDate(createdDate);
-        schools.stream().forEach(create -> create.setIsActive(false));
+        schools.stream().forEach(create -> create.setIsActive(Boolean.FALSE));
         schoolRepository.saveAll(schools);
     }
 
@@ -124,7 +123,7 @@ public class SchoolService {
     }
 
     //update School (whole row)
-    public void updateSchool(Integer id,String name, Boolean isActive) {
+    public void updateSchool(Integer id, String name, Boolean isActive) {
         School school = schoolRepository.getSchoolById(id);
         school.setName(name);
         school.setCreatedDate(new Date());
@@ -134,7 +133,6 @@ public class SchoolService {
     }
 
 /////
-
 
 
     public void setCreatedDateByUserInput(String date, Integer id) throws ParseException {

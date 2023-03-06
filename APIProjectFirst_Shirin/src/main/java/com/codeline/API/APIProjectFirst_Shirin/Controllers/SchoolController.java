@@ -61,6 +61,7 @@ public class SchoolController {
         List<School> schoolLatestRowList = schoolService.getSchoolLatestRow();
         return schoolLatestRowList;
     }
+
     @RequestMapping(value = "/getSchoolLatestUpdated")
     public List<School> getSchoolLatestUpdated() {
         List<School> schoolLatestUpdatedList = schoolService.getSchoolLatestUpdated();
@@ -94,12 +95,12 @@ public class SchoolController {
     // This function updates the 'isActive' column to false by the school ID
     @RequestMapping(value = "/deleteSchoolById")
     public void deleteSchoolById(Integer id) {
-          schoolService.deleteSchoolById(id);
+        schoolService.deleteSchoolById(id);
     }
 
     // This function updates all the school 'isActive' column to false
     @RequestMapping(value = "/deleteAllSchool")
-    public void deleteAllSchool(){
+    public void deleteAllSchool() {
         schoolService.deleteAllSchool();
     }
 
@@ -112,10 +113,9 @@ public class SchoolController {
 
     // This function updates the 'isActive' column to false
     @RequestMapping(value = "/deleteBySchoolName")
-    public void deleteBySchoolName(@RequestParam String name){
+    public void deleteBySchoolName(@RequestParam String name) {
         schoolService.deleteBySchoolName(name);
     }
-
 
     //deleteSchoolsByCreatedDate
     @RequestMapping(value = "/deleteSchoolsByCreatedDate", method = RequestMethod.POST)
@@ -124,7 +124,7 @@ public class SchoolController {
     }
 
     //deleteSchoolsByUpdatedDate
-    @RequestMapping(value = "/deleteSchoolsByUpdatedDate " , method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteSchoolsByUpdatedDate ", method = RequestMethod.POST)
     public void deleteSchoolsByUpdatedDate(@RequestParam String updatedDate) {
         schoolService.deleteSchoolsByUpdatedDate(updatedDate);
     }
@@ -134,6 +134,7 @@ public class SchoolController {
     public void createSchool(String name) {
         schoolService.createSchool(name);
     }
+
     //update School (whole row)
     @RequestMapping(value = "/updateSchool")
     public void updateSchool(@RequestParam Integer id, String name, Boolean isActive) {
