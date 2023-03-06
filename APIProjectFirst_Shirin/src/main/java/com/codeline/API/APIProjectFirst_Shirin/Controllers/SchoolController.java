@@ -118,9 +118,13 @@ public class SchoolController {
 
 
     //deleteSchoolsByCreatedDate
+    @RequestMapping(value = "/deleteSchoolsByCreatedDate", method = RequestMethod.POST)
+    public void deleteSchoolsByCreatedDate(@RequestParam String createdDate) {
+        schoolService.deleteSchoolsByCreatedDate(createdDate);
+    }
 
     //deleteSchoolsByUpdatedDate
-    @RequestMapping(value = "deleteSchoolsByUpdatedDate")
+    @RequestMapping(value = "/deleteSchoolsByUpdatedDate " , method = RequestMethod.POST)
     public void deleteSchoolsByUpdatedDate(@RequestParam String updatedDate) {
         schoolService.deleteSchoolsByUpdatedDate(updatedDate);
     }
