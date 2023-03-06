@@ -53,13 +53,17 @@ public class SchoolService {
         return schoolName; //creating an empty school and returning it.
     }
 
-    // getSchoolByCreatedDate
+    // // Function where it gets all the School Created by the given Date
     public  List<School> getSchoolsByCreatedDate(String createdDate){
             List<School> schools=schoolRepository.getSchoolsByCreatedDate(createdDate);
             return schools;
     }
 
     //getSchoolByUpdatedDate
+    public  List<School> getSchoolByUpdatedDate(String UpdatedDate){
+        List<School> schools=schoolRepository.getSchoolsByCreatedDate(UpdatedDate);
+        return schools;
+    }
 
     // getSchoolByNumberOfStudents
 
