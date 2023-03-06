@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Repository // Collection of code that is going to be used for the Objects
@@ -46,7 +47,7 @@ public interface SchoolRepository extends CrudRepository<School, Integer> {
     List<School> getSchoolLatestUpdated();
 
     @Query("SELECT sch from School sch where sch.createdDate >= :createdDate")
-    List<School> getSchoolCreatedAfterDate();
+    List<School> getSchoolCreatedAfterDate(Date createdDate);
 
     @Modifying // enhance the query annotation.
     @Transactional // Use Method for database transaction, allows us to set propagation, isolation, timeout, read-only,

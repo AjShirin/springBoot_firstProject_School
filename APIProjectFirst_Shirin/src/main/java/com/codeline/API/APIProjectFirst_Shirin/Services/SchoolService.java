@@ -5,7 +5,6 @@ import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -73,7 +72,14 @@ public class SchoolService {
         schoolRepository.deleteAllSchool();
     }
 
-    //deleteAllSchoolsCreatedAfterDate
+    //deleteAllSchoolsCreatedAfterDate where update the whole row by the created date
+    public List<School> getSchoolCreatedAfterDate(String createdDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<School> schools = schoolRepository.getSchoolCreatedAfterDate(convertedDateFromStringToDateFormat);
+        return schools;
+
+    }
 
     // This function updates the 'isActive' column to false
         public void deleteBySchoolName(String name) {
@@ -109,9 +115,7 @@ public class SchoolService {
 
 /////
 
-//    public List<School> getSchoolCreatedAfterDate(){
-//        return schoolRepository.getSchoolCreatedAfterDate();
-//    }
+
 
     public void setCreatedDateByUserInput(String date, Integer id) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
