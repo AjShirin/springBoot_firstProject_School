@@ -54,6 +54,10 @@ public class SchoolService {
     }
 
     // getSchoolByCreatedDate
+    public  List<School> getSchoolsByCreatedDate(String createdDate){
+            List<School> schools=schoolRepository.getSchoolsByCreatedDate(createdDate);
+            return schools;
+    }
 
     //getSchoolByUpdatedDate
 
