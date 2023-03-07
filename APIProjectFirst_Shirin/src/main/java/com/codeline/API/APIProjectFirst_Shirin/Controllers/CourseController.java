@@ -68,6 +68,14 @@ public class CourseController {
         return courseLatestRowList;
     }
 
+    //gets the latest update for course (getCourseLatestUpdated)
+    @RequestMapping(value = "/getCourseLatestUpdated")
+    public List<Course> getCourseLatestUpdated() {
+        List<Course> courseLatestUpdatedList = courseService.getCourseLatestUpdated();
+        return courseLatestUpdatedList;
+    }
+}
+
 
 
 //    @RequestMapping(value = "/getByCourseName", method = RequestMethod.GET)
@@ -77,6 +85,3 @@ public class CourseController {
 //    }
 
 
-
-
-}

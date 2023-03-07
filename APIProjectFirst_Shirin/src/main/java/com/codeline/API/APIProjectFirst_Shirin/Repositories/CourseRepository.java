@@ -1,7 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -37,6 +36,9 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
 
     @Query(value = "SELECT c from Course c where c.id = (SELECT Max(c.id) FROM Course c)")
     List<Course> getCourseLatestRow();
+
+    @Query(value = "SELECT c from Course c where c.UpdatedDate = (SELECT MAX(c.UpdatedDate) FROM Course c)")
+    List<Course> getCourseLatestUpdated();
 
 //    @Query("SELECT c from Course c where c.student.id= :studentId")
 //        // :id is coming from the user

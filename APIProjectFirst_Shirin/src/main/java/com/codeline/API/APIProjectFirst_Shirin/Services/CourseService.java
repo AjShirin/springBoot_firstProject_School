@@ -1,7 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +39,11 @@ public class CourseService {
     // function that gets the Latest row of the Course (getCourseLatestRow)
     public List<Course> getCourseLatestRow() {
         return courseRepository.getCourseLatestRow();
+    }
+
+    // function that gets the latest update for Course (getCourseLatestUpdated)
+    public List<Course> getCourseLatestUpdated() {
+        return courseRepository.getCourseLatestUpdated();
     }
 
 
