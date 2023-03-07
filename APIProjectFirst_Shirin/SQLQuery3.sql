@@ -4,7 +4,7 @@ Select * From school;
 Select * From student;
 Select * From course;
 Select * From mark;
-
+SELECT DISTINCT(id) FROM student
 Select * From course_marks;
 Select * From school_students;
 Select * From student_courses;
@@ -13,6 +13,8 @@ INSERT INTO school (updated_date,created_date,is_active,school_name) VALUES ('20
 INSERT INTO school (updated_date,created_date,is_active,school_name) VALUES ('2020-05-09','2019-05-05 ','True','santop');
 INSERT INTO school (updated_date,created_date,is_active,school_name) VALUES ('2023-05-09','2020-05-05','False','kitkat');
 INSERT INTO school (updated_date,created_date,is_active,school_name) VALUES ('2019-05-09','2010-05-05','True','chips');
+INSERT INTO school (updated_date,created_date,is_active,school_name) VALUES ('2009-06-08','2010-03-05','True','Tomato');
+INSERT INTO school (updated_date,created_date,is_active,school_name) VALUES ('2009-06-08','2016-09-08','True','Banana');
 
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-05-09','2020-05-05','True','Shirin',9,1);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-01-01','2020-01-01','True','Ruqia',5,3);

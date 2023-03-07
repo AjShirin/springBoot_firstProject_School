@@ -29,14 +29,7 @@ public class CourseController {
     @Autowired
     private CourseRepository courseRepository;
 
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    //function that returns all student
-    public List<Course> getAllCourse() { // This will take from the browser and then return in the browser
-        List<Course> course = courseService.getAllCourse(); // changing the list to the function because instead of we
-        //initialize empty list and then insert data we directly inserted a data.
-        return course;
-    }
-
+    //function that gets all courses by id (getCourseById)
     @RequestMapping(value = "/getById", method = RequestMethod.GET) // "course/getById" is a prefix
     public Course getCourseById(@RequestParam Integer courseId) { //Request Parameter gets the parameter you want
         // Course course = new Course(); // creating an empty school
@@ -45,21 +38,45 @@ public class CourseController {
         return course;
     }
 
-    @RequestMapping(value = "/getByCourseName", method = RequestMethod.GET)
-    public Course getByCourseName(@RequestParam String course_name) {
-        Course courseName = courseRepository.getCourseByName(course_name);
-        return courseName;
+    //function that gets all the course (getAllCourse)
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    //function that returns all student
+    public List<Course> getAllCourse() { // This will take from the browser and then return in the browser
+        List<Course> course = courseService.getAllCourse(); // changing the list to the function because instead of we
+        //initialize empty list and then insert data we directly inserted a data.
+        return course;
     }
 
+    // function that gets all the active Course (getAllActiveCourse)
     @RequestMapping(value = "/getAllCourseByIsActive")
     public List<Course> getAllActiveCourse() {
         List<Course> activeCourseList = courseService.getAllActiveCourse();
         return activeCourseList;
     }
 
+    // function that gets all the  not active Courses (getAllUnActiveCourse)
     @RequestMapping(value = "/getAllCourseByIsUnActive")
     public List<Course> getAllUnActiveCourse() {
         List<Course> notActiveCourseList = courseService.getAllUnActiveCourse();
         return notActiveCourseList;
     }
+
+    // gets the Latest row of the Course (getCourseLatestRow)
+    @RequestMapping(value = "/getCourseLatestRow")
+    public List<Course> getCourseLatestRow() {
+        List<Course> courseLatestRowList = courseService.getCourseLatestRow();
+        return courseLatestRowList;
+    }
+
+
+
+//    @RequestMapping(value = "/getByCourseName", method = RequestMethod.GET)
+//    public Course getByCourseName(@RequestParam String course_name) {
+//        Course courseName = courseRepository.getCourseByName(course_name);
+//        return courseName;
+//    }
+
+
+
+
 }

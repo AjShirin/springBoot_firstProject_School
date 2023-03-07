@@ -35,6 +35,9 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
     @Query(value = "SELECT c from Course c where c.isActive = false")
     List<Course> getAllUnActiveCourse();
 
+    @Query(value = "SELECT c from Course c where c.id = (SELECT Max(c.id) FROM Course c)")
+    List<Course> getCourseLatestRow();
+
 //    @Query("SELECT c from Course c where c.student.id= :studentId")
 //        // :id is coming from the user
 //        // using parameter for user input which is "SchoolID"
