@@ -90,6 +90,13 @@ public class CourseController {
         return courseName;
     }
 
+    // Function where it gets all the Course Created by the given Date (getCourseByCreatedDate)
+    @RequestMapping(value = "/getCourseByCreatedDate", method = RequestMethod.GET)
+    public List<Course> getCourseByCreatedDate(String createdDate) throws ParseException {
+        List<Course> getCourseByCreatedDateVariable = courseService.getCourseByCreatedDate(createdDate);
+        return getCourseByCreatedDateVariable;
+    }
+
 
 
 

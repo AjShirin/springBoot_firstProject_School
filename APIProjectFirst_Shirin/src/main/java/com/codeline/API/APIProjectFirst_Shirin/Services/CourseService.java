@@ -65,6 +65,12 @@ public class CourseService {
         return courseName; //creating an empty course and returning it.
     }
 
+    // Function where it gets all the Course Created by the given Date (getCourseByCreatedDate)
+    public List<Course> getCourseByCreatedDate(String createdDate) {
+        List<Course> course =courseRepository.getCourseByCreatedDate(createdDate);
+        return course;
+    }
+
 
 
 

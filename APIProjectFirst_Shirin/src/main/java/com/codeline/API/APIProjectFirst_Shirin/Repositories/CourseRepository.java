@@ -47,7 +47,10 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
 
     @Query("SELECT c from Course c where c.name= :courseName")
         // the verifiable should
-    Course getByCourseName(@Param("courseName") String course_name); // mapping the query and returning the school
+    Course getByCourseName(@Param("courseName") String course_name); // mapping the query and returning the course
+
+    @Query(value = "Select * from Course where created_date like CONCAT (?1, '%') ", nativeQuery = true) // nativeQuery you can use the variables in the sql
+    List<Course> getCourseByCreatedDate(String createdDate);
 
 
 //    @Query("SELECT c from Course c where c.student.id= :studentId")
