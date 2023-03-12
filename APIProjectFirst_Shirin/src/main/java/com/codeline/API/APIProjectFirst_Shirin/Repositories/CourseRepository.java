@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository // Collection of code that is going to be used for the Objects
@@ -39,6 +40,10 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
 
     @Query(value = "SELECT c from Course c where c.UpdatedDate = (SELECT MAX(c.UpdatedDate) FROM Course c)")
     List<Course> getCourseLatestUpdated();
+
+    @Query("SELECT c from Course c where c.createdDate >= :createdDate")
+    List<Course> getSchoolCreatedAfterDate(Date createdDate);
+
 
 //    @Query("SELECT c from Course c where c.student.id= :studentId")
 //        // :id is coming from the user

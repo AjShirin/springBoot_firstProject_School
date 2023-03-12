@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.List;
 
 // since we put @RequestMapping for the class in the top , so there is no need to add it in @RequestMapping  for function
@@ -74,6 +75,17 @@ public class CourseController {
         List<Course> courseLatestUpdatedList = courseService.getCourseLatestUpdated();
         return courseLatestUpdatedList;
     }
+    //function that checks if there is a date created bigger than the given date (getCourseCreatedAfterDate)
+    @RequestMapping(value = "/getCourseCreatedAfterDate", method = RequestMethod.GET)
+    public List<Course> getCourseCreatedAfterDate(@RequestParam String createdDate) throws ParseException {
+        List<Course> createdAfterDate = courseService.getCourseCreatedAfterDate(createdDate);
+        return createdAfterDate;
+    }
+
+
+
+
+
 }
 
 

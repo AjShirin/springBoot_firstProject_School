@@ -5,6 +5,10 @@ import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service // this is where everything is going to be done related to the object such as function and many more
@@ -44,6 +48,14 @@ public class CourseService {
     // function that gets the latest update for Course (getCourseLatestUpdated)
     public List<Course> getCourseLatestUpdated() {
         return courseRepository.getCourseLatestUpdated();
+    }
+
+    //function that checks if there is a date created bigger than the given date (getCourseCreatedAfterDate)
+    public List<Course> getCourseCreatedAfterDate(String createdDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<Course> course = courseRepository.getSchoolCreatedAfterDate(convertedDateFromStringToDateFormat);
+        return course;
     }
 
 
