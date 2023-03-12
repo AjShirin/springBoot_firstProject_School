@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
 import com.codeline.API.APIProjectFirst_Shirin.Services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +81,13 @@ public class CourseController {
     public List<Course> getCourseCreatedAfterDate(@RequestParam String createdDate) throws ParseException {
         List<Course> createdAfterDate = courseService.getCourseCreatedAfterDate(createdDate);
         return createdAfterDate;
+    }
+
+    // function that gets the Course by the name (getByCourseName)
+    @RequestMapping(value = "/getByCourseName", method = RequestMethod.GET)
+    public Course getByCourseName(@RequestParam String course_name) {
+        Course courseName = courseService.getByCourseName(course_name);
+        return courseName;
     }
 
 

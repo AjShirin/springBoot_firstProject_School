@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,12 @@ public class CourseService {
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
         List<Course> course = courseRepository.getSchoolCreatedAfterDate(convertedDateFromStringToDateFormat);
         return course;
+    }
+
+    // function that gets the Course by the name (getByCourseName)
+    public Course getByCourseName(String course_name) {
+        Course courseName = courseRepository.getByCourseName(course_name); // getting the course_name from the user
+        return courseName; //creating an empty course and returning it.
     }
 
 

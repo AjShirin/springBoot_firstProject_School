@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -43,6 +44,10 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
 
     @Query("SELECT c from Course c where c.createdDate >= :createdDate")
     List<Course> getSchoolCreatedAfterDate(Date createdDate);
+
+    @Query("SELECT c from Course c where c.name= :courseName")
+        // the verifiable should
+    Course getByCourseName(@Param("courseName") String course_name); // mapping the query and returning the school
 
 
 //    @Query("SELECT c from Course c where c.student.id= :studentId")
