@@ -71,6 +71,12 @@ public class CourseService {
         return course;
     }
 
+    // Function that gets all course create by the given updated date (getCourseByUpdatedDate)
+    public List<Course> getCourseByUpdatedDate(String UpdatedDate) {
+        List<Course> course = courseRepository.getCourseByUpdatedDate(UpdatedDate);
+        return course;
+    }
+
 
 
 

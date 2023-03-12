@@ -1,7 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -51,6 +50,9 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
 
     @Query(value = "Select * from Course where created_date like CONCAT (?1, '%') ", nativeQuery = true) // nativeQuery you can use the variables in the sql
     List<Course> getCourseByCreatedDate(String createdDate);
+
+    @Query(value = "Select * from Course where updated_date like CONCAT (?1, '%') ", nativeQuery = true) // nativeQuery you can use the variables in the sql
+    List<Course> getCourseByUpdatedDate(String UpdatedDate);
 
 
 //    @Query("SELECT c from Course c where c.student.id= :studentId")
