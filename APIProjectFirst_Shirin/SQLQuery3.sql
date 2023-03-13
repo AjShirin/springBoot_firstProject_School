@@ -19,6 +19,7 @@ INSERT INTO school (updated_date,created_date,is_active,school_name) VALUES ('20
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-05-09','2020-05-05','True','Shirin',9,1);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-01-01','2020-01-01','True','Ruqia',5,3);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-07-05','2020-04-04','True','Marwa',3,3);
+INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-07-05','2020-04-04','True','Fatma',6,3);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-07-05','2020-04-04','False','Farah',2,2);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-07-05','2020-04-04','True','Manal',10,4);
 

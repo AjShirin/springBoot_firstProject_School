@@ -2,6 +2,7 @@ package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
+import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import com.codeline.API.APIProjectFirst_Shirin.Services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,8 @@ public class CourseController {
     CourseService courseService;
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private SchoolRepository schoolRepository;
 
     //function that gets all courses by id (getCourseById)
     @RequestMapping(value = "/getById", method = RequestMethod.GET) // "course/getById" is a prefix
@@ -113,6 +116,12 @@ public class CourseController {
     public List<Course> getAllActiveCourses() {
         List<Course> activeCourseList = courseService.getAllActiveCourses();
         return activeCourseList;
+    }
+
+    // This function updates the 'isActive' column to false by the course ID (deleteById)
+    @RequestMapping(value = "/deleteById")
+    public void deleteById(Integer id) {
+        courseService.deleteById(id);
     }
 
 

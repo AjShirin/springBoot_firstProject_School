@@ -85,6 +85,12 @@ public class CourseService {
     public List<Course> getAllActiveCourses() {
         return courseRepository.getAllActiveCourses();
     }
+    // This function updates the 'isActive' column to false by the course ID (deleteById)
+    public void deleteById(Integer id) {
+        Course course = courseRepository.getCourseById(id);
+        course.setIsActive(Boolean.FALSE);
+        courseRepository.save(course);
+    }
 
 
 
