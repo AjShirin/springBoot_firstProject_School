@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -67,6 +68,7 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
 
     @Query(value = "select c from Course c where c.createdDate >=  :createdDate")
     List<Course> deleteAllCoursesCreatedAfterDate(Date createdDate);
+
 
 
 

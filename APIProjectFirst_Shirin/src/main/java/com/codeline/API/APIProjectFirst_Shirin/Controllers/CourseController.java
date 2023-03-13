@@ -147,6 +147,12 @@ public class CourseController {
         courseService.deleteCoursesByName(name);
     }
 
+    //This function updates the 'isActive' column to false by giving the Created date (deleteCoursesByCreatedDate)
+    @RequestMapping(value = "/deleteCoursesByCreatedDate", method = RequestMethod.POST)
+    public void deleteCoursesByCreatedDate(@RequestParam String createdDate) {
+        courseService.deleteCoursesByCreatedDate(createdDate);
+    }
+
 
 
 
