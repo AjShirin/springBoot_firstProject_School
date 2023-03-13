@@ -65,6 +65,9 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
     @Query(value = "Update Course c Set c.isActive = false")
     void deleteAll();
 
+    @Query(value = "select c from Course c where c.createdDate >=  :createdDate")
+    List<Course> deleteAllCoursesCreatedAfterDate(Date createdDate);
+
 
 
 //    @Query("SELECT c from Course c where c.student.id= :studentId")

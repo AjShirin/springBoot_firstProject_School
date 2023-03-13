@@ -130,6 +130,17 @@ public class CourseController {
         courseService.deleteAll();
     }
 
+    // This function updates all courses that is greater than the given created date (deleteAllCoursesCreatedAfterDate)
+    @RequestMapping(value = "/deleteAllCoursesCreatedAfterDate", method = RequestMethod.POST)
+    public String deleteAllCoursesCreatedAfterDate(@RequestParam String createdDate)  {
+        try {
+            courseService.deleteAllCoursesCreatedAfterDate(createdDate);
+        } catch (ParseException e) {
+            return "Failed try again";
+        }
+        return "Deleted Successfully :)";
+    }
+
 
 
 

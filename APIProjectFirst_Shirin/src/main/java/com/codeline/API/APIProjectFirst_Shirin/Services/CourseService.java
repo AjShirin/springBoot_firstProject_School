@@ -97,6 +97,15 @@ public class CourseService {
         courseRepository.deleteAll();
     }
 
+    // This function
+    public void deleteAllCoursesCreatedAfterDate(String createdDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<Course> course = courseRepository.deleteAllCoursesCreatedAfterDate(convertedDateFromStringToDateFormat);
+        course.stream().forEach(x -> x.setIsActive(false));
+        courseRepository.saveAll(course);
+    }
+
 
 
 
