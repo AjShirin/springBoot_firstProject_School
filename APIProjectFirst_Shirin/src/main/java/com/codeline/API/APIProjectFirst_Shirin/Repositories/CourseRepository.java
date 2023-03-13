@@ -28,8 +28,8 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
     Course getCourseById(@Param("courseId") Integer id);    // whoever called the function and write the ID, it will be mapped with the ID of the school
     // calling the function from the service
 
-    @Query("SELECT c from Course c where c.name= :courseName")
-    Course getCourseByName(@Param("courseName") String course_name); // mapping the query and returning the Course
+//    @Query("SELECT c from Course c where c.name= :courseName")
+//    Course getCourseByName(@Param("courseName") String course_name); // mapping the query and returning the Course
 
     @Query(value = "SELECT c from Course c where c.isActive = true")
     List<Course> getAllActiveCourse();
@@ -46,9 +46,9 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
     @Query("SELECT c from Course c where c.createdDate >= :createdDate")
     List<Course> getSchoolCreatedAfterDate(Date createdDate);
 
+
     @Query("SELECT c from Course c where c.name= :courseName")
-        // the verifiable should
-    Course getByCourseName(@Param("courseName") String course_name); // mapping the query and returning the course
+    List<Course> getByCourseName(@Param("courseName") String courseName); // mapping the query and returning the course
 
     @Query(value = "Select * from Course where created_date like CONCAT (?1, '%') ", nativeQuery = true) // nativeQuery you can use the variables in the sql
     List<Course> getCourseByCreatedDate(String createdDate);

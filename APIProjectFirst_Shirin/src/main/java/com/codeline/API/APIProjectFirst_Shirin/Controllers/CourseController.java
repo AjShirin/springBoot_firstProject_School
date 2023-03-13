@@ -87,8 +87,8 @@ public class CourseController {
 
     // function that gets the Course by the name (getByCourseName)
     @RequestMapping(value = "/getByCourseName", method = RequestMethod.GET)
-    public Course getByCourseName(@RequestParam String course_name) {
-        Course courseName = courseService.getByCourseName(course_name);
+    public List<Course> getByCourseName(@RequestParam String course_name) {
+        List<Course> courseName = courseService.getCoursesByName(course_name);
         return courseName;
     }
 
@@ -140,6 +140,14 @@ public class CourseController {
         }
         return "Deleted Successfully :)";
     }
+
+    // This function updates the 'isActive' column to false by giving the course name (deleteByCourseName)
+    @RequestMapping(value = "/deleteByCourseName")
+    public void deleteByCourseName(@RequestParam String name) {
+        courseService.deleteCoursesByName(name);
+    }
+
+
 
 
 

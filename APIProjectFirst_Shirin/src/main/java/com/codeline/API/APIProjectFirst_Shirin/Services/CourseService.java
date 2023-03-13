@@ -60,9 +60,9 @@ public class CourseService {
     }
 
     // function that gets the Course by the name (getByCourseName)
-    public Course getByCourseName(String course_name) {
-        Course courseName = courseRepository.getByCourseName(course_name); // getting the course_name from the user
-        return courseName; //creating an empty course and returning it.
+    public List<Course> getCoursesByName(String courseName) {
+        List<Course> courseNameVariable = courseRepository.getByCourseName(courseName); // getting the courseName from the user
+        return courseNameVariable; //creating an empty course and returning it.
     }
 
     // Function where it gets all the Course Created by the given Date (getCourseByCreatedDate)
@@ -97,12 +97,19 @@ public class CourseService {
         courseRepository.deleteAll();
     }
 
-    // This function
+    // This function updates all courses that is greater than the given created date (deleteAllCoursesCreatedAfterDate)
     public void deleteAllCoursesCreatedAfterDate(String createdDate) throws ParseException {
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
         List<Course> course = courseRepository.deleteAllCoursesCreatedAfterDate(convertedDateFromStringToDateFormat);
-        course.stream().forEach(x -> x.setIsActive(false));
+        course.stream().forEach(x -> x.setIsActive(Boolean.FALSE));
+        courseRepository.saveAll(course);
+    }
+
+    // This function updates the 'isActive' column to false by giving the course name (deleteByCourseName)
+    public void deleteCoursesByName(String courseName) {
+        List<Course> course = courseRepository.getByCourseName(courseName);
+        course.stream().forEach(x -> x.setIsActive(Boolean.FALSE));
         courseRepository.saveAll(course);
     }
 
