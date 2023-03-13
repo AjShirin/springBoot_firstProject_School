@@ -77,6 +77,17 @@ public class CourseService {
         return course;
     }
 
+    //getCourseByStudentId
+
+    //getAllActiveCoursesForAStudent
+
+    // function that gets all the active course (getAllActiveCourses)
+    public List<Course> getAllActiveCourses() {
+        return courseRepository.getAllActiveCourses();
+    }
+
+
+
 
 
 

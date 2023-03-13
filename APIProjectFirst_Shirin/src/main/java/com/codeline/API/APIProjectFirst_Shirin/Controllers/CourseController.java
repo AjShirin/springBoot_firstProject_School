@@ -103,6 +103,18 @@ public class CourseController {
         return getSchoolByUpdatedDateVariable;
     }
 
+    //getCourseByStudentId
+
+    //getAllActiveCoursesForAStudent
+
+
+    // get all the active course (getAllActiveCourses)
+    @RequestMapping(value = "/getAllActiveCourses")
+    public List<Course> getAllActiveCourses() {
+        List<Course> activeCourseList = courseService.getAllActiveCourses();
+        return activeCourseList;
+    }
+
 
 
 

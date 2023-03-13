@@ -54,6 +54,10 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
     @Query(value = "Select * from Course where updated_date like CONCAT (?1, '%') ", nativeQuery = true) // nativeQuery you can use the variables in the sql
     List<Course> getCourseByUpdatedDate(String UpdatedDate);
 
+    @Query(value = "SELECT c from Course c where c.isActive = true")
+    List<Course> getAllActiveCourses();
+
+
 
 //    @Query("SELECT c from Course c where c.student.id= :studentId")
 //        // :id is coming from the user
