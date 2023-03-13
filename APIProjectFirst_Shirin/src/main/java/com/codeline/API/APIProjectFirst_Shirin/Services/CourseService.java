@@ -20,7 +20,7 @@ public class CourseService {
     @Autowired // create instance, and then it can be used in all the program
     CourseRepository courseRepository;
 
-   //function that gets all courses by id (getCourseById)
+    //function that gets all courses by id (getCourseById)
     public Course getCourseById(Integer id) {
         Course course = courseRepository.getCourseById(id); // getting the id from the user
         return course; //creating an empty course and returning it.
@@ -32,12 +32,12 @@ public class CourseService {
     }
 
     // function that gets all the active Course (getAllActiveCourse)
-    public List<Course> getAllActiveCourse(){
+    public List<Course> getAllActiveCourse() {
         return courseRepository.getAllActiveCourse();
     }
 
     // function that gets all the  not active Courses (getAllUnActiveCourse)
-    public List<Course> getAllUnActiveCourse(){
+    public List<Course> getAllUnActiveCourse() {
         return courseRepository.getAllUnActiveCourse();
     }
 
@@ -67,7 +67,7 @@ public class CourseService {
 
     // Function where it gets all the Course Created by the given Date (getCourseByCreatedDate)
     public List<Course> getCourseByCreatedDate(String createdDate) {
-        List<Course> course =courseRepository.getCourseByCreatedDate(createdDate);
+        List<Course> course = courseRepository.getCourseByCreatedDate(createdDate);
         return course;
     }
 
@@ -85,6 +85,7 @@ public class CourseService {
     public List<Course> getAllActiveCourses() {
         return courseRepository.getAllActiveCourses();
     }
+
     // This function updates the 'isActive' column to false by the course ID (deleteById)
     public void deleteById(Integer id) {
         Course course = courseRepository.getCourseById(id);
@@ -137,18 +138,16 @@ public class CourseService {
         courseRepository.save(course);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    //update Course (whole row) [updateCourse]
+    public void updateCourse(Integer id, String name, Boolean isActive) {
+        Course course = courseRepository.getCourseById(id);
+        course.setName(name);
+        course.setCreatedDate(new Date());
+        course.setUpdatedDate(new Date());
+        course.setIsActive(isActive);
+        courseRepository.save(course);
+    }
+}
 
 //    public Course getByCourseName(String courseName) {
 //        Course course = courseRepository.getCourseByName(courseName);// get course by course name
@@ -156,8 +155,6 @@ public class CourseService {
 //         course = courseRepository.getCourseById(courseId);
 //        return course; // will return to whomever is calling the list which is the controller
 //    }
-
-
 
 //  error
 //    public Course getCourseByStudentName(String studentName) {
@@ -167,8 +164,6 @@ public class CourseService {
 //        return courseList; // will return to whomever is calling the list which is the controller
 //    }
 
-
-}
 
 //    public List<Course> getCourseByStudentName(String studentName) {
 //        Course course = courseRepository.get
