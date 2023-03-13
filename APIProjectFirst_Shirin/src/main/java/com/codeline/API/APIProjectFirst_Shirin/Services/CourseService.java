@@ -92,6 +92,12 @@ public class CourseService {
         courseRepository.save(course);
     }
 
+    // This function updates all the course 'isActive' column to false (deleteAll)
+    public void deleteAll() {
+        courseRepository.deleteAll();
+    }
+
+
 
 
 

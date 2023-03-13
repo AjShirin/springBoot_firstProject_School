@@ -124,6 +124,17 @@ public class CourseController {
         courseService.deleteById(id);
     }
 
+    // This function updates all the course 'isActive' column to false (deleteAll)
+    @RequestMapping(value = "/deleteAll")
+    public void deleteAll() {
+        courseService.deleteAll();
+    }
+
+
+
+
+
+
 
 
 

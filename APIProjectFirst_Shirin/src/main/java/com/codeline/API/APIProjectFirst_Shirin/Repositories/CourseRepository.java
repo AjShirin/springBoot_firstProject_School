@@ -1,11 +1,13 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -56,6 +58,12 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
 
     @Query(value = "SELECT c from Course c where c.isActive = true")
     List<Course> getAllActiveCourses();
+
+    @Modifying // enhance the query annotation.
+    @Transactional // Use Method for database transaction, allows us to set propagation, isolation, timeout, read-only,
+    // and rollback conditions and specify the transaction manager.
+    @Query(value = "Update Course c Set c.isActive = false")
+    void deleteAll();
 
 
 
