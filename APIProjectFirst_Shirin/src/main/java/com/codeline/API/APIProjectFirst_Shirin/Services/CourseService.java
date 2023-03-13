@@ -120,6 +120,13 @@ public class CourseService {
         courseRepository.saveAll(course);
     }
 
+    //This function updates the 'isActive' column to false by giving the Updated date (deleteCoursesByUpdatedDate)
+    public void deleteCoursesByUpdatedDate(String updatedDate) {
+        List<Course> course = courseRepository.getCourseByUpdatedDate(updatedDate);
+        course.stream().forEach(update -> update.setIsActive(Boolean.FALSE));
+        courseRepository.saveAll(course);
+    }
+
 
 
 
