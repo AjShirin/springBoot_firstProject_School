@@ -159,6 +159,12 @@ public class CourseController {
         courseService.deleteCoursesByUpdatedDate(updatedDate);
     }
 
+    // Create a new course record (createCourse)
+    @RequestMapping(value = "/createCourse")
+    public void createCourse(String name) {
+        courseService.createCourse(name);
+    }
+
 
 
 

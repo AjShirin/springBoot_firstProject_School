@@ -127,6 +127,16 @@ public class CourseService {
         courseRepository.saveAll(course);
     }
 
+    // Create a new course record (createCourse)
+    public void createCourse(String name) {
+        Course course = new Course();
+        course.setName(name);
+        course.setCreatedDate(new Date());
+        course.setUpdatedDate(new Date());
+        course.setIsActive(Boolean.TRUE);
+        courseRepository.save(course);
+    }
+
 
 
 
