@@ -107,5 +107,11 @@ public class StudentService {
         List<Student> studentListId = studentRepository.getStudentsBySchoolId(id); // get school by school id
         return studentListId; // will return to whomever is calling the list which is the controller
     }
+
+    // Function where it gets all the Student Created by the given Date (getStudentsByCreatedDate)
+    public List<Student> getStudentsByCreatedDate(String createdDate) {
+        List<Student> studentListCreatedDate = studentRepository.getStudentsByCreatedDate(createdDate);
+        return studentListCreatedDate;
+    }
 }
 

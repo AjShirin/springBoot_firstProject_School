@@ -2,13 +2,16 @@ package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 
 
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -54,6 +57,14 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 
     @Query("SELECT s from Student s where s.createdDate >= :createdDate")
     List<Student> getStudentCreatedAfterDate(Date createdDate);
+
+    @Modifying // enhance the query annotation.
+    @Transactional // Use Method for database transaction, allows us to set propagation, isolation, timeout, read-only,
+    // and rollback conditions and specify the transaction manager.
+    @Query(value = "Select * from Student where created_date like CONCAT (?1, '%') ", nativeQuery = true) // nativeQuery you can use the variables in the sql
+    List<Student> getStudentsByCreatedDate(String createdDate);
+
+
 
 //    @Query(value = "select s from Student s where s.rollNumber = :studentRollNumber")
 //    Student getByStudentByRollNumber(Integer studentRollNumber);

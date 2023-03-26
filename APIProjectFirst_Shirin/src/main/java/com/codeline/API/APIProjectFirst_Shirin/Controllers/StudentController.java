@@ -1,7 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 
-
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +59,7 @@ public class StudentController {
         List<Student> notActiveStudentList = studentService.getAllUnActiveStudent();
         return notActiveStudentList;
     }
+
     // Calls the function that gets the latest row of students (getStudentLatestRow)
     @RequestMapping(value = "/getStudentLatestRow")
     public List<Student> getStudentLatestRow() {
@@ -101,7 +102,12 @@ public class StudentController {
         return schoolIdForStudent;
     }
 
-
+    // Calls the function where it gets all the Student Created by the given Date (getStudentsByCreatedDate)
+    @RequestMapping(value = "/getStudentsByCreatedDate", method = RequestMethod.GET)
+    public List<Student> getSchoolByCreatedDate(String createdDate) throws ParseException {
+        List<Student> getStudentByCreatedDateVariable = studentService.getStudentsByCreatedDate(createdDate);
+        return getStudentByCreatedDateVariable;
+    }
 
 
 }
