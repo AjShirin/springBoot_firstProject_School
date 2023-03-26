@@ -1,12 +1,15 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 
+
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+
+import java.util.Date;
 import java.util.List;
 
 @Repository // Collection of code that is going to be used for the Objects
@@ -48,4 +51,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 
     @Query(value = "SELECT COUNT(id) From student where school_id = ?1", nativeQuery = true)
     Integer getCountOfStudentsBySchoolId(Integer schoolId);
+
+    @Query("SELECT s from Student s where s.createdDate >= :createdDate")
+    List<Student> getStudentCreatedAfterDate(Date createdDate);
 }
