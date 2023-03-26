@@ -123,7 +123,6 @@ public class SchoolService {
         schoolRepository.saveAll(schools);
     }
 
-
     //This function updates the 'isActive' column to false by giving the Updated date (deleteSchoolsByUpdatedDate)
     public void deleteSchoolsByUpdatedDate(String updatedDate) {
         List<School> school = schoolRepository.getSchoolByUpdatedDate(updatedDate);

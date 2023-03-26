@@ -1,7 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,7 +76,11 @@ public class CourseService {
         return course;
     }
 
-    //getCourseByStudentId
+//    // Function that gets all courses from the student ID (getCourseByStudentId)
+//    public List<Course> getCoursesByStudentId(Integer id) {
+//        List<Course> coursesList = courseRepository.getCoursesByStudentId(id);
+//        return coursesList;
+//    }
 
     //getAllActiveCoursesForAStudent
 

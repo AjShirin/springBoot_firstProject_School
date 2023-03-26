@@ -33,8 +33,14 @@ public class StudentService {
         studentRepository.save(student);
     }
 
+   // Function that gets the student record by Id (getStudentById)
+    public Student getStudentById(Integer id) {
+        Student student = studentRepository.getStudentById(id); // getting the id from the user
+        return student; //creating an empty course and returning it.
 
-    //function that gets all the student
+    }
+
+    // Function that gets all the student (getAllStudent)
     public List<Student> getAllStudent() {
         return studentRepository.getAllStudent();
     }
@@ -45,31 +51,32 @@ public class StudentService {
         studentRepository.delete(StudentToDelete);
     }
 
-    public Student getStudentById(Integer id) {
-        Student student = studentRepository.getStudentById(id); // getting the id from the user
-        return student; //creating an empty course and returning it.
-
-    }
-
+    //** Function the gets the student By the Name (getStudentByName)
     public Student getStudentByName(String student_name) {
         Student studentName = studentRepository.getStudentByName(student_name); // getting the student_name from the user
         return studentName;  //creating an empty school and returning it.
     }
+    //**
 
+    //** Function the gets the student By the school name (getStudentsBySchoolName)
     public List<Student> getStudentsBySchoolName(String schoolName) {
         School school = schoolRepository.getSchoolByName(schoolName); // get school by school name
         Integer schoolId = school.getId(); // getting the ID from school model and saving it into schoolId
         List<Student> studentList = studentRepository.getStudentsBySchoolId(schoolId);
         return studentList; // will return to whomever is calling the list which is the controller
     }
+    //**
 
+    // Function that gets all the active students (getAllActiveStudent)
     public List<Student> getAllActiveStudent(){
         return studentRepository.getAllActiveStudent();
     }
 
+    // Function that gets all the not active students (getAllUnActiveStudent)
     public List<Student> getAllUnActiveStudent(){
         return studentRepository.getAllUnActiveStudent();
     }
+    // Function that gets all the Latest Row of the student table (getStudentLatestRow)
     public List<Student> getStudentLatestRow(){
         return studentRepository.getStudentLatestRow();
     }

@@ -4,6 +4,7 @@ import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import com.codeline.API.APIProjectFirst_Shirin.RequestObject.SchoolRequestForCreateDateUpdate;
 import com.codeline.API.APIProjectFirst_Shirin.Services.SchoolService;
+import com.codeline.API.APIProjectFirst_Shirin.Slack.SlackClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,9 @@ public class SchoolController {
     // (if you don't want to use @Autowire you can do SchoolService schoolService = new SchoolService --> this is called injection dependency )
     // for school controller to work , school service should work since they are dependent on each other
     SchoolService schoolService;
+
+    @Autowired
+    SlackClient slackClient;
     @Autowired
     private SchoolRepository schoolRepository;
 
@@ -33,6 +37,8 @@ public class SchoolController {
         // School school = new School(); // creating an empty school
         //schoolService.getSchoolById(schoolId); // so the school will return school = schoolService.getSchoolById(id)
         School school = schoolService.getSchoolById(schoolId);
+        slackClient.sendMessage("The school Id is:" + school.getId());
+        slackClient.sendMessage("The Name of the School is :" + school.getName());
         return school;
     }
 

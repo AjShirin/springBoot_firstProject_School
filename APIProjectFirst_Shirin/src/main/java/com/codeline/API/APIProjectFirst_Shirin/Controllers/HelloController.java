@@ -6,6 +6,7 @@ import com.codeline.API.APIProjectFirst_Shirin.Services.CourseService;
 import com.codeline.API.APIProjectFirst_Shirin.Services.MarkService;
 import com.codeline.API.APIProjectFirst_Shirin.Services.SchoolService;
 import com.codeline.API.APIProjectFirst_Shirin.Services.StudentService;
+import com.codeline.API.APIProjectFirst_Shirin.Slack.SlackClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +40,20 @@ public class HelloController {
     public List<Student> getStudentsBySchoolName(@RequestParam String schoolName) {
         return studentService.getStudentsBySchoolName(schoolName);
     }
+
+    @Autowired
+    SlackClient slackClient;
+
+    @GetMapping(value = "test")
+    public String test(){
+        return "${spring.profiles.active}";
+    }
+
+    @GetMapping(value = "slackMessage")
+    public void message(@RequestParam String text){
+        slackClient.sendMessage(text);
+    }
+
 //    error
 //    @RequestMapping(value = "course/getCourseByStudentName", method = RequestMethod.GET)
 //    public Course getCourseByStudentName(@RequestParam String studentName) {

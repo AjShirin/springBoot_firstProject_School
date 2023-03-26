@@ -26,14 +26,7 @@ public class StudentController {
     // for school controller to work , school service should work since they are dependent on each other
     StudentService studentService;
 
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    //function that returns all student
-    public List<Student> getAllStudent() { // This will take from the browser and then return in the browser
-        List<Student> students = studentService.getAllStudent(); // changing the list to the function because instead of we
-        //initialize empty list and then insert data we directly inserted a data.
-        return students;
-    }
-
+    // Calls the function that gets the student record by Id (getStudentById)
     @RequestMapping(value = "/getById", method = RequestMethod.GET) // "student/getById" is a prefix
     public Student getStudentById(@RequestParam Integer studentId) { //Request Parameter gets the parameter you want
         // Student student = new Student(); // creating an empty school
@@ -42,24 +35,36 @@ public class StudentController {
         return student;
     }
 
+    // calls the function that gets all the student (getAllStudent)
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    //function that returns all student
+    public List<Student> getAllStudent() { // This will take from the browser and then return in the browser
+        List<Student> students = studentService.getAllStudent(); // changing the list to the function because instead of we
+        //initialize empty list and then insert data we directly inserted a data.
+        return students;
+    }
+    //** Class the function the gets the student By the Name (getStudentByName)
     @RequestMapping(value = "/getByStudentName", method = RequestMethod.GET)
     public Student getStudentByName(@RequestParam String student_name) {  //The student_name is the same variable as the sql
         Student studentName = studentService.getStudentByName(student_name);
         return studentName;
     }
+    //*****
 
+    // Calls the function that gets all the active students (getAllStudentByIsActive)
     @RequestMapping(value = "/getAllStudentByIsActive")
     public List<Student> getAllActiveStudent() {
         List<Student> activeStudentList = studentService.getAllActiveStudent();
         return activeStudentList;
     }
 
+    // Calls the function that gets all the not active students (getAllStudentByIsUnActive)
     @RequestMapping(value = "/getAllStudentByIsUnActive")
     public List<Student> getAllUnActiveStudent() {
         List<Student> notActiveStudentList = studentService.getAllUnActiveStudent();
         return notActiveStudentList;
     }
-
+    // Calls the function that gets the latest row of students (getStudentLatestRow)
     @RequestMapping(value = "/getStudentLatestRow")
     public List<Student> getStudentLatestRow() {
         List<Student> studentLatestRowList = studentService.getStudentLatestRow();
