@@ -58,11 +58,12 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     @Query("SELECT s from Student s where s.createdDate >= :createdDate")
     List<Student> getStudentCreatedAfterDate(Date createdDate);
 
-    @Modifying // enhance the query annotation.
-    @Transactional // Use Method for database transaction, allows us to set propagation, isolation, timeout, read-only,
-    // and rollback conditions and specify the transaction manager.
-    @Query(value = "Select * from Student where created_date like CONCAT (?1, '%') ", nativeQuery = true) // nativeQuery you can use the variables in the sql
-    List<Student> getStudentsByCreatedDate(String createdDate);
+//    @Query("SELECT s from Student s where s.updatedDate >= :updatedDate")
+//    List<Student> getStudentsByUpdatedDate(Date updatedDate);
+
+    @Query("SELECT s from Student s where s.createdDate = :createdDate")
+    List<Student> getStudentsByCreatedDate(Date createdDate);
+
 
 
 

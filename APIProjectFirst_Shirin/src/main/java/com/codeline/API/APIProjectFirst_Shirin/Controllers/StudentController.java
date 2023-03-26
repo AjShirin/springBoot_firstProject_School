@@ -109,5 +109,13 @@ public class StudentController {
         return getStudentByCreatedDateVariable;
     }
 
+    // Calls the function where it gets all the Student Updated by the given Date (getStudentsByUpdatedDate)
+//    @RequestMapping(value = "/getStudentsByUpdatedDate", method = RequestMethod.GET)
+//    public List<Student> getStudentsByUpdatedDate(@RequestParam String updatedDate) {
+//        List<Student> getStudentByUpdatedDateVariable = studentService.getStudentsByUpdatedDate(updatedDate);
+//        return getStudentByUpdatedDateVariable;
+//
+//    }
+
 
 }

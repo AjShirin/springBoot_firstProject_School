@@ -109,9 +109,17 @@ public class StudentService {
     }
 
     // Function where it gets all the Student Created by the given Date (getStudentsByCreatedDate)
-    public List<Student> getStudentsByCreatedDate(String createdDate) {
-        List<Student> studentListCreatedDate = studentRepository.getStudentsByCreatedDate(createdDate);
-        return studentListCreatedDate;
+    public List<Student> getStudentsByCreatedDate(String createdDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<Student> students = studentRepository.getStudentsByCreatedDate(convertedDateFromStringToDateFormat);
+        return students;
     }
+
+    // Function that gets all student create by the given updated date (getStudentsByUpdatedDate)
+//    public List<Student> getStudentsByUpdatedDate(String updatedDate) {
+//        List<Student> student = studentRepository.getStudentsByUpdatedDate(updatedDate);
+//        return student;
+//    }
 }
 
