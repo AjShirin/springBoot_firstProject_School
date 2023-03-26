@@ -62,15 +62,6 @@ public class StudentService {
     }
     //**
 
-    //** Function the gets the student By the school name (getStudentsBySchoolName)
-    public List<Student> getStudentsBySchoolName(String schoolName) {
-        School school = schoolRepository.getSchoolByName(schoolName); // get school by school name
-        Integer schoolId = school.getId(); // getting the ID from school model and saving it into schoolId
-        List<Student> studentList = studentRepository.getStudentsBySchoolId(schoolId);
-        return studentList; // will return to whomever is calling the list which is the controller
-    }
-    //**
-
     // Function that gets all the active students (getAllActiveStudent)
     public List<Student> getAllActiveStudent(){
         return studentRepository.getAllActiveStudent();
@@ -96,6 +87,25 @@ public class StudentService {
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
         List<Student> students = studentRepository.getStudentCreatedAfterDate(convertedDateFromStringToDateFormat);
         return students;
+    }
+
+    // Function the gets the student By the school name (getStudentsBySchoolName)
+    public List<Student> getStudentsBySchoolName(String schoolName) {
+        School school = schoolRepository.getSchoolByName(schoolName); // get school by school name
+        Integer schoolId = school.getId(); // getting the ID from school model and saving it into schoolId
+        List<Student> studentList = studentRepository.getStudentsBySchoolId(schoolId);
+        return studentList; // will return to whomever is calling the list which is the controller
+    }
+
+//    public Student getByStudentByRollNumber(Integer studentRollNumber) {
+//        Student student = studentRepository.getByStudentByRollNumber(studentRollNumber);
+//        return student;
+//    }
+
+    // Function the gets the student By the school ID (getStudentsBySchoolId)
+    public List<Student> getStudentsBySchoolId(Integer id) {
+        List<Student> studentListId = studentRepository.getStudentsBySchoolId(id); // get school by school id
+        return studentListId; // will return to whomever is calling the list which is the controller
     }
 }
 

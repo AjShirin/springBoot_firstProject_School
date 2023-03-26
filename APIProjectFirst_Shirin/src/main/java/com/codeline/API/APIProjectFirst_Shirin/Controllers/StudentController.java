@@ -1,7 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
+
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,13 +45,6 @@ public class StudentController {
         //initialize empty list and then insert data we directly inserted a data.
         return students;
     }
-    //** Class the function the gets the student By the Name (getStudentByName)
-    @RequestMapping(value = "/getByStudentName", method = RequestMethod.GET)
-    public Student getStudentByName(@RequestParam String student_name) {  //The student_name is the same variable as the sql
-        Student studentName = studentService.getStudentByName(student_name);
-        return studentName;
-    }
-    //*****
 
     // Calls the function that gets all the active students (getAllStudentByIsActive)
     @RequestMapping(value = "/getAllStudentByIsActive")
@@ -80,11 +73,35 @@ public class StudentController {
         return studentLatestUpdatedList;
     }
 
-    //function that checks if there is a date created bigger than the given date (getStudentCreatedAfterDate)
+    // Calls the function that checks if there is a date created bigger than the given date (getStudentCreatedAfterDate)
     @RequestMapping(value = "/getStudentCreatedAfterDate", method = RequestMethod.GET)
     public List<Student> getStudentCreatedAfterDate(@RequestParam String createdDate) throws ParseException {
         List<Student> createdAfterDateStudent = studentService.getStudentCreatedAfterDate(createdDate);
         return createdAfterDateStudent;
     }
+
+    // Calls the function the gets the student By the Name (getStudentByName)
+    @RequestMapping(value = "/getByStudentName", method = RequestMethod.GET)
+    public Student getStudentByName(@RequestParam String student_name) {  //The student_name is the same variable as the sql
+        Student studentName = studentService.getStudentByName(student_name);
+        return studentName;
+    }
+
+    // Class the function the gets the student by the Roll Number (getByStudentByRollNumber)
+//    @RequestMapping(value = "getByStudentByRollNumber", method = RequestMethod.GET)
+//    public Student getByStudentByRollNumber(@RequestParam Integer studentRollNumber) {
+//        Student rollNumberStudent = studentService.getByStudentByRollNumber(studentRollNumber);
+//        return rollNumberStudent;
+//    }
+
+    // Calls the function the gets the student By School ID (getStudentsBySchoolId)
+    @RequestMapping(value = "/getStudentsBySchoolId", method = RequestMethod.GET)
+    public List<Student> getStudentsBySchoolId(@RequestParam Integer id) throws ParseException {
+        List<Student> schoolIdForStudent = studentService.getStudentsBySchoolId(id);
+        return schoolIdForStudent;
+    }
+
+
+
 
 }

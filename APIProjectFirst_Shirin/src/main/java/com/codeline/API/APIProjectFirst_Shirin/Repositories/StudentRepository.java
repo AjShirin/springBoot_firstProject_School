@@ -54,4 +54,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 
     @Query("SELECT s from Student s where s.createdDate >= :createdDate")
     List<Student> getStudentCreatedAfterDate(Date createdDate);
+
+//    @Query(value = "select s from Student s where s.rollNumber = :studentRollNumber")
+//    Student getByStudentByRollNumber(Integer studentRollNumber);
 }
