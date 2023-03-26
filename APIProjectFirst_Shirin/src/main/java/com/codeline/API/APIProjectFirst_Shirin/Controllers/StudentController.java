@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,13 @@ public class StudentController {
     public List<Student> getStudentLatestRow() {
         List<Student> studentLatestRowList = studentService.getStudentLatestRow();
         return studentLatestRowList;
+    }
+
+    // Calls the function of the latest update for school (getStudentLatestUpdated)
+    @RequestMapping(value = "/getStudentLatestUpdated")
+    public List<Student> getStudentLatestUpdated() {
+        List<Student> studentLatestUpdatedList = studentService.getStudentLatestUpdated();
+        return studentLatestUpdatedList;
     }
 
 }

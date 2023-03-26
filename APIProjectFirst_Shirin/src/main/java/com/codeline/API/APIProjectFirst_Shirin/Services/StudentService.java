@@ -80,5 +80,10 @@ public class StudentService {
     public List<Student> getStudentLatestRow(){
         return studentRepository.getStudentLatestRow();
     }
+
+    // function that gets the latest update for student (getStudentLatestUpdated)
+    public List<Student> getStudentLatestUpdated() {
+        return studentRepository.getStudentLatestRow();
+    }
 }
 
