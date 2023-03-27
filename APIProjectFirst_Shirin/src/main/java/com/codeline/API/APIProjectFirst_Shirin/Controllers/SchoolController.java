@@ -37,8 +37,8 @@ public class SchoolController {
         // School school = new School(); // creating an empty school
         //schoolService.getSchoolById(schoolId); // so the school will return school = schoolService.getSchoolById(id)
         School school = schoolService.getSchoolById(schoolId);
-        slackClient.sendMessage("The school Id is:" + school.getId());
-        slackClient.sendMessage("The Name of the School is :" + school.getName());
+//        slackClient.sendMessage("The school Id is:" + school.getId());
+//        slackClient.sendMessage("The Name of the School is :" + school.getName());
         return school;
     }
 
