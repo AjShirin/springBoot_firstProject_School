@@ -110,6 +110,13 @@ public class StudentController {
     }
 
     // Calls the function where it gets all the Student Updated by the given Date (getStudentsByUpdatedDate)
+    @RequestMapping(value = "/getStudentsByUpdatedDate", method = RequestMethod.GET)
+    public List<Student> getStudentsByUpdatedDate(String UpdatedDate) throws ParseException {
+        List<Student> getStudentByUpdatedDateVariable = studentService.getStudentsByUpdatedDate(UpdatedDate);
+        return getStudentByUpdatedDateVariable;
+    }
+
+    // Calls the function where it gets all the Student Updated by the given Date (getStudentsByUpdatedDate)
 //    @RequestMapping(value = "/getStudentsByUpdatedDate", method = RequestMethod.GET)
 //    public List<Student> getStudentsByUpdatedDate(@RequestParam String updatedDate) {
 //        List<Student> getStudentByUpdatedDateVariable = studentService.getStudentsByUpdatedDate(updatedDate);
