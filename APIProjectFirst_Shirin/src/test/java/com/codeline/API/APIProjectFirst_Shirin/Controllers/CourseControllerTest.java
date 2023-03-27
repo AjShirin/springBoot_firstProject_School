@@ -13,22 +13,22 @@ class CourseControllerTest {
 
     @Test
     void getCourseById() throws Exception{
-        String CourseName = courseController.getCourseById(12).getName();
-        assertEquals("Java",CourseName);
+        String courseName = courseController.getCourseById(12).getName();
+        assertEquals("Java",courseName);
     }
     @Test
     void getCourseByIdTwo() throws Exception{
-        String CourseName = courseController.getCourseById(13).getName();
-        assertEquals("Python",CourseName);
+        String courseName = courseController.getCourseById(13).getName();
+        assertEquals("Python",courseName);
     }
     @Test
     void getCourseByIdThree() throws Exception{
-        String CourseName = courseController.getCourseById(14).getName();
-        assertEquals("HTML",CourseName);
+        String courseName = courseController.getCourseById(14).getName();
+        assertEquals("HTML",courseName);
     }
     @Test
     void getCourseByIdFour() throws Exception{
-        String CourseName = courseController.getCourseById(15).getName();
-        assertEquals("CSS",CourseName);
+        String courseName = courseController.getCourseById(15).getName();
+        assertEquals("CSS",courseName);
     }
 }
