@@ -131,10 +131,14 @@ public class StudentService {
          studentRepository.save(student);
     }
 
-    // Function that gets all student create by the given updated date (getStudentsByUpdatedDate)
-//    public List<Student> getStudentsByUpdatedDate(String updatedDate) {
-//        List<Student> student = studentRepository.getStudentsByUpdatedDate(updatedDate);
-//        return student;
-//    }
+    // This function updates all the student 'isActive' column to false (deleteAllStudents)
+    public void deleteAllStudents() {
+        studentRepository.deleteAllStudents();
+    }
+
+
+
+
+
 }
 

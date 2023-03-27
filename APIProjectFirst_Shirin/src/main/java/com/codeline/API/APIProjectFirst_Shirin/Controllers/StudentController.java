@@ -122,13 +122,13 @@ public class StudentController {
         studentService.deleteStudentById(id);
     }
 
-    // Calls the function where it gets all the Student Updated by the given Date (getStudentsByUpdatedDate)
-//    @RequestMapping(value = "/getStudentsByUpdatedDate", method = RequestMethod.GET)
-//    public List<Student> getStudentsByUpdatedDate(@RequestParam String updatedDate) {
-//        List<Student> getStudentByUpdatedDateVariable = studentService.getStudentsByUpdatedDate(updatedDate);
-//        return getStudentByUpdatedDateVariable;
-//
-//    }
+    // This function updates all the student 'isActive' column to false (deleteAllStudents)
+    @RequestMapping(value = "/deleteAllStudents")
+    public void deleteAllStudents() {
+        studentService.deleteAllStudents();
+    }
+
+
 
 
 }
