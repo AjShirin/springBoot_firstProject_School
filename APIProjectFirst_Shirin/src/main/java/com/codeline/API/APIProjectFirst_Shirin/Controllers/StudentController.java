@@ -116,6 +116,12 @@ public class StudentController {
         return getStudentByUpdatedDateVariable;
     }
 
+    // This function updates the 'isActive' column to false by the Student ID (deleteStudentById)
+    @RequestMapping(value = "/deleteStudentById")
+    public void deleteStudentById(Integer id) {
+        studentService.deleteStudentById(id);
+    }
+
     // Calls the function where it gets all the Student Updated by the given Date (getStudentsByUpdatedDate)
 //    @RequestMapping(value = "/getStudentsByUpdatedDate", method = RequestMethod.GET)
 //    public List<Student> getStudentsByUpdatedDate(@RequestParam String updatedDate) {

@@ -49,11 +49,11 @@ public class StudentService {
         return studentRepository.getAllStudent();
     }
 
-    public void deleteStudentById(Integer Id) {
-        // getting student by id and then putting it in an object
-        Student StudentToDelete = studentRepository.findById(Id).get();
-        studentRepository.delete(StudentToDelete);
-    }
+//    public void deleteStudentById(Integer Id) {
+//        // getting student by id and then putting it in an object
+//        Student StudentToDelete = studentRepository.findById(Id).get();
+//        studentRepository.delete(StudentToDelete);
+//    }
 
     //** Function the gets the student By the Name (getStudentByName)
     public Student getStudentByName(String student_name) {
@@ -122,6 +122,13 @@ public class StudentService {
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(UpdatedDate);
         List<Student> studentsUpdatedDate = studentRepository.getStudentsByUpdatedDate(convertedDateFromStringToDateFormat);
         return studentsUpdatedDate;
+    }
+
+    // This function updates the 'isActive' column to false by the Student ID (deleteStudentById)
+        public void deleteStudentById (Integer id){
+        Student student = studentRepository.getStudentById(id);
+         student.setIsActive(Boolean.FALSE);
+         studentRepository.save(student);
     }
 
     // Function that gets all student create by the given updated date (getStudentsByUpdatedDate)
