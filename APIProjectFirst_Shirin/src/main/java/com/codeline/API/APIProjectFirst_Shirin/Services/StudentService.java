@@ -136,6 +136,13 @@ public class StudentService {
         studentRepository.deleteAllStudents();
     }
 
+    //This function updates the 'isActive' column to false by giving the Created date (deleteAllStudentsCreatedAfterDate)
+    public void deleteAllStudentsCreatedAfterDate(Date createdDate) {
+        List<Student> student = studentRepository.getStudentsByCreatedDate(createdDate);
+                student.stream().forEach(create -> create.setIsActive(Boolean.FALSE));
+                studentRepository.saveAll(student);
+    }
+
 
 
 

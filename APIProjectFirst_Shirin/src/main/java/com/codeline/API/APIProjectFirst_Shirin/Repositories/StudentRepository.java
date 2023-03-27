@@ -67,7 +67,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     @Modifying // enhance the query annotation.
     @Transactional // Use Method for database transaction, allows us to set propagation, isolation, timeout, read-only,
     // and rollback conditions and specify the transaction manager.
-    
+
     @Query(value = "Update Student s Set s.isActive = false")
     void deleteAllStudents();
 
