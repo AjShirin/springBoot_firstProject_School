@@ -222,6 +222,25 @@ public class StudentService {
         }
     }
 
+    //update Student (whole row) [updateStudent]
+    public String updateStudent(Integer id, String name, Boolean isActive, String userCreatedDate, String userUpdatedDate) {
+        try {
+            Student student = studentRepository.getStudentById(id);
+            student.setName(name);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date createdDate = formatter.parse(userCreatedDate);
+            Date updatedDate = formatter.parse(userUpdatedDate);
+            student.setCreatedDate(createdDate);
+            student.setUpdatedDate(updatedDate);
+            student.setIsActive(isActive);
+            studentRepository.save(student);
+            return "The record of ID number:" + id +" has been successfully updated :)";
+        } catch (Exception e) {
+            return "An error occurred, record is not updated. Please try again.";
+        }
+    }
+
+
 
 
 }

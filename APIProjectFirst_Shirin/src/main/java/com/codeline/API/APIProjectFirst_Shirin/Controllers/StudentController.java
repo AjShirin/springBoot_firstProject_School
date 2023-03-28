@@ -194,6 +194,22 @@ public class StudentController {
         }
     }
 
+    // This function Updates a record for student with user Input (updateStudent)
+    @RequestMapping(value = "/updateStudent", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateStudent(@RequestParam Integer id,String name,Boolean isActive, String userCreatedDate, String userUpdatedDate) {
+        // ResponseEntity<String> represents an HTTP,
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        try {
+            String responseMsg = studentService.updateStudent(id, name, isActive, userCreatedDate, userUpdatedDate);
+            return ResponseEntity.ok().body(responseMsg);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred, record is not updated. Please try again.");
+        }
+    }
+
+
+
 
 
 }
