@@ -37,7 +37,7 @@ public class StudentService {
         studentRepository.save(student);
     }
 
-   // Function that gets the student record by Id (getStudentById)
+    // Function that gets the student record by Id (getStudentById)
     public Student getStudentById(Integer id) {
         Student student = studentRepository.getStudentById(id); // getting the id from the user
         return student; //creating an empty course and returning it.
@@ -63,16 +63,17 @@ public class StudentService {
     //**
 
     // Function that gets all the active students (getAllActiveStudent)
-    public List<Student> getAllActiveStudent(){
+    public List<Student> getAllActiveStudent() {
         return studentRepository.getAllActiveStudent();
     }
 
     // Function that gets all the not active students (getAllUnActiveStudent)
-    public List<Student> getAllUnActiveStudent(){
+    public List<Student> getAllUnActiveStudent() {
         return studentRepository.getAllUnActiveStudent();
     }
+
     // Function that gets all the Latest Row of the student table (getStudentLatestRow)
-    public List<Student> getStudentLatestRow(){
+    public List<Student> getStudentLatestRow() {
         return studentRepository.getStudentLatestRow();
     }
 
@@ -82,7 +83,7 @@ public class StudentService {
     }
 
     //function that checks if there is a date created bigger than the given date (getStudentCreatedAfterDate)
-       public List<Student> getStudentCreatedAfterDate(String createdDate) throws ParseException {
+    public List<Student> getStudentCreatedAfterDate(String createdDate) throws ParseException {
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
         List<Student> students = studentRepository.getStudentCreatedAfterDate(convertedDateFromStringToDateFormat);
@@ -125,10 +126,10 @@ public class StudentService {
     }
 
     // This function updates the 'isActive' column to false by the Student ID (deleteStudentById)
-        public void deleteStudentById (Integer id){
+    public void deleteStudentById(Integer id) {
         Student student = studentRepository.getStudentById(id);
-         student.setIsActive(Boolean.FALSE);
-         studentRepository.save(student);
+        student.setIsActive(Boolean.FALSE);
+        studentRepository.save(student);
     }
 
     // This function updates all the student 'isActive' column to false (deleteAllStudents)
@@ -137,7 +138,7 @@ public class StudentService {
     }
 
     //This function updates the 'isActive' column to false by giving the Created date (deleteAllStudentsCreatedAfterDate)
-    public void deleteAllStudentsCreatedAfterDate(String createdDate)  throws ParseException{
+    public void deleteAllStudentsCreatedAfterDate(String createdDate) throws ParseException {
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
         List<Student> studentsCreatedDate = studentRepository.getStudentsByCreatedDate(convertedDateFromStringToDateFormat);
@@ -145,7 +146,26 @@ public class StudentService {
         studentRepository.saveAll(studentsCreatedDate);
     }
 
-
+    // This function updates the 'isActive' column to false by giving the student name (deleteByStudentName)
+//    public void deleteByStudentName(String name) {
+//        Student student = studentRepository.getStudentByName(name);
+//        student.setIsActive(Boolean.FALSE);
+//        studentRepository.save(student);
+//    }
+    public String deleteByStudentName(String name) {
+        Student student = studentRepository.getStudentByName(name);
+        if (student != null) {
+            if (student.getIsActive()) {
+                student.setIsActive(false);
+                studentRepository.save(student);
+                return "Student with name " + name + " has been deactivated Successfully :)";
+            } else {
+                return "Student with name " + name + " is already deactivated :)";
+            }
+        } else {
+            return "Student with name " + name + " is not found in the database :(";
+        }
+    }
 
 
 }

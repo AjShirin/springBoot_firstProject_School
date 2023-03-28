@@ -4,6 +4,8 @@ package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -126,9 +128,10 @@ public class StudentController {
     public void deleteAllStudents() {
         studentService.deleteAllStudents();
     }
+
     //This function updates the 'isActive' column to false by giving the Created date (deleteAllStudentsCreatedAfterDate)
     @RequestMapping(value = "/deleteAllStudentsCreatedAfterDate", method = RequestMethod.POST)
-    public String deleteAllStudentsCreatedAfterDate(@RequestParam String createdDate) throws ParseException{
+    public String deleteAllStudentsCreatedAfterDate(@RequestParam String createdDate) throws ParseException {
         try {
             studentService.deleteAllStudentsCreatedAfterDate(createdDate);
         } catch (ParseException e) {
@@ -136,5 +139,23 @@ public class StudentController {
         }
         return "Deleted Successfully :)";
     }
+    @RequestMapping(value = "/deleteByStudentName", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteByStudentName(@RequestParam String name) { // ResponseEntity<String> represents an HTTP,
+      // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        String response = studentService.deleteByStudentName(name);
+        if  (response.contains("not found") || response.contains("is not found")) {
+            return ResponseEntity.badRequest().body(response);
+        } else if (response.contains("already deactivated")) {
+            return ResponseEntity.badRequest().body(response);
+        } else {
+            return ResponseEntity.ok(response);
+        }
+
+    }
 
 }
+
+
+
+
+
