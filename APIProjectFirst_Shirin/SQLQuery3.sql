@@ -9,6 +9,12 @@ Select * From course_marks;
 Select * From school_students;
 Select * From student_courses;
 
+UPDATE student
+SET is_active = 'True'
+WHERE student_name = 'Asma';
+
+DELETE FROM student WHERE student_name = 'Esraa';
+
 INSERT INTO school (updated_date,created_date,is_active,school_name) VALUES ('2020-05-09 09:30:21.1200000','2021-05-05 10:30:21.1000000','True','abm');
 INSERT INTO school (updated_date,created_date,is_active,school_name) VALUES ('2020-05-09','2019-05-05 ','True','santop');
 INSERT INTO school (updated_date,created_date,is_active,school_name) VALUES ('2023-05-09','2020-05-05','False','kitkat');
@@ -22,10 +28,13 @@ INSERT INTO student (updated_date,created_date,is_active,student_name, roll_numb
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-07-05','2020-04-04','True','Fatma',6,3);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-07-05','2020-04-04','False','Farah',2,2);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-07-05','2020-04-04','True','Manal',10,4);
-INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2020-02-10','2021-05-05','True','Esraa',11,1);
+INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2020-02-05','2021-05-05','True','Esraa',11,1);
+
+
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2020-02-10','2021-05-05','True','Safaa',1,1);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2016-02-10','2019-03-04','True','Khulood',4,1);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2016-02-10','2019-03-04','True','Asma',7,1);
+INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2006-02-10','2007-03-04','True','Maryam',8,1);
 
 INSERT INTO course (updated_date,created_date,is_active,course_name,student_id) VALUES ('2023-05-04 09:30:21.1200000','2020-05-05','True','Python',11);
 INSERT INTO course (updated_date,created_date,is_active,course_name,student_id) VALUES ('2023-05-04','2020-05-05','True','HTML',13);

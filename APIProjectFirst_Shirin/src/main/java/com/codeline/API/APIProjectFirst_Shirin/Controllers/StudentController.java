@@ -153,12 +153,27 @@ public class StudentController {
             return ResponseEntity.ok(response);
         }
     }
+
     //This function updates the 'isActive' column to false by giving the Created date (deleteStudentsByCreatedDate)
     @RequestMapping(value = "/deleteStudentsByCreatedDate", method = RequestMethod.POST)
     public ResponseEntity<String> deleteStudentsByCreatedDate(@RequestParam String createdDate) { // ResponseEntity<String> represents an HTTP,
         // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
         try {
             String response = studentService.deleteStudentsByCreatedDate(createdDate);
+            return ResponseEntity.ok(response);
+        } catch (ParseException e) {
+            return ResponseEntity.badRequest().body("Invalid date format :( Try again");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while deleting students :(");
+        }
+    }
+
+    //This function updates the 'isActive' column to false by giving the Updated date (deleteStudentsByUpdatedDate)
+    @RequestMapping(value = "/deleteStudentsByUpdatedDate", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteStudentsByUpdatedDate(@RequestParam String UpdatedDate) { // ResponseEntity<String> represents an HTTP,
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        try {
+            String response = studentService.deleteStudentsByUpdatedDate(UpdatedDate);
             return ResponseEntity.ok(response);
         } catch (ParseException e) {
             return ResponseEntity.badRequest().body("Invalid date format :( Try again");

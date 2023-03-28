@@ -183,6 +183,25 @@ public class StudentService {
             return "Record deleted successfully :)";
         }
     }
+
+    //This function updates the 'isActive' column to false by giving the Updated date (deleteStudentsByUpdatedDate)
+    public String deleteStudentsByUpdatedDate(String UpdatedDate) throws ParseException{
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(UpdatedDate);
+        List<Student> studentsUpdatedDate = studentRepository.getStudentsByUpdatedDate(convertedDateFromStringToDateFormat);
+        if(studentsUpdatedDate.isEmpty()) {
+            return "Date doesn't exist in the database, Try again :(";
+        } else {
+            for(Student student : studentsUpdatedDate) {
+                if (!student.getIsActive()) {
+                    return "The record is already deactivated :)";
+                }
+                student.setIsActive(Boolean.FALSE);
+            }
+            studentRepository.saveAll(studentsUpdatedDate);
+            return "Record deleted successfully :)";
+        }
+    }
 }
 
 
