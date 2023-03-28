@@ -64,6 +64,8 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     @Query("SELECT s from Student s where s.UpdatedDate = :UpdatedDate")
     List<Student> getStudentsByUpdatedDate(Date UpdatedDate);
 
+
+
     @Modifying // enhance the query annotation.
     @Transactional // Use Method for database transaction, allows us to set propagation, isolation, timeout, read-only,
     // and rollback conditions and specify the transaction manager.

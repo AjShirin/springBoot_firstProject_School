@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -166,14 +168,14 @@ public class StudentService {
     //deleteStudentsBySchoolId
 
     //This function updates the 'isActive' column to false by giving the Created date (deleteStudentsByCreatedDate)
-    public String deleteStudentsByCreatedDate(String createdDate) throws ParseException{
+    public String deleteStudentsByCreatedDate(String createdDate) throws ParseException {
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
         List<Student> students = studentRepository.getStudentsByCreatedDate(convertedDateFromStringToDateFormat);
-        if(students.isEmpty()) {
+        if (students.isEmpty()) {
             return "Date doesn't exist in the database, Try again :(";
         } else {
-            for(Student student : students) {
+            for (Student student : students) {
                 if (!student.getIsActive()) {
                     return "The record is already deactivated :)";
                 }
@@ -185,14 +187,14 @@ public class StudentService {
     }
 
     //This function updates the 'isActive' column to false by giving the Updated date (deleteStudentsByUpdatedDate)
-    public String deleteStudentsByUpdatedDate(String UpdatedDate) throws ParseException{
+    public String deleteStudentsByUpdatedDate(String UpdatedDate) throws ParseException {
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(UpdatedDate);
         List<Student> studentsUpdatedDate = studentRepository.getStudentsByUpdatedDate(convertedDateFromStringToDateFormat);
-        if(studentsUpdatedDate.isEmpty()) {
+        if (studentsUpdatedDate.isEmpty()) {
             return "Date doesn't exist in the database, Try again :(";
         } else {
-            for(Student student : studentsUpdatedDate) {
+            for (Student student : studentsUpdatedDate) {
                 if (!student.getIsActive()) {
                     return "The record is already deactivated :)";
                 }
@@ -202,6 +204,26 @@ public class StudentService {
             return "Record deleted successfully :)";
         }
     }
+
+    // Function that creates a new student record (createStudent)
+    public String createStudent(String name) {
+        try {
+            Student student = new Student();
+            student.setName(name);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date createdDate = formatter.parse("2022-03-03");
+            student.setCreatedDate(createdDate);
+            student.setUpdatedDate(new Date());
+            student.setIsActive(Boolean.TRUE);
+            studentRepository.save(student);
+            return "New student added successfully :)";
+        } catch (Exception e) {
+            return "An error occurred, record is not added. Please try again.";
+        }
+    }
+
+
+
 }
 
 

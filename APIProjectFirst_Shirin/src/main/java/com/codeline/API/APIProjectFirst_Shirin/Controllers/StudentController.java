@@ -182,6 +182,19 @@ public class StudentController {
         }
     }
 
+    // This function creates new record for student with user Input (createStudent)
+    @RequestMapping(value = "/createStudent", method = RequestMethod.POST)
+    public ResponseEntity<String> createStudent( @RequestParam String name) { // ResponseEntity<String> represents an HTTP,
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        try {
+            studentService.createStudent(name);
+            return ResponseEntity.status(HttpStatus.CREATED).body("New student added successfully :)");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred, record is not added. Please try again.");
+        }
+    }
+
+
 
 }
 
