@@ -147,11 +147,6 @@ public class StudentService {
     }
 
     // This function updates the 'isActive' column to false by giving the student name (deleteByStudentName)
-//    public void deleteByStudentName(String name) {
-//        Student student = studentRepository.getStudentByName(name);
-//        student.setIsActive(Boolean.FALSE);
-//        studentRepository.save(student);
-//    }
     public String deleteByStudentName(String name) {
         Student student = studentRepository.getStudentByName(name);
         if (student != null) {
@@ -166,7 +161,28 @@ public class StudentService {
             return "Student with name " + name + " is not found in the database :(";
         }
     }
+    //deleteByStudentByRollNumber
 
+    //deleteStudentsBySchoolId
 
+    //This function updates the 'isActive' column to false by giving the Created date (deleteStudentsByCreatedDate)
+    public String deleteStudentsByCreatedDate(String createdDate) throws ParseException{
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<Student> students = studentRepository.getStudentsByCreatedDate(convertedDateFromStringToDateFormat);
+        if(students.isEmpty()) {
+            return "Date doesn't exist in the database, Try again :(";
+        } else {
+            for(Student student : students) {
+                if (!student.getIsActive()) {
+                    return "The record is already deactivated :)";
+                }
+                student.setIsActive(Boolean.FALSE);
+            }
+            studentRepository.saveAll(students);
+            return "Record deleted successfully :)";
+        }
+    }
 }
+
 

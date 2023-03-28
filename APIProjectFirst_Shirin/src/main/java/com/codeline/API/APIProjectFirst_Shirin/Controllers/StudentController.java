@@ -139,21 +139,37 @@ public class StudentController {
         }
         return "Deleted Successfully :)";
     }
+
+    //This function updates the 'isActive' column to false by giving the Student name (deleteByStudentName)
     @RequestMapping(value = "/deleteByStudentName", method = RequestMethod.POST)
     public ResponseEntity<String> deleteByStudentName(@RequestParam String name) { // ResponseEntity<String> represents an HTTP,
-      // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
         String response = studentService.deleteByStudentName(name);
-        if  (response.contains("not found") || response.contains("is not found")) {
+        if (response.contains("not found") || response.contains("is not found")) {
             return ResponseEntity.badRequest().body(response);
         } else if (response.contains("already deactivated")) {
             return ResponseEntity.badRequest().body(response);
         } else {
             return ResponseEntity.ok(response);
         }
-
+    }
+    //This function updates the 'isActive' column to false by giving the Created date (deleteStudentsByCreatedDate)
+    @RequestMapping(value = "/deleteStudentsByCreatedDate", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteStudentsByCreatedDate(@RequestParam String createdDate) { // ResponseEntity<String> represents an HTTP,
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        try {
+            String response = studentService.deleteStudentsByCreatedDate(createdDate);
+            return ResponseEntity.ok(response);
+        } catch (ParseException e) {
+            return ResponseEntity.badRequest().body("Invalid date format :( Try again");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while deleting students :(");
+        }
     }
 
+
 }
+
 
 
 
