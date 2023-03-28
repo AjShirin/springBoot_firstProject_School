@@ -137,12 +137,13 @@ public class StudentService {
     }
 
     //This function updates the 'isActive' column to false by giving the Created date (deleteAllStudentsCreatedAfterDate)
-    public void deleteAllStudentsCreatedAfterDate(Date createdDate) {
-        List<Student> student = studentRepository.getStudentsByCreatedDate(createdDate);
-                student.stream().forEach(create -> create.setIsActive(Boolean.FALSE));
-                studentRepository.saveAll(student);
+    public void deleteAllStudentsCreatedAfterDate(String createdDate)  throws ParseException{
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<Student> studentsCreatedDate = studentRepository.getStudentsByCreatedDate(convertedDateFromStringToDateFormat);
+        studentsCreatedDate.stream().forEach(create -> create.setIsActive(Boolean.FALSE));
+        studentRepository.saveAll(studentsCreatedDate);
     }
-
 
 
 

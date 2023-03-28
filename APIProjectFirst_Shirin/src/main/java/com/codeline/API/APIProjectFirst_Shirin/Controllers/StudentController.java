@@ -1,7 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,9 +126,15 @@ public class StudentController {
     public void deleteAllStudents() {
         studentService.deleteAllStudents();
     }
-
-
-
-
+    //This function updates the 'isActive' column to false by giving the Created date (deleteAllStudentsCreatedAfterDate)
+    @RequestMapping(value = "/deleteAllStudentsCreatedAfterDate", method = RequestMethod.POST)
+    public String deleteAllStudentsCreatedAfterDate(@RequestParam String createdDate) throws ParseException{
+        try {
+            studentService.deleteAllStudentsCreatedAfterDate(createdDate);
+        } catch (ParseException e) {
+            return "Failed to delete try again...";
+        }
+        return "Deleted Successfully :)";
+    }
 
 }
