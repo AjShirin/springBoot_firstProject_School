@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
+import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import com.codeline.API.APIProjectFirst_Shirin.RequestObject.SchoolRequestForCreateDateUpdate;
 import com.codeline.API.APIProjectFirst_Shirin.Services.SchoolService;
@@ -93,16 +94,16 @@ public class SchoolController {
     // Function where it gets all the School Created by the given Date (getSchoolByCreatedDate)
     @RequestMapping(value = "/getSchoolByCreatedDate", method = RequestMethod.GET)
     public List<School> getSchoolByCreatedDate(String createdDate) throws ParseException {
-        List<School> getSchoolByCreatedDateVariable = schoolService.getSchoolsByCreatedDate(createdDate);
+        List<School> getSchoolByCreatedDateVariable = schoolService.getSchoolByCreatedDate(createdDate);
         return getSchoolByCreatedDateVariable;
     }
 
     // Function where it gets all the School Updated by the given Date (getSchoolByUpdatedDate)
-    @RequestMapping(value = "/getSchoolByUpdatedDate", method = RequestMethod.GET)
-    public List<School> getSchoolByUpdatedDateVariable(String UpdatedDate) throws ParseException {
-        List<School> getSchoolByUpdatedDateVariable = schoolService.getSchoolByUpdatedDate(UpdatedDate);
-        return getSchoolByUpdatedDateVariable;
-    }
+//    @RequestMapping(value = "/getSchoolByUpdatedDate", method = RequestMethod.GET)
+//    public List<School> getSchoolByUpdatedDateVariable(String UpdatedDate) throws ParseException {
+//        List<School> getSchoolByUpdatedDateVariable = schoolService.getSchoolByUpdatedDate(UpdatedDate);
+//        return getSchoolByUpdatedDateVariable;
+//    }
 
     // Function that school by the User input for the Number of students (getSchoolByNumberOfStudents)
     @RequestMapping(value = "/getSchoolByNumberOfStudent", method = RequestMethod.POST)
@@ -130,10 +131,10 @@ public class SchoolController {
     }
 
     //This function updates the 'isActive' column to false by giving the Created date (deleteSchoolsByCreatedDate)
-    @RequestMapping(value = "/deleteSchoolsByCreatedDate", method = RequestMethod.POST)
-    public void deleteSchoolsByCreatedDate(@RequestParam String createdDate) {
-        schoolService.deleteSchoolsByCreatedDate(createdDate);
-    }
+//    @RequestMapping(value = "/deleteSchoolsByCreatedDate", method = RequestMethod.POST)
+//    public void deleteSchoolsByCreatedDate(@RequestParam String createdDate) {
+//        schoolService.deleteSchoolsByCreatedDate(createdDate);
+//    }
 
     //This function updates the 'isActive' column to false by giving the Updated date (deleteSchoolsByUpdatedDate)
     @RequestMapping(value = "/deleteSchoolsByUpdatedDate ", method = RequestMethod.POST)

@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
+import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,16 +70,18 @@ public class SchoolService {
     }
 
     // Function where it gets all the School Created by the given Date (getSchoolsByCreatedDate)
-    public List<School> getSchoolsByCreatedDate(String createdDate) {
-        List<School> schools = schoolRepository.getSchoolsByCreatedDate(createdDate);
+    public List<School> getSchoolByCreatedDate (String createdDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<School> schools = schoolRepository.getSchoolByCreatedDate(convertedDateFromStringToDateFormat);
         return schools;
     }
 
     // Function that gets all school create by the given updated date (getSchoolByUpdatedDate)
-    public List<School> getSchoolByUpdatedDate(String UpdatedDate) {
-        List<School> schools = schoolRepository.getSchoolsByCreatedDate(UpdatedDate);
-        return schools;
-    }
+//    public List<School> getSchoolByUpdatedDate(String UpdatedDate) {
+//        List<School> schools = schoolRepository.getSchoolsByCreatedDate(UpdatedDate);
+//        return schools;
+//    }
 
     // Function that school by the User input for the Number of students (getSchoolByNumberOfStudents)
     public School getSchoolByNumberOfStudent(Integer numberOfStudent){
@@ -117,11 +120,11 @@ public class SchoolService {
     }
 
     //This function updates the 'isActive' column to false by giving the Created date (deleteSchoolsByCreatedDate)
-    public void deleteSchoolsByCreatedDate(String createdDate) {
-        List<School> schools = schoolRepository.getSchoolsByCreatedDate(createdDate);
-        schools.stream().forEach(create -> create.setIsActive(Boolean.FALSE));
-        schoolRepository.saveAll(schools);
-    }
+//    public void deleteSchoolsByCreatedDate(String createdDate) {
+//        List<School> schools = schoolRepository.getSchoolsByCreatedDate(createdDate);
+//        schools.stream().forEach(create -> create.setIsActive(Boolean.FALSE));
+//        schoolRepository.saveAll(schools);
+//    }
 
     //This function updates the 'isActive' column to false by giving the Updated date (deleteSchoolsByUpdatedDate)
     public void deleteSchoolsByUpdatedDate(String updatedDate) {

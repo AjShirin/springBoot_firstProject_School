@@ -100,10 +100,11 @@ public class StudentService {
         return studentList; // will return to whomever is calling the list which is the controller
     }
 
-//    public Student getByStudentByRollNumber(Integer studentRollNumber) {
-//        Student student = studentRepository.getByStudentByRollNumber(studentRollNumber);
-//        return student;
-//    }
+    // Function the gets the student By the roll Number (getByStudentByRollNumber)
+    public Student getByStudentByRollNumber(Integer rollNumber) {
+        Student student = studentRepository.getByStudentByRollNumber(rollNumber);
+        return student;
+    }
 
     // Function the gets the student By the school ID (getStudentsBySchoolId)
     public List<Student> getStudentsBySchoolId(Integer id) {
@@ -234,13 +235,11 @@ public class StudentService {
             student.setUpdatedDate(updatedDate);
             student.setIsActive(isActive);
             studentRepository.save(student);
-            return "The record of ID number:" + id +" has been successfully updated :)";
+            return "The record of ID number:" + id + " has been successfully updated :)";
         } catch (Exception e) {
             return "An error occurred, record is not updated. Please try again.";
         }
     }
-
-
 
 
 }
