@@ -113,6 +113,15 @@ public class SchoolService {
         schoolRepository.deleteAllSchool();
     }
 
+    //This function updates the 'isActive' column to false by giving the Created date (deleteAllSchoolsCreatedAfterDate)
+    public void deleteAllSchoolsCreatedAfterDate(String createdDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<School> schoolsCreatedDate = schoolRepository.getSchoolByCreatedDate(convertedDateFromStringToDateFormat);
+        schoolsCreatedDate.stream().forEach(create -> create.setIsActive(Boolean.FALSE));
+        schoolRepository.saveAll(schoolsCreatedDate);
+    }
+
      // This function updates the 'isActive' column to false by giving the school name (deleteBySchoolName)
     public void deleteBySchoolName(String name) {
         School school = schoolRepository.getSchoolByName(name);
@@ -141,11 +150,6 @@ public class SchoolService {
     }
 
     //This function updates the 'isActive' column to false by giving the Updated date (deleteSchoolsByUpdatedDate)
-//    public void deleteSchoolsByUpdatedDate(String updatedDate) {
-//        List<School> school = schoolRepository.getSchoolByUpdatedDate(updatedDate);
-//        school.stream().forEach(update -> update.setIsActive(Boolean.FALSE));
-//        schoolRepository.saveAll(school);
-//    }
     public String deleteSchoolsByUpdatedDate(String UpdatedDate) throws ParseException {
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(UpdatedDate);

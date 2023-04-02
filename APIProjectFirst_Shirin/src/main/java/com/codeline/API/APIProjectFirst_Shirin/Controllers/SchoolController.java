@@ -129,6 +129,17 @@ public class SchoolController {
         schoolService.deleteAllSchool();
     }
 
+    //This function updates the 'isActive' column to false by giving the Created date (deleteAllSchoolsCreatedAfterDate)
+    @RequestMapping(value = "/deleteAllSchoolsCreatedAfterDate", method = RequestMethod.POST)
+    public String deleteAllSchoolsCreatedAfterDate(@RequestParam String createdDate) throws ParseException {
+        try {
+            schoolService.deleteAllSchoolsCreatedAfterDate(createdDate);
+        } catch (ParseException e) {
+            return "Failed to delete try again...";
+        }
+        return "Deleted Successfully :)";
+    }
+
     // This function updates the 'isActive' column to false by giving the school name (deleteBySchoolName)
     @RequestMapping(value = "/deleteBySchoolName")
     public void deleteBySchoolName(@RequestParam String name) {
@@ -148,7 +159,6 @@ public class SchoolController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while deleting school :(");
         }
     }
-
 
     //This function updates the 'isActive' column to false by giving the Updated date (deleteSchoolsByUpdatedDate)
     @RequestMapping(value = "/deleteSchoolsByUpdatedDate", method = RequestMethod.POST)
