@@ -53,15 +53,12 @@ public interface SchoolRepository extends CrudRepository<School, Integer> {
     @Query("SELECT sch from School sch where sch.createdDate = :createdDate")
     List<School> getSchoolByCreatedDate (Date createdDate);
 
+    @Query("SELECT sch from School sch where sch.UpdatedDate = :UpdatedDate")
+    List<School> getSchoolByUpdatedDate(Date UpdatedDate);
+
     @Modifying // enhance the query annotation.
     @Transactional // Use Method for database transaction, allows us to set propagation, isolation, timeout, read-only,
     // and rollback conditions and specify the transaction manager.
     @Query(value = "Update School sch Set sch.isActive = false")
     void deleteAllSchool();
-
-
-    @Query(value = "Select * from school where updated_date like CONCAT (?1, '%') ", nativeQuery = true) // nativeQuery you can use the variables in the sql
-    List<School> getSchoolByUpdatedDate(String UpdatedDate);
-
-
 }

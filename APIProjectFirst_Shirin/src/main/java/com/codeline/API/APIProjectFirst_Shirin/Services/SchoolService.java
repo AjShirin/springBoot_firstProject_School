@@ -78,10 +78,12 @@ public class SchoolService {
     }
 
     // Function that gets all school create by the given updated date (getSchoolByUpdatedDate)
-//    public List<School> getSchoolByUpdatedDate(String UpdatedDate) {
-//        List<School> schools = schoolRepository.getSchoolsByCreatedDate(UpdatedDate);
-//        return schools;
-//    }
+    public List<School> getSchoolByUpdatedDate(String UpdatedDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(UpdatedDate);
+        List<School> schoolUpdatedDateVariable = schoolRepository.getSchoolByUpdatedDate(convertedDateFromStringToDateFormat);
+        return schoolUpdatedDateVariable;
+    }
 
     // Function that school by the User input for the Number of students (getSchoolByNumberOfStudents)
     public School getSchoolByNumberOfStudent(Integer numberOfStudent){
@@ -127,11 +129,11 @@ public class SchoolService {
 //    }
 
     //This function updates the 'isActive' column to false by giving the Updated date (deleteSchoolsByUpdatedDate)
-    public void deleteSchoolsByUpdatedDate(String updatedDate) {
-        List<School> school = schoolRepository.getSchoolByUpdatedDate(updatedDate);
-        school.stream().forEach(update -> update.setIsActive(Boolean.FALSE));
-        schoolRepository.saveAll(school);
-    }
+//    public void deleteSchoolsByUpdatedDate(String updatedDate) {
+//        List<School> school = schoolRepository.getSchoolByUpdatedDate(updatedDate);
+//        school.stream().forEach(update -> update.setIsActive(Boolean.FALSE));
+//        schoolRepository.saveAll(school);
+//    }
 
     // Create a new school record (createSchool)
     public void createSchool(String name) {
