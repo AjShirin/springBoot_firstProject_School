@@ -150,12 +150,19 @@ public class SchoolController {
     }
 
 
-
     //This function updates the 'isActive' column to false by giving the Updated date (deleteSchoolsByUpdatedDate)
-//    @RequestMapping(value = "/deleteSchoolsByUpdatedDate ", method = RequestMethod.POST)
-//    public void deleteSchoolsByUpdatedDate(@RequestParam String updatedDate) {
-//        schoolService.deleteSchoolsByUpdatedDate(updatedDate);
-//    }
+    @RequestMapping(value = "/deleteSchoolsByUpdatedDate", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteSchoolsByUpdatedDate(@RequestParam String UpdatedDate) { // ResponseEntity<String> represents an HTTP,
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        try {
+            String response = schoolService.deleteSchoolsByUpdatedDate(UpdatedDate);
+            return ResponseEntity.ok(response);
+        } catch (ParseException e) {
+            return ResponseEntity.badRequest().body("Invalid date format :( Try again");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while deleting School :(");
+        }
+    }
 
     // Create a new school record (createSchool)
     @RequestMapping(value = "/createSchool")

@@ -146,6 +146,23 @@ public class SchoolService {
 //        school.stream().forEach(update -> update.setIsActive(Boolean.FALSE));
 //        schoolRepository.saveAll(school);
 //    }
+    public String deleteSchoolsByUpdatedDate(String UpdatedDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(UpdatedDate);
+        List<School> schoolUpdatedDate = schoolRepository.getSchoolByUpdatedDate(convertedDateFromStringToDateFormat);
+        if (schoolUpdatedDate.isEmpty()) {
+            return "Date doesn't exist in the database, Try again :(";
+        } else {
+            for (School school : schoolUpdatedDate) {
+                if (!school.getIsActive()) {
+                    return "The record is already deactivated :)";
+                }
+                school.setIsActive(Boolean.FALSE);
+            }
+            schoolRepository.saveAll(schoolUpdatedDate);
+            return "Record deleted successfully :)";
+        }
+    }
 
     // Create a new school record (createSchool)
     public void createSchool(String name) {
