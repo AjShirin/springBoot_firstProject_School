@@ -122,11 +122,23 @@ public class SchoolService {
     }
 
     //This function updates the 'isActive' column to false by giving the Created date (deleteSchoolsByCreatedDate)
-//    public void deleteSchoolsByCreatedDate(String createdDate) {
-//        List<School> schools = schoolRepository.getSchoolsByCreatedDate(createdDate);
-//        schools.stream().forEach(create -> create.setIsActive(Boolean.FALSE));
-//        schoolRepository.saveAll(schools);
-//    }
+    public String deleteSchoolsByCreatedDate(String createdDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<School> schools = schoolRepository.getSchoolByCreatedDate(convertedDateFromStringToDateFormat);
+        if (schools.isEmpty()) {
+            return "Date doesn't exist in the database, Try again :(";
+        } else {
+            for (School school : schools) {
+                if (!school.getIsActive()) {
+                    return "The record is already deactivated :)";
+                }
+                school.setIsActive(Boolean.FALSE);
+            }
+            schoolRepository.saveAll(schools);
+            return "Record deleted successfully :)";
+        }
+    }
 
     //This function updates the 'isActive' column to false by giving the Updated date (deleteSchoolsByUpdatedDate)
 //    public void deleteSchoolsByUpdatedDate(String updatedDate) {

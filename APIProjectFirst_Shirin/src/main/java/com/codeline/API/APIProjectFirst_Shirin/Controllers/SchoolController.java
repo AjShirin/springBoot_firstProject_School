@@ -7,9 +7,14 @@ import com.codeline.API.APIProjectFirst_Shirin.RequestObject.SchoolRequestForCre
 import com.codeline.API.APIProjectFirst_Shirin.Services.SchoolService;
 import com.codeline.API.APIProjectFirst_Shirin.Slack.SlackClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 // since we put @RequestMapping for the class in the top , so there is no need to add it in @RequestMapping  for function
@@ -131,10 +136,20 @@ public class SchoolController {
     }
 
     //This function updates the 'isActive' column to false by giving the Created date (deleteSchoolsByCreatedDate)
-//    @RequestMapping(value = "/deleteSchoolsByCreatedDate", method = RequestMethod.POST)
-//    public void deleteSchoolsByCreatedDate(@RequestParam String createdDate) {
-//        schoolService.deleteSchoolsByCreatedDate(createdDate);
-//    }
+    @RequestMapping(value = "/deleteSchoolsByCreatedDate", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteSchoolsByCreatedDate(@RequestParam String createdDate) { // ResponseEntity<String> represents an HTTP,
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        try {
+            String response = schoolService.deleteSchoolsByCreatedDate(createdDate);
+            return ResponseEntity.ok(response);
+        } catch (ParseException e) {
+            return ResponseEntity.badRequest().body("Invalid date format :( Try again");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while deleting school :(");
+        }
+    }
+
+
 
     //This function updates the 'isActive' column to false by giving the Updated date (deleteSchoolsByUpdatedDate)
 //    @RequestMapping(value = "/deleteSchoolsByUpdatedDate ", method = RequestMethod.POST)
