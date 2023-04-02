@@ -91,8 +91,8 @@ public class StudentController {
 
     // Class the function the gets the student by the Roll Number (getByStudentByRollNumber)
     @RequestMapping(value = "/getByStudentByRollNumber", method = RequestMethod.GET)
-    public Student getByStudentByRollNumber(@RequestParam Integer rollNumber) {
-        Student studentByRollNumber = studentService.getByStudentByRollNumber(rollNumber);
+    public String getByStudentByRollNumber(@RequestParam String rollNumber) {
+        String studentByRollNumber = studentService.getByStudentByRollNumber(rollNumber);
         return studentByRollNumber;
     }
 

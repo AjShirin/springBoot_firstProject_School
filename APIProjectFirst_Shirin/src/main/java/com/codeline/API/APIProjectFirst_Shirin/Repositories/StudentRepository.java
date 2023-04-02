@@ -72,7 +72,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     void deleteAllStudents();
 
     @Query("SELECT s FROM Student s WHERE s.rollNumber = :rollNumber")
-    Student getByStudentByRollNumber(@Param("rollNumber")Integer rollNumber);
+    Student getByStudentByRollNumber(@Param("rollNumber")String rollNumber);
 
 
 

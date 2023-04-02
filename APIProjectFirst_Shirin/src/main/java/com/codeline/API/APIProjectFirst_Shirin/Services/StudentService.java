@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -62,8 +60,22 @@ public class StudentService {
         Student studentName = studentRepository.getStudentByName(student_name); // getting the student_name from the user
         return studentName;  //creating an empty school and returning it.
     }
-    //**
 
+    // Function the gets the student By the roll Number (getByStudentByRollNumber)
+       public String getByStudentByRollNumber(String rollNumber) {
+        Student student = studentRepository.getByStudentByRollNumber(rollNumber);
+        if (student == null) {
+            return "Record not found. The roll number may be wrong, please try again.";
+        } else {
+            return   "Student ID: " + " " + student.getId() +"\nRoll Number :"+ " "
+                    + student.getRollNumber() + "\nName: " +" " +student.getName()
+                    +"\nStudent Activation :" + " " + student.getIsActive()
+                    + "\nCreated date: " + " " + student.getCreatedDate()
+                    + "\nUpdated date :"+ " " + student.getUpdatedDate() ;
+        }
+    }
+
+    //**
     // Function that gets all the active students (getAllActiveStudent)
     public List<Student> getAllActiveStudent() {
         return studentRepository.getAllActiveStudent();
@@ -98,12 +110,6 @@ public class StudentService {
         Integer schoolId = school.getId(); // getting the ID from school model and saving it into schoolId
         List<Student> studentList = studentRepository.getStudentsBySchoolId(schoolId);
         return studentList; // will return to whomever is calling the list which is the controller
-    }
-
-    // Function the gets the student By the roll Number (getByStudentByRollNumber)
-    public Student getByStudentByRollNumber(Integer rollNumber) {
-        Student student = studentRepository.getByStudentByRollNumber(rollNumber);
-        return student;
     }
 
     // Function the gets the student By the school ID (getStudentsBySchoolId)
