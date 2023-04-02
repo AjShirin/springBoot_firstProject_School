@@ -154,6 +154,23 @@ public class StudentController {
         }
     }
 
+    //This function updates the 'isActive' column to false by giving the student roll number (deleteByStudentByRollNumber)
+    @RequestMapping(value = "/deleteByStudentByRollNumber", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteByStudentByRollNumber(@RequestParam String rollNumber) { // ResponseEntity<String> represents an HTTP,
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        String response = studentService.deleteByStudentByRollNumber(rollNumber);
+        if (response.contains("not found") || response.contains("is not found")) {
+            return ResponseEntity.badRequest().body(response);
+        } else if (response.contains("Already deactivated")) {
+            return ResponseEntity.badRequest().body(response);
+        } else {
+            return ResponseEntity.ok(response);
+        }
+    }
+
+
+
+
     //This function updates the 'isActive' column to false by giving the Created date (deleteStudentsByCreatedDate)
     @RequestMapping(value = "/deleteStudentsByCreatedDate", method = RequestMethod.POST)
     public ResponseEntity<String> deleteStudentsByCreatedDate(@RequestParam String createdDate) { // ResponseEntity<String> represents an HTTP,
@@ -207,11 +224,6 @@ public class StudentController {
                     .body("An error occurred, record is not updated. Please try again.");
         }
     }
-
-
-
-
-
 }
 
 

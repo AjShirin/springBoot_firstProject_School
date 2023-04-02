@@ -160,7 +160,7 @@ public class StudentService {
         Student student = studentRepository.getStudentByName(name);
         if (student != null) {
             if (student.getIsActive()) {
-                student.setIsActive(false);
+                student.setIsActive(Boolean.FALSE);
                 studentRepository.save(student);
                 return "Student with name " + name + " has been deactivated Successfully :)";
             } else {
@@ -170,7 +170,21 @@ public class StudentService {
             return "Student with name " + name + " is not found in the database :(";
         }
     }
-    //deleteByStudentByRollNumber
+    //This function updates the 'isActive' column to false by giving the student roll number (deleteByStudentByRollNumber)
+    public String deleteByStudentByRollNumber(String rollNumber) {
+        Student student = studentRepository.getByStudentByRollNumber(rollNumber);
+        if (student != null) {
+            if (student.getIsActive()) {
+                student.setIsActive(Boolean.FALSE);
+                studentRepository.save(student);
+                return "Student with name " + rollNumber + " has been deactivated Successfully :)";
+            } else {
+                return "Student with name " + rollNumber + " is already deactivated :)";
+            }
+        } else {
+            return "Student with name " + rollNumber + " is not found in the database :(";
+        }
+    }
 
     //deleteStudentsBySchoolId
 
