@@ -71,6 +71,12 @@ public class MarkService {
         return markToObtain;
     }
 
+    //Function that gets the obtain mark which is less than the given (getByObtainedMarksLessThan)
+    public List<Mark> getByObtainedMarksLessThan(Integer obtainMark){
+        List<Mark> markToObtain = markRepository.getByObtainedMarksLessThan(obtainMark);
+        return markToObtain;
+    }
+
 
 
 
