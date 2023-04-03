@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
+import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -146,15 +147,24 @@ public class CourseService {
     }
 
     //update Course (whole row) [updateCourse]
-    public void updateCourse(Integer id, String name, Boolean isActive) {
-        Course course = courseRepository.getCourseById(id);
-        course.setName(name);
-        course.setCreatedDate(new Date());
-        course.setUpdatedDate(new Date());
-        course.setIsActive(isActive);
-        courseRepository.save(course);
+    public String updateCourse(Integer id, String name, Boolean isActive, String userCreatedDate, String userUpdatedDate) {
+        try {
+            Course course = courseRepository.getCourseById(id);
+            course.setName(name);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date createdDate = formatter.parse(userCreatedDate);
+            Date updatedDate = formatter.parse(userUpdatedDate);
+            course.setCreatedDate(createdDate);
+            course.setUpdatedDate(updatedDate);
+            course.setIsActive(isActive);
+            courseRepository.save(course);
+            return "The Course ID:" + id + " has been successfully updated :)";
+        } catch (Exception e) {
+            return "An error occurred, record is not updated. Please try again.";
+        }
     }
 }
+/**/
 
 //    public Course getByCourseName(String courseName) {
 //        Course course = courseRepository.getCourseByName(courseName);// get course by course name

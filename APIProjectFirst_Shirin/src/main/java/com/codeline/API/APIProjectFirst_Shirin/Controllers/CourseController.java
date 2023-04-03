@@ -5,6 +5,7 @@ import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import com.codeline.API.APIProjectFirst_Shirin.Services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -173,17 +174,19 @@ public class CourseController {
     public void createCourse(String name) {
         courseService.createCourse(name);
     }
-
-
-
-
-
-
-
-
-
-
-
+    // This function Updates a record for Course  with user Input (updateCourse)
+    @RequestMapping(value = "/updateCourse", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateCourse(@RequestParam Integer id, String name, Boolean isActive, String userCreatedDate, String userUpdatedDate) {
+        // ResponseEntity<String> represents an HTTP,
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        try {
+            String responseMsg = courseService.updateCourse(id, name, isActive, userCreatedDate, userUpdatedDate);
+            return ResponseEntity.ok().body(responseMsg);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred, Course is not updated. Please try again.");
+        }
+    }
 
 }
 
