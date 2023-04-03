@@ -25,14 +25,7 @@ public class MarkController {
 
     MarkService markService;
 
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    //function that returns all student
-    public List<Mark> getAllMarks() { // This will take from the browser and then return in the browser
-        List<Mark> mark = markService.getAllMarks(); // changing the list to the function because instead of we
-        //initialize empty list and then insert data we directly inserted a data.
-        return mark;
-    }
-
+    // Function that gets the make by the ID (getById)
     @RequestMapping(value = "/getById", method = RequestMethod.GET) // "mark/getById" is a prefix
     public Mark getMarkById(@RequestParam Integer markId) { //Request Parameter gets the parameter you want
         // Mark mark = new Mark(); // creating an empty school
@@ -41,15 +34,37 @@ public class MarkController {
         return mark;
     }
 
+    // Function that gets all the school (getAll)
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    //function that returns all student
+    public List<Mark> getAllMarks() { // This will take from the browser and then return in the browser
+        List<Mark> mark = markService.getAllMarks(); // changing the list to the function because instead of we
+        //initialize empty list and then insert data we directly inserted a data.
+        return mark;
+    }
+
+    // Function That gets all Marks that are active (getAllActive)
     @RequestMapping(value = "/getAllMarkByIsActive")
     public List<Mark> getAllActiveMark() {
         List<Mark> activeMarkList = markService.getAllActiveMark();
         return activeMarkList;
     }
 
+    // Function that gets all the marks that are not active (getAllInActive)
     @RequestMapping(value = "/getAllMarkByIsUnActive")
     public List<Mark> getAllUnActiveMark() {
         List<Mark> notActiveMarkList = markService.getAllUnActiveMark();
         return notActiveMarkList;
     }
+    // Calls the function that gets the latest row of mark (getLatestRow)
+    @RequestMapping(value = "/getLatestRow")
+    public List<Mark> getLatestRow() {
+        List<Mark> markLatestRowList = markService.getLatestRow();
+        return markLatestRowList;
+    }
+
+
+
+
+
 }

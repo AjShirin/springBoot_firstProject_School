@@ -2,6 +2,7 @@ package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
+import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -32,4 +33,7 @@ public interface MarkRepository extends CrudRepository<Mark, Integer> {
 
     @Query(value = "SELECT m from Mark m where m.isActive = false")
     List<Mark> getAllUnActiveMark();
+
+    @Query(value = "SELECT m from Mark m where m.id = (SELECT Max(m.id) FROM Mark m)")
+    List<Mark> getLatestRow();
 }

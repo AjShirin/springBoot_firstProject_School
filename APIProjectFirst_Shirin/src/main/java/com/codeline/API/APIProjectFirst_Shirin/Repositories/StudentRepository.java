@@ -70,13 +70,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     @Query(value = "Update Student s Set s.isActive = false")
     void deleteAllStudents();
 
-//    @Query("UPDATE Student s SET s.isActive = false WHERE s.school.id = :schoolId")
-//    void deleteStudentsBySchoolId(@Param("schoolId") Integer schoolId);
-
     @Query("SELECT s FROM Student s WHERE s.rollNumber = :rollNumber")
     Student getByStudentByRollNumber(@Param("rollNumber")String rollNumber);
-
-
-
 
 }
