@@ -83,6 +83,12 @@ public class MarkController {
         List<Mark> markList = markService.getAllByGrade(grade);
         return markList;
     }
+    //Function that gets the obtain mark which is bigger than the given (getByObtainedMarksMoreThan)
+    @RequestMapping(value = "/getByObtainedMarksMoreThan", method = RequestMethod.GET)
+    public List<Mark> getByObtainedMarksMoreThan(Integer obtainMark) {
+        List<Mark> markToObtain = markService.getByObtainedMarksMoreThan(obtainMark);
+        return markToObtain;
+    }
 
 
 

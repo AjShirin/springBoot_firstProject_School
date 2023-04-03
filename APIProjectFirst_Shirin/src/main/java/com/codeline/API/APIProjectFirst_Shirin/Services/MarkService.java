@@ -65,6 +65,12 @@ public class MarkService {
         return mark;
     }
 
+    //Function that gets the obtain mark which is bigger than the given (getByObtainedMarksMoreThan)
+    public List<Mark> getByObtainedMarksMoreThan(Integer obtainMark){
+        List<Mark> markToObtain = markRepository.getByObtainedMarksMoreThan(obtainMark);
+        return markToObtain;
+    }
+
 
 
 

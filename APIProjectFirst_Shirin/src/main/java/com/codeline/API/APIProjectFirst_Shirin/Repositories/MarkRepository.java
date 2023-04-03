@@ -48,4 +48,7 @@ public interface MarkRepository extends CrudRepository<Mark, Integer> {
     @Query(value = "SELECT m FROM Mark m WHERE m.grade =:grade")
     List<Mark> getAllByGrade(@Param("grade") String grade);
 
+    @Query(value = "SELECT m FROM Mark m WHERE m.obtainMark >:obtainMark")
+    List<Mark> getByObtainedMarksMoreThan(@Param("obtainMark") Integer obtainMark);
+
 }
