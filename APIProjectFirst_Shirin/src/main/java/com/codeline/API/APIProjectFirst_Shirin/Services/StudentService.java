@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 
+import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
@@ -91,11 +92,12 @@ public class StudentService {
         return studentRepository.getStudentLatestRow();
     }
 
-//    // function that gets the latest update for student (getStudentLatestUpdated)
-//    public List<Student> getStudentLatestUpdated() {
-//        return studentRepository.get
-//                .getStudentLatestRow();
-//    }
+    // function that gets the latest update for student (getStudentLatestUpdated)
+    public List<Student> getStudentLatestUpdated() {
+        return studentRepository.getStudentLatestUpdated();
+
+    }
+
 
     //function that checks if there is a date created bigger than the given date (getStudentCreatedAfterDate)
     public List<Student> getStudentCreatedAfterDate(String createdDate) throws ParseException {

@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 
+import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -47,6 +48,9 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 
     @Query(value = "SELECT std from Student std where std.id = (SELECT Max(std.id) FROM Student std)")
     List<Student> getStudentLatestRow();
+
+    @Query(value = "SELECT std from Student std where std.UpdatedDate = (SELECT MAX(std.UpdatedDate) FROM Student std)")
+    List<Student> getStudentLatestUpdated();
 
     @Query(value = "SELECT DISTINCT(school_id) FROM student", nativeQuery = true)
     List<Integer> getDistinctSchoolIdsFromStudent();
