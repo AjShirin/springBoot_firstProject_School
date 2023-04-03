@@ -68,7 +68,7 @@ public class CourseService {
     public List<Course> getCourseByCreatedDate(String createdDate) {
         List<Course> course = courseRepository.getCourseByCreatedDate(createdDate);
         return course;
-    }
+}
 
     // Function that gets all course create by the given updated date (getCourseByUpdatedDate)
     public List<Course> getCourseByUpdatedDate(String UpdatedDate) {
@@ -76,11 +76,23 @@ public class CourseService {
         return course;
     }
 
-//    // Function that gets all courses from the student ID (getCourseByStudentId)
+
+    // Function that gets all courses from the student ID (getCourseByStudentId)
+    public List<Course> getCourseByStudentId(Integer studentId){
+        List<Course> courseList = courseRepository.getCourseByStudentId(studentId);
+        return courseList;
+    }
+
+
+
+
 //    public List<Course> getCoursesByStudentId(Integer id) {
 //        List<Course> coursesList = courseRepository.getCoursesByStudentId(id);
 //        return coursesList;
 //    }
+//public List<Course> getCourseByStudentId(Integer studentId) {
+//    return courseRepository.getCourseByStudentId(studentId);
+//}
 
     //getAllActiveCoursesForAStudent
 

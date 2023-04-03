@@ -43,6 +43,7 @@ INSERT INTO course (updated_date,created_date,is_active,course_name,student_id) 
 INSERT INTO course (updated_date,created_date,is_active,course_name,student_id) VALUES ('2023-05-04','2020-05-05','True','CSS',12);
 INSERT INTO course (updated_date,created_date,is_active,course_name,student_id) VALUES ('2023-05-04 07:45:19.1500000','2020-01-01 10:30:21.9000000','False','Java',15);
 INSERT INTO course (updated_date,created_date,is_active,course_name,student_id) VALUES ('2023-05-04 07:45:19.1500000','2020-01-01 10:30:21.9000000','True','PE',15);
+INSERT INTO course (updated_date,created_date,is_active,course_name,student_id) VALUES ('2017-05-04 07:45:19.1500000','2016-01-01 10:30:21.9000000','True','Math',15);
 
 
 

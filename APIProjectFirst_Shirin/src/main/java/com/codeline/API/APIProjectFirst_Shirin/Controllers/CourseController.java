@@ -5,6 +5,7 @@ import com.codeline.API.APIProjectFirst_Shirin.Repositories.CourseRepository;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.SchoolRepository;
 import com.codeline.API.APIProjectFirst_Shirin.Services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -98,7 +99,6 @@ public class CourseController {
         List<Course> getCourseByCreatedDateVariable = courseService.getCourseByCreatedDate(createdDate);
         return getCourseByCreatedDateVariable;
     }
-
     // Function where it gets all the Course Updated by the given Date (getCourseByUpdatedDate)
     @RequestMapping(value = "/getCourseByUpdatedDate", method = RequestMethod.GET)
     public List<Course> getCourseByUpdatedDateVariable(String UpdatedDate) throws ParseException {
@@ -106,12 +106,13 @@ public class CourseController {
         return getSchoolByUpdatedDateVariable;
     }
 
-//    // Function that gets all courses from the student ID (getCourseByStudentId)
-//    @RequestMapping(value = "getCourseByStudentId", method = RequestMethod.GET)
-//    public List<Course> getCourseByStudentId(@RequestParam Integer id) {
-//        List<Course> coursesOfAStudent = courseService.getCoursesByStudentId(id);
-//        return coursesOfAStudent;
-//    }
+    // Function that gets all courses from the student ID (getCourseByStudentId)
+    @RequestMapping(value = "getCourseByStudentId", method = RequestMethod.GET)
+    public List<Course> getCourseByStudentId(@RequestParam Integer studentId) {
+        List<Course> courseByStudentIdList = courseService.getCourseByStudentId(studentId);
+       return courseByStudentIdList;
+    }
+
 
     //getAllActiveCoursesForAStudent
 

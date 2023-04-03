@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
+import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -51,10 +52,16 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
     List<Course> getByCourseName(@Param("courseName") String courseName); // mapping the query and returning the course
 
     @Query(value = "Select * from Course where created_date like CONCAT (?1, '%') ", nativeQuery = true) // nativeQuery you can use the variables in the sql
+        //The CONCAT(?1, '%')  is used to concatenate the value of the first parameter passed to the method
+        // (which is the createdDate parameter) with the %  symbol.
+        // This creates a pattern to match all values in the created_date column that start with the value of createdDate.
     List<Course> getCourseByCreatedDate(String createdDate);
-
     @Query(value = "Select * from Course where updated_date like CONCAT (?1, '%') ", nativeQuery = true) // nativeQuery you can use the variables in the sql
     List<Course> getCourseByUpdatedDate(String UpdatedDate);
+
+    @Query(value = "SELECT c from Course c WHERE c.student.id = :id ")
+    List<Course> getCourseByStudentId(@Param("id") Integer id);
+
 
     @Query(value = "SELECT c from Course c where c.isActive = true")
     List<Course> getAllActiveCourses();
@@ -62,6 +69,7 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
     @Modifying // enhance the query annotation.
     @Transactional // Use Method for database transaction, allows us to set propagation, isolation, timeout, read-only,
     // and rollback conditions and specify the transaction manager.
+
     @Query(value = "Update Course c Set c.isActive = false")
     void deleteAll();
 

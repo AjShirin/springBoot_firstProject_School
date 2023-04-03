@@ -151,7 +151,11 @@ public class StudentService {
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
         Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
         List<Student> studentsCreatedDate = studentRepository.getStudentsByCreatedDate(convertedDateFromStringToDateFormat);
-        studentsCreatedDate.stream().forEach(create -> create.setIsActive(Boolean.FALSE));
+        studentsCreatedDate.stream().forEach(create -> create.setIsActive(Boolean.FALSE)); //Java stream operation that iterates through all the Student objects
+        // in the studentsCreatedDate list and sets their isActive property to false.
+        //it creates a stream of Student objects from the studentsCreatedDate list, and for each Student object in the stream,
+        // it executes the lambda expression create -> create.setIsActive(Boolean.FALSE)
+        //The lambda expression sets the isActive property of the current Student object in the stream to false.
         studentRepository.saveAll(studentsCreatedDate);
     }
 
