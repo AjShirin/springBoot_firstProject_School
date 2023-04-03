@@ -76,6 +76,13 @@ public class MarkService {
         List<Mark> markToObtain = markRepository.getByObtainedMarksLessThan(obtainMark);
         return markToObtain;
     }
+    // Function where it gets all the Marks Updated by the given Date (getMarksByUpdatedDate)
+    public List<Mark> getMarksByUpdatedDate(String UpdatedDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(UpdatedDate);
+        List<Mark> marksUpdatedDate = markRepository.getMarksByUpdatedDate(convertedDateFromStringToDateFormat);
+        return marksUpdatedDate;
+    }
 
 
 

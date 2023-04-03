@@ -2,6 +2,7 @@ package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
+import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Services.MarkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -94,6 +95,13 @@ public class MarkController {
     public List<Mark> getByObtainedMarksLessThan(Integer obtainMark) {
         List<Mark> markToObtain = markService.getByObtainedMarksLessThan(obtainMark);
         return markToObtain;
+    }
+
+    // Calls the function where it gets all the Marks Updated by the given Date (getMarksByUpdatedDate)
+    @RequestMapping(value = "/getMarksByUpdatedDate", method = RequestMethod.GET)
+    public List<Mark> getMarksByUpdatedDate(String UpdatedDate) throws ParseException {
+        List<Mark> getMarkByUpdatedDateVariable = markService.getMarksByUpdatedDate(UpdatedDate);
+        return getMarkByUpdatedDateVariable;
     }
 
 
