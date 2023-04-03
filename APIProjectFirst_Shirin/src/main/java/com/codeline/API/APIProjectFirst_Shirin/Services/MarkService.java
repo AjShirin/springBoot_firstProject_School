@@ -83,6 +83,11 @@ public class MarkService {
         List<Mark> marksUpdatedDate = markRepository.getMarksByUpdatedDate(convertedDateFromStringToDateFormat);
         return marksUpdatedDate;
     }
+    // Function where it gets all the Marks by the Course ID  (getMarksByCourseId)
+    public List<Mark> getMarksByCourseId(Integer courseId){
+        List<Mark> markListForCourseId = markRepository.getMarksByCourseId(courseId);
+        return markListForCourseId;
+    }
 
 
 

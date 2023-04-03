@@ -103,6 +103,11 @@ public class MarkController {
         List<Mark> getMarkByUpdatedDateVariable = markService.getMarksByUpdatedDate(UpdatedDate);
         return getMarkByUpdatedDateVariable;
     }
+    @RequestMapping(value = "/getMarksByCourseId", method = RequestMethod.GET)
+    public List<Mark> getMarksByCourseId(@RequestParam Integer courseId) {
+        return markService.getMarksByCourseId(courseId);
+    }
+
 
 
 
