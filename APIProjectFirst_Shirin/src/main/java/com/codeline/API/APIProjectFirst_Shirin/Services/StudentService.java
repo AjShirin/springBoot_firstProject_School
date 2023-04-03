@@ -186,7 +186,12 @@ public class StudentService {
         }
     }
 
-    //deleteStudentsBySchoolId
+    //This function updates the 'isActive' column to false by giving the student School ID (deleteStudentsBySchoolId)
+
+
+
+
+
 
     //This function updates the 'isActive' column to false by giving the Created date (deleteStudentsByCreatedDate)
     public String deleteStudentsByCreatedDate(String createdDate) throws ParseException {

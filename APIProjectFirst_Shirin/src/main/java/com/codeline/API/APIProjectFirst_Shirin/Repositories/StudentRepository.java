@@ -28,7 +28,8 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     @Query("SELECT s from Student s where s.id= :studentId")
         // :id is coming from the user
         // using parameter for user input which is "studentId"
-    Student getStudentById(@Param("studentId") Integer id);  // whoever called the function and write the ID, it will be mapped with the ID of the school
+    Student getStudentById(@Param("studentId") Integer id);  // whoever called the function and write the ID, it will be mapped with the ID of the student
+
     // calling the function from the service
 
     // the 'name' should be the same as the java
@@ -52,6 +53,8 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     @Query(value = "SELECT DISTINCT(school_id) FROM student", nativeQuery = true)
     List<Integer> getDistinctSchoolIdsFromStudent();
 
+
+
     @Query(value = "SELECT COUNT(id) From student where school_id = ?1", nativeQuery = true)
     Integer getCountOfStudentsBySchoolId(Integer schoolId);
 
@@ -70,6 +73,9 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 
     @Query(value = "Update Student s Set s.isActive = false")
     void deleteAllStudents();
+
+//    @Query("UPDATE Student s SET s.isActive = false WHERE s.school.id = :schoolId")
+//    void deleteStudentsBySchoolId(@Param("schoolId") Integer schoolId);
 
     @Query("SELECT s FROM Student s WHERE s.rollNumber = :rollNumber")
     Student getByStudentByRollNumber(@Param("rollNumber")String rollNumber);

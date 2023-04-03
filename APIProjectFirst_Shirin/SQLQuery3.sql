@@ -9,6 +9,8 @@ Select * From course_marks;
 Select * From school_students;
 Select * From student_courses;
 
+SELECT school_id FROM student
+
 UPDATE student
 SET is_active = 'True'
 WHERE student_name = 'Asma';
@@ -31,8 +33,8 @@ INSERT INTO student (updated_date,created_date,is_active,student_name, roll_numb
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-07-05','2020-04-04','False','Farah',2,2);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-07-05','2020-04-04','True','Manal',10,4);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2020-02-05','2021-05-05','True','Esraa',11,1);
-
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2016-02-10','2019-03-04','True','Khulood',4,1);
+
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2016-02-10','2019-03-04','True','Asma',7,1);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2006-02-10','2007-03-04','True','Maryam',8,1);
 
