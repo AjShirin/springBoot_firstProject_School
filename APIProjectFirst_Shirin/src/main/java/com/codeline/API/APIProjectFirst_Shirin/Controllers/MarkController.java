@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Controllers;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
+import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Services.MarkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,6 +63,13 @@ public class MarkController {
         List<Mark> markLatestRowList = markService.getLatestRow();
         return markLatestRowList;
     }
+    // function that gets the latest update for Mark (getLatestUpdated)
+    @RequestMapping(value = "/getLatestUpdated", method = RequestMethod.GET)
+    public List<Mark> getLatestUpdated(){
+        List<Mark> markLatestUpdate = markService.getLatestUpdated();
+        return markLatestUpdate;
+    }
+
 
 
 

@@ -91,10 +91,11 @@ public class StudentService {
         return studentRepository.getStudentLatestRow();
     }
 
-    // function that gets the latest update for student (getStudentLatestUpdated)
-    public List<Student> getStudentLatestUpdated() {
-        return studentRepository.getStudentLatestRow();
-    }
+//    // function that gets the latest update for student (getStudentLatestUpdated)
+//    public List<Student> getStudentLatestUpdated() {
+//        return studentRepository.get
+//                .getStudentLatestRow();
+//    }
 
     //function that checks if there is a date created bigger than the given date (getStudentCreatedAfterDate)
     public List<Student> getStudentCreatedAfterDate(String createdDate) throws ParseException {
