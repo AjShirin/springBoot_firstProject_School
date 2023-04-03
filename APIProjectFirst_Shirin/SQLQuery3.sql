@@ -34,9 +34,9 @@ INSERT INTO student (updated_date,created_date,is_active,student_name, roll_numb
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2023-07-05','2020-04-04','True','Manal',10,4);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2020-02-05','2021-05-05','True','Esraa',11,1);
 INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2016-02-10','2019-03-04','True','Khulood',4,1);
-
-INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2016-02-10','2019-03-04','True','Asma',7,1);
-INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2006-02-10','2007-03-04','True','Maryam',8,1);
+INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2016-02-10','2019-03-04','True','Asma',7,10);
+INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2006-02-10','2007-03-04','True','Maryam',8,10);
+INSERT INTO student (updated_date,created_date,is_active,student_name, roll_number,school_id) VALUES ('2006-02-10','2007-03-04','True','Nasser',10,10);
 
 INSERT INTO course (updated_date,created_date,is_active,course_name,student_id) VALUES ('2023-05-04 09:30:21.1200000','2020-05-05','True','Python',11);
 INSERT INTO course (updated_date,created_date,is_active,course_name,student_id) VALUES ('2023-05-04','2020-05-05','True','HTML',13);

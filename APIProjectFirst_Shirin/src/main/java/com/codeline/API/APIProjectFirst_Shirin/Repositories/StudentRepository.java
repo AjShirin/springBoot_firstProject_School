@@ -1,8 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
 
-
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -53,8 +51,6 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     @Query(value = "SELECT DISTINCT(school_id) FROM student", nativeQuery = true)
     List<Integer> getDistinctSchoolIdsFromStudent();
 
-
-
     @Query(value = "SELECT COUNT(id) From student where school_id = ?1", nativeQuery = true)
     Integer getCountOfStudentsBySchoolId(Integer schoolId);
 
@@ -79,6 +75,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 
     @Query("SELECT s FROM Student s WHERE s.rollNumber = :rollNumber")
     Student getByStudentByRollNumber(@Param("rollNumber")String rollNumber);
+
 
 
 

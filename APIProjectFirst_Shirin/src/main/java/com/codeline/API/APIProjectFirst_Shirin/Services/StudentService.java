@@ -187,11 +187,29 @@ public class StudentService {
     }
 
     //This function updates the 'isActive' column to false by giving the student School ID (deleteStudentsBySchoolId)
-
-
-
-
-
+    public String deleteStudentsBySchoolId(Integer id) {
+        List<Student> students = studentRepository.getStudentsBySchoolId(id);
+        if (students.isEmpty()) { // If the list is empty, it returns a message stating that the given school ID is not in the database.
+            return "The given school id is not in the database please try again";
+        } else {
+            boolean allDeactivated = true; // If the list is not empty, it loops through all the students and checks if they are active.
+            // If a student is active, it sets the isActive to false and saves the updated student record to the database.
+            for (Student student : students) {
+                if (student.getIsActive()) {
+                    student.setIsActive(Boolean.FALSE);
+                    studentRepository.save(student);
+                } else {
+                    allDeactivated = false; //If all students were already inactive, it sets the boolean variable "allDeactivated" to false.
+                }
+            }
+            // After iterating through all the students, the method checks the value of the "allDeactivated" variable.
+            if (allDeactivated) {
+                return "The given school id is already deactivated"; //If it is true, then it returns a message stating that the given school ID is already deactivated
+            } else {
+                return "The school id has been deactivated successfully"; //it returns a message stating that the school ID has been deactivated successfully.
+            }
+        }
+    }
 
     //This function updates the 'isActive' column to false by giving the Created date (deleteStudentsByCreatedDate)
     public String deleteStudentsByCreatedDate(String createdDate) throws ParseException {

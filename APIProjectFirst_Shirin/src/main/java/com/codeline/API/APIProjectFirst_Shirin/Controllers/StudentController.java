@@ -168,8 +168,12 @@ public class StudentController {
         }
     }
 
-
-
+    //This function updates the 'isActive' column to false by giving the student School ID (deleteStudentsBySchoolId)
+    @RequestMapping(value = "/deleteStudentsBySchoolId", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteStudentsBySchoolId(@RequestParam Integer schoolId) {
+        String message = studentService.deleteStudentsBySchoolId(schoolId);
+        return ResponseEntity.ok(message);
+    }
 
     //This function updates the 'isActive' column to false by giving the Created date (deleteStudentsByCreatedDate)
     @RequestMapping(value = "/deleteStudentsByCreatedDate", method = RequestMethod.POST)
@@ -201,7 +205,7 @@ public class StudentController {
 
     // This function creates new record for student with user Input (createStudent)
     @RequestMapping(value = "/createStudent", method = RequestMethod.POST)
-    public ResponseEntity<String> createStudent( @RequestParam String name) { // ResponseEntity<String> represents an HTTP,
+    public ResponseEntity<String> createStudent(@RequestParam String name) { // ResponseEntity<String> represents an HTTP,
         // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
         try {
             studentService.createStudent(name);
@@ -213,7 +217,7 @@ public class StudentController {
 
     // This function Updates a record for student with user Input (updateStudent)
     @RequestMapping(value = "/updateStudent", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateStudent(@RequestParam Integer id,String name,Boolean isActive, String userCreatedDate, String userUpdatedDate) {
+    public ResponseEntity<String> updateStudent(@RequestParam Integer id, String name, Boolean isActive, String userCreatedDate, String userUpdatedDate) {
         // ResponseEntity<String> represents an HTTP,
         // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
         try {
