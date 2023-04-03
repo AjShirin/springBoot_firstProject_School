@@ -83,18 +83,10 @@ public class CourseService {
         return courseList;
     }
 
-
-
-
-//    public List<Course> getCoursesByStudentId(Integer id) {
-//        List<Course> coursesList = courseRepository.getCoursesByStudentId(id);
-//        return coursesList;
-//    }
-//public List<Course> getCourseByStudentId(Integer studentId) {
-//    return courseRepository.getCourseByStudentId(studentId);
-//}
-
-    //getAllActiveCoursesForAStudent
+    //Function that gets all courses that are active (getAllActiveCoursesForAStudent)
+    public List<Course> getAllActiveCoursesForAStudent(Integer studentId){
+        return courseRepository.getAllActiveCoursesForAStudent(studentId);
+    }
 
     // function that gets all the active course (getAllActiveCourses)
     public List<Course> getAllActiveCourses() {

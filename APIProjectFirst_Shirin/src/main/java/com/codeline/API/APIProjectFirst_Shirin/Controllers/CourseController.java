@@ -107,15 +107,18 @@ public class CourseController {
     }
 
     // Function that gets all courses from the student ID (getCourseByStudentId)
-    @RequestMapping(value = "getCourseByStudentId", method = RequestMethod.GET)
+    @RequestMapping(value = "/getCourseByStudentId", method = RequestMethod.GET)
     public List<Course> getCourseByStudentId(@RequestParam Integer studentId) {
         List<Course> courseByStudentIdList = courseService.getCourseByStudentId(studentId);
        return courseByStudentIdList;
     }
 
-
-    //getAllActiveCoursesForAStudent
-
+    //Function that gets all courses that are active (getAllActiveCoursesForAStudent)
+    @RequestMapping(value = "/getAllActiveCoursesForAStudent", method = RequestMethod.GET)
+    public List<Course> getAllActiveCoursesForAStudent(Integer studentId) {
+        List<Course> allActiveCoursesForAStudent = courseService.getAllActiveCoursesForAStudent(studentId);
+        return allActiveCoursesForAStudent;
+    }
 
     // get all the active course (getAllActiveCourses)
     @RequestMapping(value = "/getAllActiveCourses")
