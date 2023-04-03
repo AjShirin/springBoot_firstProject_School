@@ -59,6 +59,11 @@ public class MarkService {
         List<Mark> Marks = markRepository.getMarksCreatedAfterDate(convertedDateFromStringToDateFormat);
         return Marks;
     }
+    //Function that gets all grade by the user input (getAllByGrade)
+    public List<Mark> getAllByGrade(String grade){
+        List<Mark> mark = markRepository.getAllByGrade(grade);
+        return mark;
+    }
 
 
 

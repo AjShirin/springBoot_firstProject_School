@@ -77,6 +77,12 @@ public class MarkController {
         List<Mark> createdAfterDate = markService.getMarksCreatedAfterDate(createdDate);
         return createdAfterDate;
     }
+    //Function that gets all grade by the user input (getAllByGrade)
+    @RequestMapping(value = "/getAllByGrade", method = RequestMethod.GET)
+    public List<Mark> getAllByGrade(String grade) {
+        List<Mark> markList = markService.getAllByGrade(grade);
+        return markList;
+    }
 
 
 
