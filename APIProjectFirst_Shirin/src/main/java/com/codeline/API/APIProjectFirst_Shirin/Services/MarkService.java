@@ -7,6 +7,10 @@ import com.codeline.API.APIProjectFirst_Shirin.Repositories.MarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service // this is where everything is going to be done related to the object such as function and many more
@@ -46,6 +50,14 @@ public class MarkService {
     // function that gets the latest update for Mark (getLatestUpdated)
     public List<Mark> getLatestUpdated() {
         return markRepository.getLatestUpdated();
+    }
+
+    //function that checks if there is a date created bigger than the given date (getMarksCreatedAfterDate)
+    public List<Mark> getMarksCreatedAfterDate(String createdDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<Mark> Marks = markRepository.getMarksCreatedAfterDate(convertedDateFromStringToDateFormat);
+        return Marks;
     }
 
 

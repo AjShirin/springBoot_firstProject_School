@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository // Collection of code that is going to be used for the Objects
@@ -40,4 +41,7 @@ public interface MarkRepository extends CrudRepository<Mark, Integer> {
 
     @Query(value = "SELECT m from Mark m where m.UpdatedDate = (SELECT MAX(m.UpdatedDate) FROM Mark m)")
     List<Mark> getLatestUpdated();
+
+    @Query("SELECT m from Mark m where m.createdDate >= :createdDate")
+    List<Mark> getMarksCreatedAfterDate(Date createdDate);
 }
