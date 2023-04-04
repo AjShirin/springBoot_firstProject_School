@@ -66,8 +66,11 @@ public interface MarkRepository extends CrudRepository<Mark, Integer> {
     @Modifying
     @Transactional
 
-    @Query(value = "update Mark m Set m.isActive = false")
+    @Query(value = "Update Mark m Set m.isActive = false")
     void deleteAllMarks();
+
+
+
 
 
 

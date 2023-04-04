@@ -51,3 +51,4 @@ INSERT INTO mark (updated_date,created_date,is_active,grade,obtain_mark,course_i
 INSERT INTO mark (updated_date,created_date,is_active,grade,obtain_mark,course_id) VALUES ('2023-05-04','2020-05-05','True','D',65,12);
 INSERT INTO mark (updated_date,created_date,is_active,grade,obtain_mark,course_id) VALUES ('2023-05-04','2020-05-05','False','B',73,14);
 INSERT INTO mark (updated_date,created_date,is_active,grade,obtain_mark,course_id) VALUES ('2023-05-04','2020-05-05','False','c',79,15);
+INSERT INTO mark (updated_date,created_date,is_active,grade,obtain_mark,course_id) VALUES ('2019-05-04','2015-05-05','True','B+',75,13);

@@ -1,6 +1,7 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
+import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.MarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -96,6 +97,18 @@ public class MarkService {
     // This function updates all the Marks 'isActive' column to false (deleteAll)
     public void deleteAllMarks() {
         markRepository.deleteAllMarks();
+    }
+    //This function updates the 'isActive' column to false by giving the Created date (deleteAllMarksCreatedAfterDate)
+    public void deleteAllMarksCreatedAfterDate(String createdDate) throws ParseException {
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(createdDate);
+        List<Mark> marksCreatedDate = markRepository.getMarksCreatedAfterDate(convertedDateFromStringToDateFormat);
+        marksCreatedDate.stream().forEach(create -> create.setIsActive(Boolean.FALSE)); //Java stream operation that iterates through all the Student objects
+        // in the studentsCreatedDate list and sets their isActive property to false.
+        //it creates a stream of Student objects from the studentsCreatedDate list, and for each Student object in the stream,
+        // it executes the lambda expression create -> create.setIsActive(Boolean.FALSE)
+        //The lambda expression sets the isActive property of the current Student object in the stream to false.
+            markRepository.saveAll(marksCreatedDate);
     }
 
 

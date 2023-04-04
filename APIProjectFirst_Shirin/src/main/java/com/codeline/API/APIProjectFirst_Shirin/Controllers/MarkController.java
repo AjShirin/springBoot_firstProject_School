@@ -127,6 +127,18 @@ public class MarkController {
         markService.deleteAllMarks();
     }
 
+    //This function updates the 'isActive' column to false by giving the Created date (deleteAllMarksCreatedAfterDate)
+    @RequestMapping(value = "/deleteAllMarksCreatedAfterDate", method = RequestMethod.POST)
+    public String deleteAllMarksCreatedAfterDate(@RequestParam String createdDate) throws ParseException {
+        try {
+            markService.deleteAllMarksCreatedAfterDate(createdDate);
+        } catch (ParseException e) {
+            return "Failed to delete try again...";
+        }
+        return "Deleted Successfully :)";
+    }
+
+
 
 
 
