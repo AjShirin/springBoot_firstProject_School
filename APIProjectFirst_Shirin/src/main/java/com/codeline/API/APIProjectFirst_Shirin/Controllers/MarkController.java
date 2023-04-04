@@ -121,6 +121,13 @@ public class MarkController {
         }
     }
 
+    // This function updates all the Marks 'isActive' column to false (deleteAll)
+    @RequestMapping(value = "/deleteAllMarks")
+    public void deleteAllMarks() {
+        markService.deleteAllMarks();
+    }
+
+
 
 
 

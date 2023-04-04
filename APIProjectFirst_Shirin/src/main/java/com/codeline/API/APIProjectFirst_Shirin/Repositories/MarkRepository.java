@@ -4,11 +4,13 @@ import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -60,6 +62,13 @@ public interface MarkRepository extends CrudRepository<Mark, Integer> {
 
     @Query(value = "SELECT m from Mark m WHERE m.course.id = :id ")
     List<Mark> getMarksByCourseId(@Param("id") Integer id);
+
+    @Modifying
+    @Transactional
+
+    @Query(value = "update Mark m Set m.isActive = false")
+    void deleteAllMarks();
+
 
 
 

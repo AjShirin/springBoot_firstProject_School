@@ -1,8 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
-import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Repositories.MarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -95,6 +93,13 @@ public class MarkService {
         mark.setIsActive(Boolean.FALSE);
         markRepository.save(mark);
     }
+    // This function updates all the Marks 'isActive' column to false (deleteAll)
+    public void deleteAllMarks() {
+        markRepository.deleteAllMarks();
+    }
+
+
+
 
 
 
