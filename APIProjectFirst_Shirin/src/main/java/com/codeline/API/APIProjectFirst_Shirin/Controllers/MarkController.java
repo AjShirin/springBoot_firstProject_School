@@ -5,6 +5,8 @@ import com.codeline.API.APIProjectFirst_Shirin.Models.School;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
 import com.codeline.API.APIProjectFirst_Shirin.Services.MarkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -106,6 +108,17 @@ public class MarkController {
     @RequestMapping(value = "/getMarksByCourseId", method = RequestMethod.GET)
     public List<Mark> getMarksByCourseId(@RequestParam Integer courseId) {
         return markService.getMarksByCourseId(courseId);
+    }
+
+    // This function updates the 'isActive' column to false by the Mark ID (deleteById)
+    @RequestMapping(value = "/deleteMarkById", method = RequestMethod.GET)
+    public ResponseEntity<String> deleteMarkById(Integer id) {
+        try {
+            markService.deleteById(id);
+            return ResponseEntity.ok("Mark with ID " + id + " has been deactivated successfully :)");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deactivating mark record with ID " + id);
+        }
     }
 
 

@@ -89,6 +89,14 @@ public class MarkService {
         return markListForCourseId;
     }
 
+    // This function updates the 'isActive' column to false by the Mark ID (deleteById)
+    public void deleteById(Integer id) {
+        Mark mark = markRepository.getMarkById(id);
+        mark.setIsActive(Boolean.FALSE);
+        markRepository.save(mark);
+    }
+
+
 
 
 
