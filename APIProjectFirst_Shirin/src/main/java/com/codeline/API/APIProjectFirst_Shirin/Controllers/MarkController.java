@@ -137,13 +137,36 @@ public class MarkController {
         }
         return "Deleted Successfully :)";
     }
+//    //This function updates the 'isActive' column to false by giving the course ID (deleteMarksByCourseId)
+//    @RequestMapping(value = "/deleteMarksByCourseId", method = RequestMethod.POST)
+//    public String deleteMarksByCourseId(@RequestParam Integer courseId) throws ParseException {
+//        try {
+//            markService.deleteMarksByCourseId(courseId);
+//        }
+//        catch (ParseException e){
+//            return "Failed to delete try again...";
+//        }
+//        return "Deleted Successfully :)";
+//    }
 
+    // (deleteMarksByCreatedDate)
 
+    //(deleteMarksByUpdatedDate)
 
+    //(createMarks)
 
-
-
-
-
-
+    // This function Updates a record for mark with user Input (updateMarks)
+    @RequestMapping(value = "/updateMarks", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateMarks(@RequestParam Integer id, String userCreatedDate, String userUpdatedDate, Boolean isActive, String grade, Integer obtainMark) {
+        // ResponseEntity<String> represents an HTTP,
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
+        try {
+            String responseMsg = markService.updateMarks( id,  userCreatedDate,  userUpdatedDate,  isActive,  grade,  obtainMark);
+            return ResponseEntity.ok().body(responseMsg);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred, record is not updated. Please try again.");
+        }
+    }
 }
+

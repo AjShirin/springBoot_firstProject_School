@@ -110,13 +110,37 @@ public class MarkService {
         //The lambda expression sets the isActive property of the current Student object in the stream to false.
             markRepository.saveAll(marksCreatedDate);
     }
+    //This function updates the 'isActive' column to false by giving the course ID (deleteMarksByCourseId)
+//    public void deleteMarksByCourseId(Integer courseId) throws ParseException {
 
+//        Mark mark = markRepository.deleteMarksByCourseId(courseId);
+//        mark.setIsActive(Boolean.FALSE);
+//        markRepository.save(mark);
+//
+//    }
 
+    // (deleteMarksByCreatedDate)
 
+    //(deleteMarksByUpdatedDate)
 
+    //(createMarks)
 
-
-
-
-
+    //Update marks [whole row](updateMarks)
+    public String updateMarks(Integer id, String userCreatedDate, String userUpdatedDate, Boolean isActive, String grade, Integer obtainMark) {
+        try {
+            Mark mark = markRepository.getMarkById(id);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date createdDate = formatter.parse(userCreatedDate);
+            Date updatedDate = formatter.parse(userUpdatedDate);
+            mark.setCreatedDate(createdDate);
+            mark.setUpdatedDate(updatedDate);
+            mark.setIsActive(isActive);
+            mark.setGrade(grade);
+            mark.setObtainMark(obtainMark);
+            markRepository.save(mark);
+            return "The record of ID number:" + id + " has been successfully updated :)";
+        } catch (Exception e) {
+            return "An error occurred, record is not updated. Please try again.";
+        }
+    }
 }

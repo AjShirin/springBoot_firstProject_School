@@ -69,6 +69,9 @@ public interface MarkRepository extends CrudRepository<Mark, Integer> {
     @Query(value = "Update Mark m Set m.isActive = false")
     void deleteAllMarks();
 
+//    @Query(value = "UPDATE Mark m SET m.isActive = false WHERE m.course.id= :courseId")
+//    Mark deleteMarksByCourseId(@Param("courseId") Integer courseId);
+
 
 
 
