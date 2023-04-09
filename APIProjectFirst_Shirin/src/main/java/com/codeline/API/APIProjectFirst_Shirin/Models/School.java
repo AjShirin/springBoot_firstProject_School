@@ -34,6 +34,11 @@ public class School extends BaseEntity{
 
 
 
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+
+
 //    public List<Student> getStudents() {
 //        return students;
 //    }

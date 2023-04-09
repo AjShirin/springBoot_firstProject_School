@@ -60,4 +60,13 @@ public class Student extends BaseEntity{
 
 
     }
+    public School getSchool() {
+        return school; // getting all school
+    }
+    public void setSchool(School school) {
+        this.school = school;
+
+
+
+    }
 }
