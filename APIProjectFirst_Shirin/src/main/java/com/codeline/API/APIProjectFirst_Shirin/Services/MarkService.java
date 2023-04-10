@@ -123,7 +123,8 @@ public class MarkService {
 
     //(deleteMarksByUpdatedDate)
 
-    //(createMarks)
+    // Function that creates a new Mark record (createMarks)
+
 
     //Update marks [whole row](updateMarks)
     public String updateMarks(Integer id, String userCreatedDate, String userUpdatedDate, Boolean isActive, String grade, Integer obtainMark) {

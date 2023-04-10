@@ -1,36 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StudentReport" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b36614ad-c2a1-4fea-91e6-43edd2384123">
-
-    <field name="schoolName" class="java.lang.String">
-
-    </field>
-    <field name="studentName" class="java.lang.String">
-
-    </field>
-    <field name="studentRollNumber" class="java.lang.String">
-
-    </field>
+    <field name="courseName" class="java.lang.String"/>
+    <field name="obtainMarks" class="java.lang.Integer"/>
+    <field name="studentGrade" class="java.lang.String"/>
     <background>
-        <band/>
+        <band height="118"/>
     </background>
     <title>
         <band height="72">
             <frame>
-                <reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="fac983c0-f76b-481e-bab5-4db6eb1b505b"/>
+                <reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#63A8F7" uuid="fac983c0-f76b-481e-bab5-4db6eb1b505b"/>
                 <staticText>
-                    <reportElement x="20" y="20" width="260" height="43" forecolor="#FFFFFF" uuid="50322170-2a2f-4f83-8375-c44f18118db0"/>
+                    <reportElement x="25" y="20" width="260" height="43" forecolor="#030303" uuid="50322170-2a2f-4f83-8375-c44f18118db0"/>
                     <textElement>
                         <font size="34" isBold="true"/>
                     </textElement>
-                    <text><![CDATA[Student Report]]></text>
+                    <text><![CDATA[School Report]]></text>
                 </staticText>
                 <staticText>
-                    <reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="19cb1622-4aa4-422b-8662-a8d9accc2a90"/>
-                    <textElement textAlignment="Right">
-                        <font size="14" isBold="false"/>
+                    <reportElement x="340" y="40" width="245" height="40" forecolor="#050505" uuid="19cb1622-4aa4-422b-8662-a8d9accc2a90"/>
+                    <textElement textAlignment="Center">
+                        <font size="12" isBold="true" isItalic="true"/>
                     </textElement>
-                    <text><![CDATA[Student Report]]></text>
+                    <text><![CDATA[This report displays all the courses with their associated marks]]></text>
                 </staticText>
             </frame>
         </band>
@@ -39,36 +32,36 @@
         <band height="13"/>
     </pageHeader>
     <columnHeader>
-        <band height="21">
+        <band height="25">
             <line>
                 <reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="7343639c-71b4-4986-b51d-8fea19beee3f"/>
             </line>
             <staticText>
-                <reportElement mode="Opaque" x="0" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e4f6ebab-eac5-458d-89e8-cf6fca067026">
+                <reportElement mode="Opaque" x="0" y="0" width="185" height="20" forecolor="#042638" backcolor="#E6E6E6" uuid="e4f6ebab-eac5-458d-89e8-cf6fca067026">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c78b9cd2-51ac-48a3-b0a9-a6a12828b99d"/>
                 </reportElement>
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[schoolName]]></text>
+                <text><![CDATA[Course Name]]></text>
             </staticText>
             <staticText>
-                <reportElement mode="Opaque" x="185" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="32bdd2e9-d5db-4c3f-ba1c-d071188c77c2">
+                <reportElement mode="Opaque" x="185" y="0" width="185" height="20" forecolor="#032233" backcolor="#E6E6E6" uuid="32bdd2e9-d5db-4c3f-ba1c-d071188c77c2">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="893d6960-f5ac-4251-bbcd-50dba9b003ed"/>
                 </reportElement>
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[studentName]]></text>
+                <text><![CDATA[Obtain Marks]]></text>
             </staticText>
             <staticText>
-                <reportElement mode="Opaque" x="370" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="39fdf83b-370c-46db-8bc6-e7ed65e8d2e2">
+                <reportElement mode="Opaque" x="370" y="0" width="185" height="20" forecolor="#051F2E" backcolor="#E6E6E6" uuid="39fdf83b-370c-46db-8bc6-e7ed65e8d2e2">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7bdc75d1-0add-4d7c-9c73-d00b7ea65412"/>
                 </reportElement>
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[studentRollNumber]]></text>
+                <text><![CDATA[Student Grade]]></text>
             </staticText>
         </band>
     </columnHeader>
@@ -84,7 +77,7 @@
                 <textElement>
                     <font size="14"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{schoolName}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{courseName}]]></textFieldExpression>
             </textField>
             <textField textAdjust="StretchHeight">
                 <reportElement x="198" y="0" width="185" height="20" uuid="6ff237a0-86a5-481f-9635-a73b929afbbf">
@@ -93,7 +86,7 @@
                 <textElement>
                     <font size="14"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{studentName}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{obtainMarks}]]></textFieldExpression>
             </textField>
             <textField textAdjust="StretchHeight">
                 <reportElement x="380" y="0" width="185" height="20" uuid="9b963f53-b00f-4566-ba14-c14523989fb1">
@@ -102,7 +95,7 @@
                 <textElement>
                     <font size="14"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{studentRollNumber}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{studentGrade}]]></textFieldExpression>
             </textField>
         </band>
     </detail>
