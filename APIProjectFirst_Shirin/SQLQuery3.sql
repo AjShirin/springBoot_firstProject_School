@@ -12,8 +12,8 @@ Select * From student_courses;
 SELECT school_id FROM student
 
 UPDATE student
-SET is_active = 'True'
-WHERE student_name = 'Asma';
+SET school_id = 1
+WHERE student_name = 'Safaa';
 
 DELETE FROM student WHERE student_name = 'Safaa';
 

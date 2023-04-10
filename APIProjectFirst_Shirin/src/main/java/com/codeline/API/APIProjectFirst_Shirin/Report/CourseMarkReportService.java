@@ -21,17 +21,10 @@ import java.util.List;
 import java.util.Map;
 @Service
 public class CourseMarkReportService {
-    @Autowired
-    SchoolRepository schoolRepository;
-
-    @Autowired
-    StudentRepository studentRepository;
 
     @Autowired
     MarkRepository markRepository;
 
-    @Autowired
-    CourseRepository courseRepository;
     @Autowired
     public static final String pathToReports = "C:\\Users\\user020\\IdeaProjects\\APIProjectFirst_Shirin\\APIProjectFirst_Shirin\\reports";
 
