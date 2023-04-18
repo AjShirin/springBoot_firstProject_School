@@ -11,24 +11,48 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.FileNotFoundException;
 
 @RestController
-@RequestMapping(value = "report")
+@RequestMapping(value = "/report")
 
 public class ReportController {
     @Autowired
     ReportService reportService;
 
-    @RequestMapping(value = "schoolReport", method = RequestMethod.GET)
+    @RequestMapping(value = "/schoolReport", method = RequestMethod.GET)
     public String generateSchoolsReport() throws JRException, FileNotFoundException {
         return reportService.generateReport();
     }
 
-    @RequestMapping(value = "studentAndTheirSchoolReport", method = RequestMethod.GET)
-    public void generateStudentWithSchoolNameReport() throws JRException, FileNotFoundException {
-        reportService.generateStudentWithSchoolNameReport();
+    // Question 1
+      @RequestMapping(method = RequestMethod.GET, value = "/studentAndTheirSchoolReport")
+    public String generateStudentWithSchoolNameReport()  {
+        try {
+            return reportService.generateStudentWithSchoolNameReport();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+
+        }
     }
 
-    @RequestMapping(value = "courseNameWithTheirMarksReport", method = RequestMethod.GET)
-    public void generateCourseWithMarkReport() throws JRException, FileNotFoundException {
-    reportService.generateCourseWithMarkReport();
+    // Question 2
+    @RequestMapping(method = RequestMethod.GET, value = "/courseNameWithTheirMarksReport")
+    public String generateCourseWithMarkReport() {
+        try {
+            return reportService.generateCourseWithMarkReport();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+        }
+    }
+
+    // Question 3
+    @RequestMapping(method = RequestMethod.GET, value = "/courseNameWithAverageMarkReport")
+    public String generateCourseNameWithAverageMarkReport() {
+        try {
+            return reportService.generateCourseNameWithAverageMarkReport();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+        }
     }
 }

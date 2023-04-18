@@ -8,14 +8,15 @@ import lombok.Setter;
 @Data
 public class StudentReportDTO {
 
+    String schoolName;
+    String studentName;
+    String studentRollNumber;
+
     public StudentReportDTO(String schoolName, String studentName, String studentRollNumber) {
         this.schoolName = schoolName;
         this.studentName = studentName;
         this.studentRollNumber = studentRollNumber;
     }
-    String schoolName;
-    String studentName;
-    String studentRollNumber;
 
 
 }

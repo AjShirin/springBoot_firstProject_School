@@ -1,12 +1,9 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
-import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
-import com.codeline.API.APIProjectFirst_Shirin.Models.School;
-import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +15,7 @@ import java.util.List;
 // to speak to database and give data to service
 // The class is dealing with student and the primary key in Integer
 // using inheritance
-public interface MarkRepository extends CrudRepository<Mark, Integer> {
+public interface MarkRepository extends JpaRepository<Mark, Integer> {
 
     @Query("SELECT m from Mark m")
 // Write SQL query,  "m" can be any alphabet which is like static
@@ -72,11 +69,7 @@ public interface MarkRepository extends CrudRepository<Mark, Integer> {
 //    @Query(value = "UPDATE Mark m SET m.isActive = false WHERE m.course.id= :courseId")
 //    Mark deleteMarksByCourseId(@Param("courseId") Integer courseId);
 
-
-
-
-
-
-
-
+    @Query(value = "select avg(m.obtainMark) from Mark m where m.course.name = :courseName ")
+    Integer getAverageMarksByCourseName(@Param("courseName") String courseName);
 }
+

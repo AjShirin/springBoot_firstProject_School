@@ -1,11 +1,9 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
-
-import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +16,7 @@ import java.util.List;
 // to speak to database and give data to service
 // The class is dealing with student and the primary key in Integer
 // using inheritance
-public interface StudentRepository extends CrudRepository<Student, Integer> {
+public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     @Query("SELECT s from Student s")
 // Write SQL query,  "s" can be any alphabet which is like static
