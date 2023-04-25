@@ -86,6 +86,16 @@ public class ReportController {
             return new Exception("Error").getMessage();
         }
     }
+    // Question 7
+    @RequestMapping(method = RequestMethod.GET, value = "/DistributionOFGradesForEachCourseReport")
+    public String generateGradeDistributionForEachCourse() {
+        try {
+            return reportService.generateGradeDistributionForEachCourse();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+        }
+    }
 
 
 

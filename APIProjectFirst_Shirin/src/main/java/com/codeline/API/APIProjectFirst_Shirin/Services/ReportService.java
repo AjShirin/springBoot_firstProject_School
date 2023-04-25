@@ -168,7 +168,6 @@ public class ReportService {
     }
 
     // Question 6
-
     public String generateTotalNumberOfStudentsInEachSchool() throws Exception {
         List<School> schoolList = schoolRepository.getAllSchools();
         List<TotalNumberOfStudentInEachSchoolDTO> totalNumberOFStudentInEachSchoolList = new ArrayList<>();
@@ -187,6 +186,27 @@ public class ReportService {
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, paramters, dataSource);
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\TotalNumberOfStudentsInEachSchoolQuestion6.pdf");
         return "Report generated : " + pathToReports + "\\TotalNumberOfStudentsInEachSchoolQuestion6.pdf";
+    }
+    // Question 7
+    public String generateGradeDistributionForEachCourse() throws Exception {
+        List<String> coursesNames = courseRepository.getAllCourseNames();
+        List<String> listOfUniqueGrades = markRepository.getDistinctGrades();
+        List<DistributionOFGradesDTO> distributionOFGradesDTOSList = new ArrayList<>();
+        for (String courseName : coursesNames) {
+            for (String grade : listOfUniqueGrades) {
+                Integer totalMarksByGradeAndCourseName = markRepository.getTotalMarksByGradeAndCourseName(courseName,grade);
+                distributionOFGradesDTOSList.add(new DistributionOFGradesDTO(courseName, grade, totalMarksByGradeAndCourseName));
+            }
+        }
+        File file = new File("C:\\Users\\user020\\IdeaProjects\\APIProjectFirst_Shirin\\APIProjectFirst_Shirin\\src\\main\\resources\\DistributionOfGradesForEachSchool.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(distributionOFGradesDTOSList);
+        Map<String, Object> paramters = new HashMap<>();
+        paramters.put("CreatedBy", "Shirin");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, paramters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\DistributionOfGradesForEachCourseQuestion7.pdf");
+        return "Report generated : " + pathToReports + "\\DistributionOfGradesForEachCourseQuestion7.pdf";
+
     }
 
 

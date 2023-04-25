@@ -1,5 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Repositories;
 
+import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -77,5 +78,14 @@ public interface MarkRepository extends JpaRepository<Mark, Integer> {
 
     @Query(value = "select avg(m.obtainMark) from Mark m where m.course.student.id = :studentId ")
     Integer getAvgMarkByStudentId(@Param("studentId") Integer studentId);
+    @Query(value = " select Distinct(m.grade) from Mark m ")
+    List<String> getDistinctGrades();
+
+    @Query(value = " select count(m) from Mark m where m.course.name = :courseName And m.grade = :grade ")
+    Integer getTotalMarksByGradeAndCourseName( @Param("courseName") String courseName,@Param("grade") String grade);
+
+
+
+
 }
 

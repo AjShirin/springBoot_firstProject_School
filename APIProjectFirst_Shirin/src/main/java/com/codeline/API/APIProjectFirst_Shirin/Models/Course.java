@@ -1,9 +1,13 @@
 package com.codeline.API.APIProjectFirst_Shirin.Models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 
 @Entity
+@Data
+
 public class Course extends BaseEntity {
 
     @Id // Defining the Primary key

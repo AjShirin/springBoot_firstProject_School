@@ -80,6 +80,10 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
     @Query(value = "select c from Course c where c.student.id = :studentId")
     List<Course> getCoursesByStudentId(@Param("studentId") Integer id);
 
+    @Query("SELECT c.name from Course c")
+// Write SQL query,  "s" can be any alphabet which is like static
+    List<String> getAllCourseNames();
+
 
 
 
