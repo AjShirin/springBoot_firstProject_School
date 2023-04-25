@@ -1,9 +1,6 @@
 package com.codeline.API.APIProjectFirst_Shirin.Services;
 
-import com.codeline.API.APIProjectFirst_Shirin.DTO.CourseNameWithAverageMarkDTO;
-import com.codeline.API.APIProjectFirst_Shirin.DTO.MarkReportDTO;
-import com.codeline.API.APIProjectFirst_Shirin.DTO.StudentReportDTO;
-import com.codeline.API.APIProjectFirst_Shirin.DTO.TopPreformingStudentDTO;
+import com.codeline.API.APIProjectFirst_Shirin.DTO.*;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Course;
 import com.codeline.API.APIProjectFirst_Shirin.Models.Mark;
 import com.codeline.API.APIProjectFirst_Shirin.Models.School;
@@ -148,4 +145,27 @@ public class ReportService {
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\TopPreformingStudentGroupByMarksQuestion4.pdf");
         return "Report generated : " + pathToReports + "\\TopPreformingStudentGroupByMarksQuestion4.pdf";
     }
+    public String generateOverAllStudentPerformance() throws Exception {
+        List<Student> studentList = studentRepository.getAllStudent();
+        List<StudentMarkDTO> studentMarkOverallPreformanceList = new ArrayList<>();
+        for (Student student : studentList) {
+            Integer studentId = student.getId();
+            String studentRollNumber = student.getRollNumber();
+            String studentName = student.getName();
+            Integer avgOfMarksByStudentId = markRepository.getAvgMarkByStudentId(studentId);
+            StudentMarkDTO studentDto = new StudentMarkDTO(studentId, studentRollNumber, studentName, avgOfMarksByStudentId);
+            studentMarkOverallPreformanceList.add(studentDto);
+        }
+         File file = new File("C:\\Users\\user020\\IdeaProjects\\APIProjectFirst_Shirin\\APIProjectFirst_Shirin\\src\\main\\resources\\OverallStudentPerformance.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(studentMarkOverallPreformanceList);
+        Map<String, Object> paramters = new HashMap<>();
+        paramters.put("CreatedBy", "Shirin");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, paramters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\OverallPerformanceForEachStudentQuestion5.pdf");
+        return "Report generated : " + pathToReports + "\\OverallPerformanceForEachStudentQuestion5.pdf";
+    }
+
+
+
 }

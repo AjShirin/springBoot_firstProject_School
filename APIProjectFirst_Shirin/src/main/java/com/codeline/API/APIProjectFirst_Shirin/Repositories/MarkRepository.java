@@ -74,5 +74,8 @@ public interface MarkRepository extends JpaRepository<Mark, Integer> {
 
     @Query(value = "select sum(m.obtainMark) from Mark m where m.course.student.id  = :studentId ")
     Integer getSumOfMarksByStudentId(@Param("studentId") Integer studentId);
+
+    @Query(value = "select avg(m.obtainMark) from Mark m where m.course.student.id = :studentId ")
+    Integer getAvgMarkByStudentId(@Param("studentId") Integer studentId);
 }
 
