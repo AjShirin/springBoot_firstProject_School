@@ -145,7 +145,8 @@ public class ReportService {
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\TopPreformingStudentGroupByMarksQuestion4.pdf");
         return "Report generated : " + pathToReports + "\\TopPreformingStudentGroupByMarksQuestion4.pdf";
     }
-    public String generateOverAllStudentPerformance() throws Exception {
+    // Question 5
+    public String generateOverallStudentPerformance() throws Exception {
         List<Student> studentList = studentRepository.getAllStudent();
         List<StudentMarkDTO> studentMarkOverallPreformanceList = new ArrayList<>();
         for (Student student : studentList) {
@@ -164,6 +165,28 @@ public class ReportService {
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, paramters, dataSource);
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\OverallPerformanceForEachStudentQuestion5.pdf");
         return "Report generated : " + pathToReports + "\\OverallPerformanceForEachStudentQuestion5.pdf";
+    }
+
+    // Question 6
+
+    public String generateTotalNumberOfStudentsInEachSchool() throws Exception {
+        List<School> schoolList = schoolRepository.getAllSchools();
+        List<TotalNumberOfStudentInEachSchoolDTO> totalNumberOFStudentInEachSchoolList = new ArrayList<>();
+        for (School school : schoolList) {
+            Integer schoolId = school.getId();
+            String schoolName = school.getName();
+            Integer totalNumberOfStudents = studentRepository.getCountOfStudentsBySchoolId(schoolId);
+            TotalNumberOfStudentInEachSchoolDTO countOfStudentWithSchoolDTO = new TotalNumberOfStudentInEachSchoolDTO(schoolName, totalNumberOfStudents);
+            totalNumberOFStudentInEachSchoolList.add(countOfStudentWithSchoolDTO);
+        }
+        File file = new File("C:\\Users\\user020\\IdeaProjects\\APIProjectFirst_Shirin\\APIProjectFirst_Shirin\\src\\main\\resources\\TotalNumberOfStudentInEachSchool.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(totalNumberOFStudentInEachSchoolList);
+        Map<String, Object> paramters = new HashMap<>();
+        paramters.put("CreatedBy", "Shirin");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, paramters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\TotalNumberOfStudentsInEachSchoolQuestion6.pdf");
+        return "Report generated : " + pathToReports + "\\TotalNumberOfStudentsInEachSchoolQuestion6.pdf";
     }
 
 

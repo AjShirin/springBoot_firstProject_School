@@ -70,7 +70,17 @@ public class ReportController {
     @RequestMapping(method = RequestMethod.GET, value = "/OverallStudentPerformanceReport")
     public String generateOverAllStudentPerformance() {
         try {
-            return reportService.generateOverAllStudentPerformance();
+            return reportService.generateOverallStudentPerformance();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+        }
+    }
+    // Question 6
+    @RequestMapping(method = RequestMethod.GET, value = "/TotalNumberOfEachStudentReport")
+    public String generateTotalNumberOfStudentsInEachSchool() {
+        try {
+            return reportService.generateTotalNumberOfStudentsInEachSchool();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return new Exception("Error").getMessage();
