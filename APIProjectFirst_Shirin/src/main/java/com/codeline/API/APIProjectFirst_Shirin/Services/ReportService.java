@@ -208,6 +208,36 @@ public class ReportService {
         return "Report generated : " + pathToReports + "\\DistributionOfGradesForEachCourseQuestion7.pdf";
 
     }
+    //Question 8
+    public String generateTopPerformanceCoursesForEachSchool() throws Exception {
+        List<School> schoolList = schoolRepository.getAllSchools();
+        Map<School, Course> CoursesAndSchoolMap = new HashMap<>();
+        List<TopPreformingCoursesForEachSchoolDTO> TopPreformingCoursesForEachSchoolDTOsList = new ArrayList<>();
+        for (School school : schoolList) {
+            Integer schoolId = school.getId();
+            List<Course> courseList = courseRepository.getCoursesBySchoolId(schoolId);
+            Integer highestAverageMarkForCourses = 0;
+            Course courseWithHighestMark = new Course();
+            for (Course course : courseList) {
+                Integer courseId = course.getId();
+                Integer averageMarkForCourse = markRepository.averageMarkForCourse(courseId);
+                if (averageMarkForCourse != null && averageMarkForCourse > highestAverageMarkForCourses) {
+                    highestAverageMarkForCourses = averageMarkForCourse;
+                    courseWithHighestMark = course;
+                }
+                TopPreformingCoursesForEachSchoolDTOsList.add(new TopPreformingCoursesForEachSchoolDTO(school.getName(), courseWithHighestMark.getName()));
+            }
+        }
+       File file = new File("C:\\Users\\user020\\IdeaProjects\\APIProjectFirst_Shirin\\APIProjectFirst_Shirin\\src\\main\\resources\\TopPerformingCoursesForEachSchool.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(TopPreformingCoursesForEachSchoolDTOsList);
+        Map<String, Object> paramters = new HashMap<>();
+        paramters.put("CreatedBy", "Shirin");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, paramters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\TopPerformingCoursesForEachSchoolQuestion8.pdf");
+        return "Report generated : " + pathToReports + "\\TopPerformingCoursesForEachSchoolQuestion8.pdf";
+    }
+
 
 
 

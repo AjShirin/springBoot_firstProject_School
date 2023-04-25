@@ -96,6 +96,16 @@ public class ReportController {
             return new Exception("Error").getMessage();
         }
     }
+    // Question 8
+    @RequestMapping(method = RequestMethod.GET, value = "/TopPreformingCoursesForEachSchool")
+    public String generateTopPreformingCoursesForEachSchool() {
+        try {
+            return reportService.generateTopPerformanceCoursesForEachSchool();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+        }
+    }
 
 
 
