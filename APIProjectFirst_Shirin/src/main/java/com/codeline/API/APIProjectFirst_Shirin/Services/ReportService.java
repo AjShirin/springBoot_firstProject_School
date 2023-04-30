@@ -237,6 +237,23 @@ public class ReportService {
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\TopPerformingCoursesForEachSchoolQuestion8.pdf");
         return "Report generated : " + pathToReports + "\\TopPerformingCoursesForEachSchoolQuestion8.pdf";
     }
+    public String generateNumberOfStudentHavingScoredAboveACertainThreshold(Integer courseThreshold) throws Exception {
+        List<Course> courseList = courseRepository.getAllCourse();
+        List<HigherThanACertainThresholdStudentDTO> HigherThanACertainThresholdStudentDTOList = new ArrayList<>();
+        for (Course course : courseList) {
+            String courseName = course.getName();
+            Integer countOfStudents = markRepository.totalStudentsHavingHighThreshold(courseThreshold,courseName);
+            HigherThanACertainThresholdStudentDTOList.add(new HigherThanACertainThresholdStudentDTO(courseName, countOfStudents));
+        }
+        File file = new File("C:\\Users\\user020\\IdeaProjects\\APIProjectFirst_Shirin\\APIProjectFirst_Shirin\\src\\main\\resources\\NumberOfStudentWhoHaveScoredAboveAThreshold.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(HigherThanACertainThresholdStudentDTOList);
+        Map<String, Object> paramters = new HashMap<>();
+        paramters.put("CreatedBy", "Shirin");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, paramters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\NumberOfStudentWhoHaveScoredAboveAThresholdQuestion9.pdf");
+        return "Report generated : " + pathToReports + "\\NumberOfStudentWhoHaveScoredAboveAThresholdQuestion9.pdf";
+    }
 
 
 

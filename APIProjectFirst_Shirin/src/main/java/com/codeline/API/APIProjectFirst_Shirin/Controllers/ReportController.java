@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.FileNotFoundException;
 
 @RestController
@@ -106,6 +107,17 @@ public class ReportController {
             return new Exception("Error").getMessage();
         }
     }
+    // Question 9
+    @RequestMapping(method = RequestMethod.GET, value = "/TotalNumberOFStudentWithCertainThreshold")
+    public String generateNumberOfStudentHavingScoredAboveACertainThreshold(Integer courseThreshold) {
+        try {
+            return reportService.generateNumberOfStudentHavingScoredAboveACertainThreshold(courseThreshold);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+        }
+    }
+
 
 
 

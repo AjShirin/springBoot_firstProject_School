@@ -87,6 +87,10 @@ public interface MarkRepository extends JpaRepository<Mark, Integer> {
     @Query(value = "select avg(m.obtainMark) from Mark m where m.course.id = :courseId ")
     Integer averageMarkForCourse(@Param("courseId") Integer courseId);
 
+    @Query(value = "select count(m.course.student.id) from Mark m where m.obtainMark > :courseThreshold AND m.course.name = :courseName")
+    Integer totalStudentsHavingHighThreshold(@Param("courseThreshold") Integer courseThreshold, @Param("courseName") String courseName);
+
+
 
 
 
