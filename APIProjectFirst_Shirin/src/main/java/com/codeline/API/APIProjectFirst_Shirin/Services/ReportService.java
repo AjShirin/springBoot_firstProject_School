@@ -254,6 +254,24 @@ public class ReportService {
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\NumberOfStudentWhoHaveScoredAboveAThresholdQuestion9.pdf");
         return "Report generated : " + pathToReports + "\\NumberOfStudentWhoHaveScoredAboveAThresholdQuestion9.pdf";
     }
+    public String generateOverallPerformanceOfEachSchool() throws Exception {
+        List<School> schoolList = schoolRepository.getAllSchools();
+        List<OverallPerformanceForStudentForEachSchoolDTO> OverallPerformanceForStudentForEachSchoolDTOList = new ArrayList<>();
+        for (School school : schoolList) {
+            String schoolName = school.getName();
+            Integer schoolId = school.getId();
+            Integer averageOfAllStudentsMarks = markRepository.getAvgOfMarksBySchoolId(schoolId);
+            OverallPerformanceForStudentForEachSchoolDTOList.add(new OverallPerformanceForStudentForEachSchoolDTO(schoolName,averageOfAllStudentsMarks));
+        }
+       File file = new File("C:\\Users\\user020\\IdeaProjects\\APIProjectFirst_Shirin\\APIProjectFirst_Shirin\\src\\main\\resources\\OverallPerformanceOfEachSchool.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(OverallPerformanceForStudentForEachSchoolDTOList);
+        Map<String, Object> paramters = new HashMap<>();
+        paramters.put("CreatedBy", "Shirin");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, paramters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\OverallPerformanceOfEachSchoolQuestion10.pdf");
+        return "Report generated : " + pathToReports + "\\OverallPerformanceOfEachSchoolQuestion10.pdf";
+    }
 
 
 

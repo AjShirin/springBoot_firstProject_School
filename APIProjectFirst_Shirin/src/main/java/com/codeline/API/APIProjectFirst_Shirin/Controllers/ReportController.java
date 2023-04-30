@@ -117,6 +117,15 @@ public class ReportController {
             return new Exception("Error").getMessage();
         }
     }
+    @RequestMapping(method = RequestMethod.GET, value = "/OverallPerformanceOfEachSchool")
+    public String generateOverallPerformanceOfEachSchool() {
+        try {
+            return reportService.generateOverallPerformanceOfEachSchool();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+        }
+    }
 
 
 
